@@ -36,7 +36,7 @@ function Projects() {
               isBlog={false}
               title="Détecteur de Spam avec IA"
               description="Création d'un **bot Telegram** intelligent pour filtrer les spams. Implémentation d'un modèle de **régression logistique** et vectorisation **TF-IDF** pour classifier les messages. Nettoyage et traitement des données, validation croisée et analyse des performances avec **précision, rappel, et F1-score**."
-              ghLink=""
+              ghLink="https://github.com/yanimohellebi26/detecteur-spam.git"
              
             />
           </Col>
