@@ -8,6 +8,13 @@ import {
   SiMongodb,
   SiMysql,
   SiGit,
+  SiPytorch,
+  SiTensorflow,
+  SiFastapi,
+  SiSvelte,
+  SiDocker,
+  SiPostgresql,
+  SiPandas,
 } from "react-icons/si";
 
 function Techstack() {
@@ -19,6 +26,13 @@ function Techstack() {
     { id: "mongodb", icon: <SiMongodb />, name: "MongoDB" },
     { id: "mysql", icon: <SiMysql />, name: "MySQL" },
     { id: "git", icon: <SiGit />, name: "Git" },
+    { id: "pytorch", icon: <SiPytorch />, name: "PyTorch" },
+    { id: "tensorflow", icon: <SiTensorflow />, name: "TensorFlow" },
+    { id: "fastapi", icon: <SiFastapi />, name: "FastAPI" },
+    { id: "svelte", icon: <SiSvelte />, name: "Svelte" },
+    { id: "docker", icon: <SiDocker />, name: "Docker" },
+    { id: "postgresql", icon: <SiPostgresql />, name: "PostgreSQL" },
+    { id: "pandas", icon: <SiPandas />, name: "Pandas" },
   ];
 
   return (

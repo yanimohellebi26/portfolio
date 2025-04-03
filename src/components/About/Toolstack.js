@@ -5,6 +5,12 @@ import {
   SiPostman,
   SiHeroku,
   SiLinux,
+  SiDocker,
+  SiGithub,
+  SiGitlab,
+  SiJupyter,
+  SiAnaconda,
+  SiVercel,
 } from "react-icons/si";
 
 function Toolstack() {
@@ -13,6 +19,12 @@ function Toolstack() {
     { id: "postman", icon: <SiPostman />, name: "Postman" },
     { id: "heroku", icon: <SiHeroku />, name: "Heroku" },
     { id: "linux", icon: <SiLinux />, name: "Linux" },
+    { id: "docker", icon: <SiDocker />, name: "Docker" },
+    { id: "github", icon: <SiGithub />, name: "GitHub" },
+    { id: "gitlab", icon: <SiGitlab />, name: "GitLab" },
+    { id: "jupyter", icon: <SiJupyter />, name: "Jupyter" },
+    { id: "anaconda", icon: <SiAnaconda />, name: "Anaconda" },
+    { id: "vercel", icon: <SiVercel />, name: "Vercel" },
   ];
 
   return (
