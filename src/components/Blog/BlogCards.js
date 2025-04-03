@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import "./BlogCards.css";
 
 function BlogCards(props) {
   // Fonction pour formater le texte avec style particulier pour les phrases entre **
@@ -46,18 +47,28 @@ function BlogCards(props) {
   const linkInfo = extractLink(props.content);
 
   return (
-    <Card className="blog-card-view" style={{
-      background: "linear-gradient(135deg, rgba(89, 37, 192, 0.8) 0%, rgba(50, 30, 70, 0.8) 100%)",
-      border: "1px solid rgba(145, 77, 161, 0.3)",
-      backdropFilter: "blur(10px)",
-      borderRadius: "15px"
-    }}>
-      <Card.Body>
+    <Card 
+      className="blog-card-view hover-effect" 
+      style={{
+        background: "linear-gradient(135deg, rgba(89, 37, 192, 0.8) 0%, rgba(50, 30, 70, 0.8) 100%)",
+        border: "1px solid rgba(145, 77, 161, 0.3)",
+        borderRadius: "15px",
+        height: "600px",
+        transition: "all 0.3s ease",
+        cursor: "pointer"
+      }}
+    >
+      <Card.Body style={{ 
+        height: "100%",
+        overflow: "auto",
+        display: "flex",
+        flexDirection: "column"
+      }}>
         <Card.Title style={{ color: "white", fontSize: "1.5rem", fontWeight: "bold" }}>{props.title}</Card.Title>
         <Card.Text style={{ color: "white", textAlign: "justify", marginTop: "1rem" }}>
           {props.description}
         </Card.Text>
-        <Card.Text style={{ color: "white", textAlign: "justify", marginTop: "1rem" }}>
+        <Card.Text style={{ color: "white", textAlign: "justify", marginTop: "1rem", flex: 1 }}>
           {formatContent(props.content)}
         </Card.Text>
         {linkInfo && (
