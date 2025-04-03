@@ -7,6 +7,8 @@ import spamImg from "../../Assets/Projects/spam.jpg";
 import drollImg from "../../Assets/Projects/droll.png";
 import flowersImg from "../../Assets/Projects/flowers.png";
 import cheatImg from "../../Assets/Projects/cheat.webp";
+import neutraviewImg from "../../Assets/Projects/neutralview.png";
+import livreRecoImg from "../../Assets/Projects/recommendation.png";
 
 function Projects() {
   return (
