@@ -74,7 +74,44 @@ function Blog() {
     
     Et dans ce silence... c’est vous qui parlez.`,
         date: "2025-04-02"
+      },
+      {
+        title: "NUTRI-MIND : Manger pour progresser, même avec 30€",
+        description: "Une IA conçue pour les pratiquants de musculation qui veulent gagner en masse sans perdre en budget ni en temps",
+        content: `La plupart des applications nutritionnelles d’aujourd’hui savent compter : calories, protéines, glucides, lipides.  
+      Elles vous donnent des chiffres… mais vous laissent seul face à un frigo vide, un budget limité, et zéro idée de repas.
+      
+      Et pourtant, **c’est là que les vrais problèmes commencent**.  
+      Quand on est étudiant, motivé par ses objectifs en musculation, mais qu’on doit gérer les galères du quotidien :  
+      peu de temps, peu d’argent, pas forcément l’envie ou les compétences pour cuisiner tous les jours.
+      
+      C’est à ce moment précis que NUTRI-MIND intervient.
+      
+      Ce projet ne se contente pas de vous dire combien de protéines vous devez manger.  
+      Il **construit pour vous** une semaine complète de repas intelligents, optimisés pour vos besoins, vos goûts, vos contraintes…  
+      et surtout **votre budget**. Vous avez 35€ pour la semaine ? Pas de souci.  
+      L’IA vous propose une liste de courses personnalisée qui maximise vos apports macros — sans superflu, sans oubli, sans ruine.
+      
+      Chaque recette proposée est pensée pour être :
+      - Simple à réaliser
+      - Adaptée à vos intolérances
+      - Équilibrée selon vos objectifs (prise de masse, sèche, maintien)
+      - Réutilisable en meal prep
+      
+      NUTRI-MIND n’est pas un coach numérique. C’est un **partenaire stratégique** qui vous aide à progresser, même quand les conditions sont loin d’être idéales.
+      
+      Le but ?  
+      Permettre à chaque pratiquant, qu’il soit débutant ou confirmé, de s’alimenter **efficacement**, **intelligemment**, **réaliste-ment**.  
+      Sans excuses. Sans stress. Et avec des résultats.
+      
+      Parce qu’en musculation, on sait que l’effort à la salle ne sert à rien sans l’assiette qui va avec.  
+      Et que manger bien, c’est aussi une compétence à développer.
+      
+      **NUTRI-MIND, c’est muscu + bouffe + cerveau.**  
+      Et ça change tout.`,
+        date: "2025-04-02"
       }
+      
     ];
     
 
