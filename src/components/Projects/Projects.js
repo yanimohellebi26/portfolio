@@ -9,6 +9,9 @@ import flowersImg from "../../Assets/Projects/flowers.png";
 import cheatImg from "../../Assets/Projects/cheat.webp";
 import neutraviewImg from "../../Assets/Projects/neutralview.png";
 import livreRecoImg from "../../Assets/Projects/recommendation.png";
+import subsenseImg from "../../Assets/Projects/subsense.png";
+import nutrimindImg from "../../Assets/Projects/nutrimand.png";
+import rawviewImg from "../../Assets/Projects/rawview.png";
 
 function Projects() {
   return (
@@ -89,8 +92,46 @@ function Projects() {
             title="Recommandation Intelligente de Livres"
             description="Développement d’un site de **recommandation littéraire personnalisé** où l’utilisateur entre le **titre d’un livre et ce qu’il a préféré dedans**. L’IA analyse les émotions transmises par l’œuvre, le profil du personnage principal et propose : une œuvre populaire similaire, une œuvre moins connue qui correspond parfaitement au ressenti, et un personnage littéraire proche de celui aimé. Ce projet met en avant la **dimension émotionnelle de la lecture** via une interface minimaliste et efficace."
             demoLink="https://recommendation-livre.vercel.app/"
+            ghLink="https://github.com/yanimohellebi26/recommendation-livre.git"
             />
           </Col>
+          <Col md={4} className="project-card">
+  <ProjectCard
+    imgPath={subsenseImg}
+    isBlog={false}
+    title="SUBSENSE - Analyse Intelligente de Vidéos Instagram"
+    description="SUBSENSE est une application web complète développée avec **FastAPI, React et Whisper** pour analyser en profondeur des vidéos Instagram. L’utilisateur fournit un lien vidéo et la langue parlée ; l’IA télécharge la vidéo via **yt-dlp**, en extrait l’audio avec **FFmpeg**, puis génère une **transcription fidèle et multilingue** grâce à **Whisper (OpenAI)**. Ensuite, des modèles de **traitement du langage naturel (GPT-4 + SentenceTransformer)** évaluent les personnalités des interlocuteurs, le but de la vidéo, et son **taux de valeur informative**. L’architecture est modulaire, orientée API, avec un front dynamique qui interagit avec le back-end pour chaque étape du pipeline IA."
+    ghLink="https://github.com/yanimohellebi26/instagram-video.git"
+    collabLink="https://github.com/yanimohellebi26/instagram-video/issues/new?assignees=&labels=collaboration&template=collaboration_request.md"
+    />
+</Col>
+<Col md={4} className="project-card">
+  <ProjectCard
+    imgPath={nutrimindImg}
+    isBlog={false}
+    title="NUTRI-MIND – IA Nutritionnelle pour la Musculation Étudiante"
+    description="Développement d’une **application complète (FastAPI + React)** destinée aux pratiquants de musculation avec budget serré. Le système calcule les **besoins journaliers en macros** (TDEE, protéines, glucides, lipides) à partir de paramètres individuels (âge, poids, taille, objectif, intolérances) puis génère automatiquement :  
+• un **menu hebdomadaire optimisé**,  
+• une **liste de courses adaptée au budget**,  
+• et des **recettes simples** basées sur ces aliments.  
+
+L’architecture est construite en **modèle MVC**, avec un backend Python/FastAPI modulaire, une API REST, des modèles Pydantic pour la validation des entrées, et un système de génération dynamique de menus via des services personnalisés.  
+Le front React est relié via Axios avec gestion d’états et vue tableau. Un futur déploiement Docker + hébergement sur Vercel/Render est prévu."
+   ghLink="https://github.com/yanimohellebi26/muscule_ia.git"
+   collabLink="https://github.com/yanimohellebi26/muscule_ia/issues/new?assignees=&labels=collaboration&template=collaboration_request.md"
+  />
+</Col>
+<Col md={4} className="project-card">
+  <ProjectCard
+    imgPath={rawviewImg}
+    isBlog={false}
+    title="RAWVIEW – Interface Philosophique d'Avis Déconnectés"
+    description="RAWVIEW est une application web conçue avec **SvelteKit** pour offrir une expérience d’avis déconnectée de toute influence sociale. L’architecture repose sur un backend **FastAPI** connecté à une base **PostgreSQL**, le tout orchestré via **Docker**. Côté IA, le système utilise des modules personnalisés en **NLP (Transformers)** pour analyser le langage des utilisateurs, détecter les biais cognitifs, et proposer un **score de sincérité**. Les pages sont dynamiques, pensées autour de l’introspection, avec une UI immersive stylisée sans Tailwind, combinant **Radix UI** et animations Svelte. Le projet est fullstack, modulaire, avec une communication API fluide entre le front et le back, et prêt à être déployé sur des services comme **Render** ou **Railway**."
+   ghLink="https://github.com/yanimohellebi26/review.git"
+   collabLink="https://github.com/yanimohellebi26/review/issues/new?assignees=&labels=collaboration&template=collaboration_request.md"
+  />
+</Col>
+
 
 
         </Row>
