@@ -6,12 +6,6 @@ import BlogCards from "./BlogCards";
 function Blog() {
   const articles = [
     {
-      title: "Bienvenue sur mon blog",
-      description: "Introduction à mon espace de réflexion",
-      content: "Je partagerai ici mes réflexions et idées sur différents sujets qui me passionnent. Restez à l'écoute pour de nouveaux articles !",
-      date: "2024-04-03"
-    },
-    {
       title: "L'Intelligence Artificielle : Révolution ou Évolution ?",
       description: "Réflexions sur l'impact de l'IA dans notre société",
       content: "L'intelligence artificielle transforme notre monde à une vitesse sans précédent. De l'apprentissage automatique aux réseaux de neurones profonds, les avancées technologiques ouvrent de nouvelles perspectives fascinantes. Dans cet article, j'explore comment l'IA influence notre quotidien et ce que l'avenir pourrait nous réserver.",
@@ -23,7 +17,7 @@ function Blog() {
     <Container fluid className="blog-section">
       <Particle />
       <Container>
-        <h1 className="blog-heading">
+        <h1 className="blog-heading" style={{ marginTop: "80px" }}>
           Mon <strong className="purple">Blog</strong>
         </h1>
         <p style={{ color: "white" }}>
