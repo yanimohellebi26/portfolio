@@ -41,6 +41,39 @@ function Blog() {
     PS:ça prend un peu de temps à charger, mais ça vaut le coup.`,
     
         date: "2025-04-02"
+      },
+      {
+        title: "RAWVIEW : Repenser l’avis à l’ère de l’influence",
+        description: "Un projet qui recentre l’utilisateur sur son ressenti pur, sans bruit social",
+        content: `Sur la majorité des plateformes aujourd’hui, donner son avis sur une œuvre, c’est souvent jouer un rôle. 
+    On veut être pertinent, drôle, populaire… ou simplement dans le ton de la majorité. 
+    Mais cette dynamique sociale fausse tout. Car dès qu’un film est à la mode, il devient automatiquement “bon”, 
+    et dès qu’il passe sous les radars, il semble “oubliable”. On se retrouve à aimer… ou à détester… 
+    des choses qu’on n’a même pas encore expérimentées.
+    
+    RAWVIEW naît de ce constat.
+    
+    Ce projet a été pensé comme une expérience radicalement différente. 
+    Ici, vous êtes confronté à une œuvre **sans aucun titre**, **sans aucun nom**, **sans aucune note**. 
+    Vous ne savez pas si elle est adorée, haïe, tendance ou oubliée. Et c’est justement ce vide social qui permet 
+    à votre avis d’exister de manière pure, authentique, **déconnectée du reste du monde**.
+    
+    Le but ? Vous faire retrouver **le plaisir brut du ressenti personnel**.
+    
+    Mais RAWVIEW ne s’arrête pas là. Après avoir donné votre avis, la plateforme vous dévoile ceux des autres — 
+    non pas en fonction de leur popularité, mais de leur **diversité**. 
+    Les opinions minoritaires mais intéressantes sont mises en avant. Les critiques trop influencées sont détectées. 
+    Et surtout, un moteur d’analyse IA propose un **score de sincérité**, un **matching émotionnel**, 
+    et un accès aux œuvres “sous-estimées” par la foule mais précieuses individuellement.
+    
+    RAWVIEW, c’est un projet philosophique autant que technique.  
+    C’est une tentative de briser **l’effet bandwagon**, de redonner sa place à **la subjectivité consciente**, 
+    et de faire de chaque avis un miroir intérieur, et non un écho collectif.
+    
+    L’expérience est immersive, silencieuse, presque intime.
+    
+    Et dans ce silence... c’est vous qui parlez.`,
+        date: "2025-04-02"
       }
     ];
     

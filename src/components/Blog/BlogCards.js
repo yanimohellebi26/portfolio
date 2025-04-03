@@ -3,6 +3,32 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
 function BlogCards(props) {
+  // Fonction pour formater le texte avec style particulier pour les phrases entre **
+  const formatContent = (content) => {
+    // Diviser le contenu en parties (texte normal et phrases entre **)
+    const parts = content.split(/(\*\*[^*]+\*\*)/g);
+    
+    return parts.map((part, index) => {
+      // Si la partie est entre **, enlever les ** et appliquer le style
+      if (part.startsWith('**') && part.endsWith('**')) {
+        const text = part.slice(2, -2); // Enlever les **
+        return (
+          <span
+            key={index}
+            style={{
+              fontWeight: "bold",
+              fontStyle: "italic"
+            }}
+          >
+            {text}
+          </span>
+        );
+      }
+      // Sinon, retourner le texte normal
+      return <span key={index}>{part}</span>;
+    });
+  };
+
   // Fonction pour extraire le lien du contenu
   const extractLink = (content) => {
     const linkRegex = /\[(.*?)\]\((.*?)\)/;
@@ -32,7 +58,7 @@ function BlogCards(props) {
           {props.description}
         </Card.Text>
         <Card.Text style={{ color: "white", textAlign: "justify", marginTop: "1rem" }}>
-          {linkInfo ? linkInfo.content : props.content}
+          {formatContent(props.content)}
         </Card.Text>
         {linkInfo && (
           <Button
