@@ -53,14 +53,15 @@ function BlogCards(props) {
         background: "linear-gradient(135deg, rgba(89, 37, 192, 0.8) 0%, rgba(50, 30, 70, 0.8) 100%)",
         border: "1px solid rgba(145, 77, 161, 0.3)",
         borderRadius: "15px",
-        height: "600px",
+        height: "400px",
         transition: "all 0.3s ease",
-        cursor: "pointer"
+        cursor: "pointer",
+        position: "relative"
       }}
     >
       <Card.Body style={{ 
         height: "100%",
-        overflow: "auto",
+        overflow: "hidden",
         display: "flex",
         flexDirection: "column"
       }}>
@@ -68,7 +69,13 @@ function BlogCards(props) {
         <Card.Text style={{ color: "white", textAlign: "justify", marginTop: "1rem" }}>
           {props.description}
         </Card.Text>
-        <Card.Text style={{ color: "white", textAlign: "justify", marginTop: "1rem", flex: 1 }}>
+        <Card.Text style={{ 
+          color: "white", 
+          textAlign: "justify", 
+          marginTop: "1rem", 
+          flex: 1,
+          overflow: "hidden"
+        }}>
           {formatContent(props.content)}
         </Card.Text>
         {linkInfo && (
