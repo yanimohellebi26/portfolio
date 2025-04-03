@@ -12,30 +12,27 @@ function AboutCard() {
             étudiant en dernière année de <span className="purple">Licence Informatique</span>
             à l'<span className="purple">Université de Bourgogne</span>, Dijon, France.
             <br /><br />
-            Passionné par le développement en général, particulièrement par l'intelligence artificielle et la cybersécurité,
-            je m'implique également dans la vie associative et étudiante : je suis élu à la
-            <span className="purple"> CFVU (Commission de la Formation et de la Vie Universitaire)</span> et
-            bénévole actif à l'<span className="purple">la FEBIA (Association étudiante de l'Université de Bourgogne)</span>.
+            Spécialisé dans le traitement des données et l'intelligence artificielle, je développe des solutions web complètes qui intègrent analyse de données, modèles d'IA et interfaces utilisateur modernes. Mes projets couvrent un large éventail de domaines : analyse de vidéos, recommandation de contenu, nutrition intelligente, et bien d'autres, démontrant ma capacité à m'adapter à différents contextes et besoins.
             <br /><br />
-            Quand je ne suis pas en train d'étudier ou de m'investir dans mes engagements associatifs, j'aime :
+            Mes domaines d'expertise incluent :
           </p>
           <ul>
             <li className="about-activity">
-              <ImPointRight /> Lecture de livres et de blogs
+              <ImPointRight /> Analyse et traitement de données avec Python/Pandas
             </li>
             <li className="about-activity">
-              <ImPointRight /> Écriture et publication sur substack
+              <ImPointRight /> Développement de modèles d'IA (NLP, Computer Vision)
             </li>
             <li className="about-activity">
-              <ImPointRight /> Sport: Course à pied et Natation
+              <ImPointRight /> Développement full-stack (FastAPI, React, Svelte)
             </li>
             <li className="about-activity">
-              <ImPointRight /> participation à des hackathons et des CTF
+              <ImPointRight /> Déploiement et orchestration (Docker, CI/CD)
             </li>
           </ul>
 
           <p style={{ color: "rgb(155 126 172)", marginTop: "20px" }}>
-             « Toujours apprendre, partager et évoluer ! »
+            « Transformer les données en solutions intelligentes et accessibles »
           </p>
           <footer className="blockquote-footer">Yani Mohellebi</footer>
         </blockquote>
