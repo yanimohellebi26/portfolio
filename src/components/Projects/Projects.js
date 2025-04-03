@@ -70,6 +70,27 @@ function Projects() {
               collabLink="https://github.com/yanimohellebi26/detection_triche/issues/new?assignees=&labels=collaboration&template=collaboration_request.md"
             />
           </Col>
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={neutraviewImg}
+              isBlog={false}
+              title="NeutraView - Analyse Neutre d'Avis Culturels"
+              description="Développement complet d’une plateforme web utilisant **FastAPI, React et Docker** pour analyser les avis de livres, films ou séries. Le système intègre des modules d’**IA (OpenAI + Transformers)** pour effectuer des résumés objectifs, détecter les sentiments, et établir un **profil psychologique des utilisateurs** à partir de leurs anciens avis. L’architecture est modulaire et documentée, avec gestion des appels via un **proxy Vite/React** et déploiement prévu en conteneurs. Le frontend est dynamique et interagit avec des endpoints intelligents pour synthétiser et recommander des œuvres de manière contextualisée."
+              ghLink="https://github.com/yanimohellebi26/NeutraView.git"
+              collabLink="https://github.com/yanimohellebi26/NeutraView/issues/new?assignees=&labels=collaboration&template=collaboration_request.md"
+           />
+          </Col>
+          <Col md={4} className="project-card">
+            <ProjectCard
+            imgPath={livreRecoImg}
+            isBlog={false}
+            title="Recommandation Intelligente de Livres"
+            description="Développement d’un site de **recommandation littéraire personnalisé** où l’utilisateur entre le **titre d’un livre et ce qu’il a préféré dedans**. L’IA analyse les émotions transmises par l’œuvre, le profil du personnage principal et propose : une œuvre populaire similaire, une œuvre moins connue qui correspond parfaitement au ressenti, et un personnage littéraire proche de celui aimé. Ce projet met en avant la **dimension émotionnelle de la lecture** via une interface minimaliste et efficace."
+            demoLink="https://recommendation-livre.vercel.app/"
+            />
+          </Col>
+
+
         </Row>
       </Container>
     </Container>

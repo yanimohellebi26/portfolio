@@ -37,7 +37,9 @@ function Blog() {
     
     Ce n’est pas de la magie. C’est une forme de lecture augmentée, où l’intelligence artificielle ne remplace pas le lecteur — elle l’accompagne avec sensibilité.
     
-    📚 Teste-le ici : [https://recommendation-livre.vercel.app/](https://recommendation-livre.vercel.app/)`,
+    📚 Teste-le ici : [https://recommendation-livre.vercel.app/](https://recommendation-livre.vercel.app/)
+    PS:ça prend un peu de temps à charger, mais ça vaut le coup.`,
+    
         date: "2025-04-02"
       }
     ];
