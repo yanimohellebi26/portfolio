@@ -20,6 +20,25 @@ function Blog() {
     
     NeutraView n’est pas un simple moteur de recherche. C’est un **assistant culturel intelligent** qui respecte votre curiosité, valorise la qualité, et fait briller ce qui mérite vraiment d’être découvert.`,
         date: "2025-04-02"
+      },
+      {
+        title: "Recommandation Littéraire Intelligente : combler le vide après un bon livre",
+        description: "Un programme qui comprend ce que vous avez aimé, pour mieux le retrouver ailleurs",
+        content: `Tu refermes le dernier chapitre. Tu poses le livre. Et puis ce vide s’installe. Comme si tu venais de quitter un monde, des personnages, une ambiance… quelque chose qui comptait vraiment. Ce moment-là, on le connaît tous. C’est ce **besoin silencieux** de retrouver ce que l’on vient de perdre — pas un simple genre, ni un titre, mais **une sensation**.
+    
+    C’est pour répondre à ce manque que j’ai créé ce programme de recommandation de livres intelligent.
+    
+    Il ne te demande pas seulement le nom du livre. Il te demande aussi **ce que tu as aimé dedans** : l’univers ? le style ? le rythme ? un personnage en particulier ? Cette **couche de profondeur émotionnelle** est ce qui rend les recommandations vraiment pertinentes. Car parfois, ce n’est pas l’histoire elle-même qui nous touche, mais **la manière dont elle est racontée**.
+    
+    Ce que mon site te propose ensuite :
+    - Une œuvre **populaire**, connue, qui ressemble à ton livre (pour te réancrer).
+    - Une œuvre **moins connue**, mais qui colle **exactement à ce que tu as ressenti**.
+    - Une recommandation basée sur **le personnage que tu as préféré**, en analysant sa **personnalité**, et en te proposant une autre œuvre avec un personnage très similaire.
+    
+    Ce n’est pas de la magie. C’est une forme de lecture augmentée, où l’intelligence artificielle ne remplace pas le lecteur — elle l’accompagne avec sensibilité.
+    
+    📚 Teste-le ici : [https://recommendation-livre.vercel.app/](https://recommendation-livre.vercel.app/)`,
+        date: "2025-04-02"
       }
     ];
     
