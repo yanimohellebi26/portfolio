@@ -49,9 +49,9 @@ function BlogCards(props) {
 
   return (
     <Card 
-      className="blog-card-view" 
+      className="blog-card-view hover-effect" 
       style={{
-        background: "linear-gradient(135deg, rgba(89, 37, 192, 0.8) 0%, rgba(50, 30, 70, 0.8) 100%)",
+        background: "linear-gradient(135deg, rgba(89, 37, 192, 0.8), rgba(50, 30, 70, 0.8))",
         border: "1px solid rgba(145, 77, 161, 0.3)",
         borderRadius: "15px",
       }}
@@ -60,25 +60,18 @@ function BlogCards(props) {
         <Card.Img 
           variant="top" 
           src={props.imgPath} 
-          style={{ 
-            height: "200px", 
-            objectFit: "cover",
-          }} 
+          style={{ height: "200px", objectFit: "cover" }} 
         />
       </div>
       <Card.Body>
-        <Card.Title className="card-title" style={{ color: "white", fontSize: "1.5rem", fontWeight: "bold" }}>
+        <Card.Title className="card-title">
           {props.title}
         </Card.Title>
-        <Card.Text className="card-description" style={{ color: "white", textAlign: "justify" }}>
+        <Card.Text className="card-description">
           {props.description}
         </Card.Text>
         <div className="card-content">
-          <Card.Text style={{ 
-            color: "white", 
-            textAlign: "justify", 
-            marginBottom: "1rem"
-          }}>
+          <Card.Text style={{ marginBottom: "1rem" }}>
             {formatContent(props.content)}
           </Card.Text>
           <div className="card-buttons d-flex gap-2">
@@ -87,18 +80,7 @@ function BlogCards(props) {
                 href={linkInfo.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{
-                  background: "linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%)",
-                  border: "none",
-                  borderRadius: "25px",
-                  padding: "10px 20px",
-                  color: "white",
-                  fontWeight: "bold",
-                  transition: "transform 0.2s ease-in-out",
-                  boxShadow: "0 4px 15px rgba(255, 107, 107, 0.3)"
-                }}
-                onMouseOver={(e) => e.currentTarget.style.transform = "scale(1.05)"}
-                onMouseOut={(e) => e.currentTarget.style.transform = "scale(1)"}
+                className="link-btn"
               >
                 {linkInfo.text}
               </Button>
@@ -108,30 +90,20 @@ function BlogCards(props) {
                 href={props.ghLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{
-                  background: "linear-gradient(135deg, #333 0%, #555 100%)",
-                  border: "none",
-                  borderRadius: "25px",
-                  padding: "10px 20px",
-                  color: "white",
-                  fontWeight: "bold",
-                  transition: "transform 0.2s ease-in-out",
-                  boxShadow: "0 4px 15px rgba(0, 0, 0, 0.3)"
-                }}
-                onMouseOver={(e) => e.currentTarget.style.transform = "scale(1.05)"}
-                onMouseOut={(e) => e.currentTarget.style.transform = "scale(1)"}
+                className="github-btn"
               >
-                <BsGithub /> &nbsp; GitHub
+                <BsGithub /> GitHub
               </Button>
             )}
           </div>
-          <Card.Text style={{ color: "rgba(255, 255, 255, 0.7)", fontSize: "0.8rem", marginTop: "1rem" }}>
+          <Card.Text className="publication-date">
             Publié le: {props.date}
           </Card.Text>
         </div>
       </Card.Body>
     </Card>
   );
+  
 }
 
 export default BlogCards; 
