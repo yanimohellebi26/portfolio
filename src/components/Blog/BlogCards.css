@@ -23,14 +23,14 @@
 
 /* Conteneur de l'image */
 .card-img-container {
-  height: 300px; /* Augmenter la taille de l'image */
+  height: 300px; /* Hauteur totale du conteneur */
   overflow: hidden; /* Masquer les débordements */
 }
 
 .card-img-container img {
-  object-fit: cover; /* Garder l'image bien cadrée */
-  width: 100%; /* S'assurer que l'image occupe toute la largeur */
-  height: 100%; /* S'assurer que l'image occupe toute la hauteur */
+  object-fit: cover; /* Ajuster l'image pour qu'elle remplisse le conteneur */
+  width: 100%; /* L'image occupe toute la largeur */
+  height: 100%; /* L'image occupe toute la hauteur */
 }
 
 .card-body {
@@ -63,10 +63,12 @@
   -webkit-line-clamp: unset;
 }
 
+/* Masquer le contenu détaillé par défaut */
 .card-content {
   display: none; /* Masquer le contenu détaillé */
 }
 
+/* Afficher le contenu détaillé au survol */
 .blog-card-view:hover .card-content {
   display: block;
 }

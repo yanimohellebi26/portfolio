@@ -56,7 +56,7 @@ function BlogCards(props) {
         <Card.Img
           variant="top"
           src={props.imgPath}
-          style={{ height: "200px", objectFit: "cover" }}
+          alt={props.title}
         />
       </div>
       <Card.Body>
