@@ -20,7 +20,8 @@ function Blog() {
     
     NeutraView n'est pas un simple moteur de recherche. C'est un **assistant culturel intelligent** qui respecte votre curiosité, valorise la qualité, et fait briller ce qui mérite vraiment d'être découvert.`,
         date: "2025-04-02",
-        ghLink: "https://github.com/yanimohellebi26/NeutraView.git"
+        ghLink: "https://github.com/yanimohellebi26/NeutraView.git",
+        imgPath: "/src/Assets/Blog/Bneutralview.png"
       },
       {
         title: "Recommandation Littéraire Intelligente : combler le vide après un bon livre",
@@ -41,7 +42,8 @@ function Blog() {
     📚 Teste-le ici : [https://recommendation-livre.vercel.app/](https://recommendation-livre.vercel.app/)
     PS:ça prend un peu de temps à charger, mais ça vaut le coup.`,
         date: "2025-04-02",
-        ghLink: "https://github.com/yanimohellebi26/recommendation-livre.git"
+        ghLink: "https://github.com/yanimohellebi26/recommendation-livre.git",
+        imgPath: "/src/Assets/Blog/Brecommendation.png"
       },
       {
         title: "RAWVIEW : Repenser l'avis à l'ère de l'influence",
@@ -75,7 +77,8 @@ function Blog() {
     
     Et dans ce silence... c'est vous qui parlez.`,
         date: "2025-04-02",
-        ghLink: "https://github.com/yanimohellebi26/review.git"
+        ghLink: "https://github.com/yanimohellebi26/review.git",
+        imgPath: "/src/Assets/Blog/Brawview.png"
       },
       {
         title: "NUTRI-MIND : Manger pour progresser, même avec 30€",
@@ -112,7 +115,8 @@ function Blog() {
       **NUTRI-MIND, c'est muscu + bouffe + cerveau.**  
       Et ça change tout.`,
         date: "2025-04-02",
-        ghLink: "https://github.com/yanimohellebi26/muscule_ia.git"
+        ghLink: "https://github.com/yanimohellebi26/muscule_ia.git",
+        imgPath: "/src/Assets/Blog/Bnutri_mind.png"
       },
       {
         title: "SUBSENSE : Comprendre ce que disent les vidéos, vraiment.",
@@ -145,11 +149,9 @@ function Blog() {
       **SUBSENSE, c'est l'œil critique de l'IA sur la vidéo brute.**  
       Pour comprendre ce qu'on regarde. Et mieux choisir ce qu'on écoute.`,
         date: "2025-04-02",
-        ghLink: "https://github.com/yanimohellebi26/instagram-video.git"
+        ghLink: "https://github.com/yanimohellebi26/instagram-video.git",
+        imgPath: "/src/Assets/Blog/Bsubsense.png"
       }
-      
-      
-      
     ];
     
 
@@ -169,6 +171,7 @@ function Blog() {
                 content={article.content}
                 date={article.date}
                 ghLink={article.ghLink}
+                imgPath={article.imgPath}
               />
             </Col>
           ))}

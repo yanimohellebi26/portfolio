@@ -15,4 +15,45 @@
 
 .hover-effect:hover .card-text {
   overflow: visible !important;
+}
+
+.blog-card-view {
+  position: relative;
+  overflow: hidden;
+}
+
+.blog-card-view .card-body {
+  transition: all 0.3s ease;
+}
+
+.blog-card-view .card-content {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.blog-card-view:hover .card-content {
+  opacity: 1;
+  max-height: 1000px;
+}
+
+.blog-card-view:hover .card-body {
+  height: calc(100% - 200px);
+}
+
+.blog-card-view .card-description {
+  transition: all 0.3s ease;
+}
+
+.blog-card-view:hover .card-description {
+  margin-bottom: 1rem;
+}
+
+.hover-effect {
+  transition: transform 0.3s ease;
+}
+
+.hover-effect:hover {
+  transform: translateY(-5px);
 } 

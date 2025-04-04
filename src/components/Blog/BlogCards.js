@@ -54,80 +54,92 @@ function BlogCards(props) {
         background: "linear-gradient(135deg, rgba(89, 37, 192, 0.8) 0%, rgba(50, 30, 70, 0.8) 100%)",
         border: "1px solid rgba(145, 77, 161, 0.3)",
         borderRadius: "15px",
-        height: "400px",
+        height: "500px",
         transition: "all 0.3s ease",
         cursor: "pointer",
         position: "relative"
       }}
     >
+      <Card.Img 
+        variant="top" 
+        src={props.imgPath} 
+        style={{ 
+          height: "200px", 
+          objectFit: "cover",
+          borderTopLeftRadius: "15px",
+          borderTopRightRadius: "15px"
+        }} 
+      />
       <Card.Body style={{ 
-        height: "100%",
+        height: "calc(100% - 200px)",
         overflow: "hidden",
         display: "flex",
         flexDirection: "column"
       }}>
         <Card.Title style={{ color: "white", fontSize: "1.5rem", fontWeight: "bold" }}>{props.title}</Card.Title>
-        <Card.Text style={{ color: "white", textAlign: "justify", marginTop: "1rem" }}>
+        <Card.Text className="card-description" style={{ color: "white", textAlign: "justify", marginTop: "1rem" }}>
           {props.description}
         </Card.Text>
-        <Card.Text style={{ 
-          color: "white", 
-          textAlign: "justify", 
-          marginTop: "1rem", 
-          flex: 1,
-          overflow: "hidden"
-        }}>
-          {formatContent(props.content)}
-        </Card.Text>
-        <div className="d-flex gap-2">
-          {linkInfo && (
-            <Button
-              href={linkInfo.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                background: "linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%)",
-                border: "none",
-                borderRadius: "25px",
-                padding: "10px 20px",
-                marginTop: "1rem",
-                color: "white",
-                fontWeight: "bold",
-                transition: "transform 0.2s ease-in-out",
-                boxShadow: "0 4px 15px rgba(255, 107, 107, 0.3)"
-              }}
-              onMouseOver={(e) => e.currentTarget.style.transform = "scale(1.05)"}
-              onMouseOut={(e) => e.currentTarget.style.transform = "scale(1)"}
-            >
-              {linkInfo.text}
-            </Button>
-          )}
-          {props.ghLink && (
-            <Button
-              href={props.ghLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                background: "linear-gradient(135deg, #333 0%, #555 100%)",
-                border: "none",
-                borderRadius: "25px",
-                padding: "10px 20px",
-                marginTop: "1rem",
-                color: "white",
-                fontWeight: "bold",
-                transition: "transform 0.2s ease-in-out",
-                boxShadow: "0 4px 15px rgba(0, 0, 0, 0.3)"
-              }}
-              onMouseOver={(e) => e.currentTarget.style.transform = "scale(1.05)"}
-              onMouseOut={(e) => e.currentTarget.style.transform = "scale(1)"}
-            >
-              <BsGithub /> &nbsp; GitHub
-            </Button>
-          )}
+        <div className="card-content">
+          <Card.Text style={{ 
+            color: "white", 
+            textAlign: "justify", 
+            marginTop: "1rem", 
+            flex: 1,
+            overflow: "hidden"
+          }}>
+            {formatContent(props.content)}
+          </Card.Text>
+          <div className="d-flex gap-2">
+            {linkInfo && (
+              <Button
+                href={linkInfo.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  background: "linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%)",
+                  border: "none",
+                  borderRadius: "25px",
+                  padding: "10px 20px",
+                  marginTop: "1rem",
+                  color: "white",
+                  fontWeight: "bold",
+                  transition: "transform 0.2s ease-in-out",
+                  boxShadow: "0 4px 15px rgba(255, 107, 107, 0.3)"
+                }}
+                onMouseOver={(e) => e.currentTarget.style.transform = "scale(1.05)"}
+                onMouseOut={(e) => e.currentTarget.style.transform = "scale(1)"}
+              >
+                {linkInfo.text}
+              </Button>
+            )}
+            {props.ghLink && (
+              <Button
+                href={props.ghLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  background: "linear-gradient(135deg, #333 0%, #555 100%)",
+                  border: "none",
+                  borderRadius: "25px",
+                  padding: "10px 20px",
+                  marginTop: "1rem",
+                  color: "white",
+                  fontWeight: "bold",
+                  transition: "transform 0.2s ease-in-out",
+                  boxShadow: "0 4px 15px rgba(0, 0, 0, 0.3)"
+                }}
+                onMouseOver={(e) => e.currentTarget.style.transform = "scale(1.05)"}
+                onMouseOut={(e) => e.currentTarget.style.transform = "scale(1)"}
+              >
+                <BsGithub /> &nbsp; GitHub
+              </Button>
+            )}
+          </div>
+          <Card.Text style={{ color: "rgba(255, 255, 255, 0.7)", fontSize: "0.8rem", marginTop: "1rem" }}>
+            Publié le: {props.date}
+          </Card.Text>
         </div>
-        <Card.Text style={{ color: "rgba(255, 255, 255, 0.7)", fontSize: "0.8rem", marginTop: "1rem" }}>
-          Publié le: {props.date}
-        </Card.Text>
       </Card.Body>
     </Card>
   );
