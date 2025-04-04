@@ -3,6 +3,11 @@ import { Container } from "react-bootstrap";
 import Particle from "../Particle";
 import BlogCards from "./BlogCards";
 import "./BlogCards.css";
+import Bneutralview from '../Assets/Blog/Bneutralview.png';
+import Brecommendation from '../Assets/Blog/Brecommendation.png';
+import Brawview from '../Assets/Blog/Brawview.png';
+import Bnutrimind from '../Assets/Blog/Bnutri_mind.png';
+import Bsubsense from '../Assets/Blog/Bsubsense.png';
 
 function Blog() {
   const articles = [
@@ -22,7 +27,7 @@ function Blog() {
     NeutraView n'est pas un simple moteur de recherche. C'est un **assistant culturel intelligent** qui respecte votre curiosité, valorise la qualité, et fait briller ce qui mérite vraiment d'être découvert.`,
         date: "2025-04-02",
         ghLink: "https://github.com/yanimohellebi26/NeutraView.git",
-        imgPath: "/src/Assets/Blog/Bneutralview.png"
+        imgPath: Bneutralview
       },
       {
         title: "Recommandation Littéraire Intelligente : combler le vide après un bon livre",
@@ -44,7 +49,7 @@ function Blog() {
     PS:ça prend un peu de temps à charger, mais ça vaut le coup.`,
         date: "2025-04-02",
         ghLink: "https://github.com/yanimohellebi26/recommendation-livre.git",
-        imgPath: "/src/Assets/Blog/Brecommendation.png"
+        imgPath: Brecommendation
       },
       {
         title: "RAWVIEW : Repenser l'avis à l'ère de l'influence",
@@ -79,7 +84,7 @@ function Blog() {
     Et dans ce silence... c'est vous qui parlez.`,
         date: "2025-04-02",
         ghLink: "https://github.com/yanimohellebi26/review.git",
-        imgPath: "/src/Assets/Blog/Brawview.png"
+        imgPath: Brawview
       },
       {
         title: "NUTRI-MIND : Manger pour progresser, même avec 30€",
@@ -117,7 +122,7 @@ function Blog() {
       Et ça change tout.`,
         date: "2025-04-02",
         ghLink: "https://github.com/yanimohellebi26/muscule_ia.git",
-        imgPath: "/src/Assets/Blog/Bnutri_mind.png"
+        imgPath: Bnutrimind
       },
       {
         title: "SUBSENSE : Comprendre ce que disent les vidéos, vraiment.",
@@ -151,7 +156,7 @@ function Blog() {
       Pour comprendre ce qu'on regarde. Et mieux choisir ce qu'on écoute.`,
         date: "2025-04-02",
         ghLink: "https://github.com/yanimohellebi26/instagram-video.git",
-        imgPath: "/src/Assets/Blog/Bsubsense.png"
+        imgPath: Bsubsense
       }
     ];
     
