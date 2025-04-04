@@ -1,7 +1,8 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import Particle from "../Particle";
 import BlogCards from "./BlogCards";
+import "./BlogCards.css";
 
 function Blog() {
   const articles = [
@@ -162,20 +163,19 @@ function Blog() {
         <h1 className="blog-heading" style={{ marginTop: "80px" }}>
           Mon <strong className="purple">Blog</strong>
         </h1>
-        <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
+        <div className="blog-container">
           {articles.map((article, index) => (
-            <Col md={4} className="blog-card" key={index}>
-              <BlogCards
-                title={article.title}
-                description={article.description}
-                content={article.content}
-                date={article.date}
-                ghLink={article.ghLink}
-                imgPath={article.imgPath}
-              />
-            </Col>
+            <BlogCards
+              key={index}
+              title={article.title}
+              description={article.description}
+              content={article.content}
+              date={article.date}
+              ghLink={article.ghLink}
+              imgPath={article.imgPath}
+            />
           ))}
-        </Row>
+        </div>
       </Container>
     </Container>
   );

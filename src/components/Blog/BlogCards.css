@@ -20,34 +20,121 @@
 .blog-card-view {
   position: relative;
   overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 400px;
+  margin-bottom: 2rem;
+  cursor: pointer;
 }
 
 .blog-card-view .card-body {
-  transition: all 0.3s ease;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 1;
+  height: 200px; /* Hauteur fixe pour le titre et la description */
+  overflow: hidden;
 }
 
 .blog-card-view .card-content {
   opacity: 0;
   max-height: 0;
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute;
+  width: 100%;
+  background: linear-gradient(135deg, rgba(89, 37, 192, 0.95) 0%, rgba(50, 30, 70, 0.95) 100%);
+  backdrop-filter: blur(5px);
+  border-radius: 15px;
+  padding: 1rem;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+
+.blog-card-view:hover {
+  transform: scale(1.1) translateY(-50px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  position: relative;
 }
 
 .blog-card-view:hover .card-content {
   opacity: 1;
-  max-height: 1000px;
-}
-
-.blog-card-view:hover .card-body {
-  height: calc(100% - 200px);
+  max-height: 100%;
+  transform: translateY(0);
 }
 
 .blog-card-view .card-description {
-  transition: all 0.3s ease;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 2;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .blog-card-view:hover .card-description {
+  -webkit-line-clamp: unset;
   margin-bottom: 1rem;
+}
+
+.blog-card-view .card-img-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px 15px 0 0;
+  height: 200px;
+}
+
+.blog-card-view .card-img-container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.blog-card-view:hover .card-img-container::after {
+  height: 0;
+}
+
+.blog-card-view .card-title {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+.blog-card-view .card-buttons {
+  position: relative;
+  z-index: 2;
+  margin-top: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.blog-card-view:hover .card-buttons {
+  opacity: 1;
+}
+
+/* Animation pour les autres cartes */
+.blog-card-view:not(:hover) {
+  filter: blur(1px);
+  opacity: 0.7;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Container pour gérer le layout */
+.blog-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  perspective: 1000px;
 }
 
 .hover-effect {

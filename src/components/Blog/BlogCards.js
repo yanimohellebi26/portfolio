@@ -49,48 +49,39 @@ function BlogCards(props) {
 
   return (
     <Card 
-      className="blog-card-view hover-effect" 
+      className="blog-card-view" 
       style={{
         background: "linear-gradient(135deg, rgba(89, 37, 192, 0.8) 0%, rgba(50, 30, 70, 0.8) 100%)",
         border: "1px solid rgba(145, 77, 161, 0.3)",
         borderRadius: "15px",
-        height: "500px",
-        transition: "all 0.3s ease",
-        cursor: "pointer",
-        position: "relative"
       }}
     >
-      <Card.Img 
-        variant="top" 
-        src={props.imgPath} 
-        style={{ 
-          height: "200px", 
-          objectFit: "cover",
-          borderTopLeftRadius: "15px",
-          borderTopRightRadius: "15px"
-        }} 
-      />
-      <Card.Body style={{ 
-        height: "calc(100% - 200px)",
-        overflow: "hidden",
-        display: "flex",
-        flexDirection: "column"
-      }}>
-        <Card.Title style={{ color: "white", fontSize: "1.5rem", fontWeight: "bold" }}>{props.title}</Card.Title>
-        <Card.Text className="card-description" style={{ color: "white", textAlign: "justify", marginTop: "1rem" }}>
+      <div className="card-img-container">
+        <Card.Img 
+          variant="top" 
+          src={props.imgPath} 
+          style={{ 
+            height: "200px", 
+            objectFit: "cover",
+          }} 
+        />
+      </div>
+      <Card.Body>
+        <Card.Title className="card-title" style={{ color: "white", fontSize: "1.5rem", fontWeight: "bold" }}>
+          {props.title}
+        </Card.Title>
+        <Card.Text className="card-description" style={{ color: "white", textAlign: "justify" }}>
           {props.description}
         </Card.Text>
         <div className="card-content">
           <Card.Text style={{ 
             color: "white", 
             textAlign: "justify", 
-            marginTop: "1rem", 
-            flex: 1,
-            overflow: "hidden"
+            marginBottom: "1rem"
           }}>
             {formatContent(props.content)}
           </Card.Text>
-          <div className="d-flex gap-2">
+          <div className="card-buttons d-flex gap-2">
             {linkInfo && (
               <Button
                 href={linkInfo.url}
@@ -101,7 +92,6 @@ function BlogCards(props) {
                   border: "none",
                   borderRadius: "25px",
                   padding: "10px 20px",
-                  marginTop: "1rem",
                   color: "white",
                   fontWeight: "bold",
                   transition: "transform 0.2s ease-in-out",
@@ -123,7 +113,6 @@ function BlogCards(props) {
                   border: "none",
                   borderRadius: "25px",
                   padding: "10px 20px",
-                  marginTop: "1rem",
                   color: "white",
                   fontWeight: "bold",
                   transition: "transform 0.2s ease-in-out",
