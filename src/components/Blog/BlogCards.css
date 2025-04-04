@@ -23,7 +23,7 @@
 
 /* Conteneur de l'image */
 .card-img-container {
-  height: 300px; /* Hauteur totale du conteneur */
+  height: 400px; /* Augmenter la hauteur à 400px */
   overflow: hidden; /* Masquer les débordements */
 }
 
