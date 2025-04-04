@@ -7,26 +7,22 @@ import "./BlogCards.css";
 function BlogCards(props) {
   // Fonction pour formater le texte avec style particulier pour les phrases entre **
   const formatContent = (content) => {
-    // Diviser le contenu en parties (texte normal et phrases entre **)
     const parts = content.split(/(\*\*[^*]+\*\*)/g);
-    
     return parts.map((part, index) => {
-      // Si la partie est entre **, enlever les ** et appliquer le style
-      if (part.startsWith('**') && part.endsWith('**')) {
+      if (part.startsWith("**") && part.endsWith("**")) {
         const text = part.slice(2, -2); // Enlever les **
         return (
           <span
             key={index}
             style={{
               fontWeight: "bold",
-              fontStyle: "italic"
+              fontStyle: "italic",
             }}
           >
             {text}
           </span>
         );
       }
-      // Sinon, retourner le texte normal
       return <span key={index}>{part}</span>;
     });
   };
@@ -39,7 +35,7 @@ function BlogCards(props) {
       return {
         text: match[1],
         url: match[2],
-        content: content.replace(linkRegex, '').trim()
+        content: content.replace(linkRegex, "").trim(),
       };
     }
     return null;
@@ -48,8 +44,8 @@ function BlogCards(props) {
   const linkInfo = extractLink(props.content);
 
   return (
-    <Card 
-      className="blog-card-view hover-effect" 
+    <Card
+      className="blog-card-view hover-effect"
       style={{
         background: "linear-gradient(135deg, rgba(89, 37, 192, 0.8), rgba(50, 30, 70, 0.8))",
         border: "1px solid rgba(145, 77, 161, 0.3)",
@@ -57,19 +53,16 @@ function BlogCards(props) {
       }}
     >
       <div className="card-img-container">
-        <Card.Img 
-          variant="top" 
-          src={props.imgPath} 
-          style={{ height: "200px", objectFit: "cover" }} 
+        <Card.Img
+          variant="top"
+          src={props.imgPath}
+          style={{ height: "200px", objectFit: "cover" }}
         />
       </div>
       <Card.Body>
-        <Card.Title className="card-title">
-          {props.title}
-        </Card.Title>
-        <Card.Text className="card-description">
-          {props.description}
-        </Card.Text>
+        <Card.Title className="card-title">{props.title}</Card.Title>
+        <Card.Text className="card-description">{props.description}</Card.Text>
+        {/* Contenu détaillé masqué par défaut */}
         <div className="card-content">
           <Card.Text style={{ marginBottom: "1rem" }}>
             {formatContent(props.content)}
@@ -96,14 +89,11 @@ function BlogCards(props) {
               </Button>
             )}
           </div>
-          <Card.Text className="publication-date">
-            Publié le: {props.date}
-          </Card.Text>
+          <Card.Text className="publication-date">Publié le: {props.date}</Card.Text>
         </div>
       </Card.Body>
     </Card>
   );
-  
 }
 
-export default BlogCards; 
+export default BlogCards;
