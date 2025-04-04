@@ -3,11 +3,11 @@ import { Container } from "react-bootstrap";
 import Particle from "../Particle";
 import BlogCards from "./BlogCards";
 import "./BlogCards.css";
-import Bneutralview from '../Assets/Blog/Bneutralview.png';
-import Brecommendation from '../Assets/Blog/Brecommendation.png';
-import Brawview from '../Assets/Blog/Brawview.png';
-import Bnutrimind from '../Assets/Blog/Bnutri_mind.png';
-import Bsubsense from '../Assets/Blog/Bsubsense.png';
+import Bneutralview from "../../Assets/Blog/Bneutralview.png";
+import Brecommendation from "../../Assets/Blog/Brecommendation.png";
+import Brawview from "../../Assets/Blog/Brawview.png";
+import Bnutrimind from "../../Assets/Blog/Bnutri_mind.png";
+import Bsubsense from "../../Assets/Blog/Bsubsense.png";
 
 function Blog() {
   const articles = [
