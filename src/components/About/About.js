@@ -6,8 +6,13 @@ import Techstack from "./Techstack";
 import AboutCard from "./AboutCard";
 import laptopImg from "../../Assets/about.png";
 import Toolstack from "./Toolstack";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { translations } from "../../translations/translations";
 
 function About() {
+  const { language } = useLanguage();
+  const t = translations[language].about;
+
   return (
     <Container fluid className="about-section">
       <Particle />
@@ -22,7 +27,7 @@ function About() {
             }}
           >
             <h1 style={{ fontSize: "2.1em", paddingBottom: "20px" }}>
-              QUI <strong className="purple">SUIS JE?</strong>
+              {t.title} <strong className="purple">{t.titleHighlight}</strong>
             </h1>
             <AboutCard />
           </Col>
@@ -35,13 +40,13 @@ function About() {
           </Col>
         </Row>
         <h1 className="project-heading">
-          Compétences <strong className="purple">Professionnelles</strong>
+          {t.skills} <strong className="purple">{t.skillsHighlight}</strong>
         </h1>
 
         <Techstack />
 
         <h1 className="project-heading">
-          <strong className="purple">Outils</strong> que j'utilise
+          <strong className="purple">{t.tools}</strong> {t.toolsText}
         </h1>
         <Toolstack />
 

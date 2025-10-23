@@ -4,27 +4,32 @@ import myImg from "../../Assets/moi.png";
 import Tilt from "react-parallax-tilt";
 import { AiFillGithub, AiOutlineTwitter, AiFillInstagram, AiOutlineMail } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { translations } from "../../translations/translations";
 
 function Home2() {
+  const { language } = useLanguage();
+  const t = translations[language].home;
+
   return (
     <Container fluid className="home-about-section" id="about">
       <Container>
         <Row>
           <Col md={8} className="home-about-description">
             <h1 style={{ fontSize: "2.6em" }}>
-              Bienvenue sur mon <span className="purple"> Portfolio</span>
+              {t.welcomeTitle} <span className="purple">{t.portfolio}</span>
             </h1>
             <p className="home-about-body">
-              En tant que développeur, je crois en l'importance de créer des solutions qui ont un impact réel sur la vie des gens. 
+              {t.aboutBody1}
               <br />
               <br />
-              Mon approche du développement est guidée par :
-              <b className="purple"> la simplicité, l'efficacité et l'accessibilité</b>
+              {t.aboutBody2}
+              <b className="purple"> {t.values}</b>
               <br />
-              Je m'efforce de rendre la technologie plus humaine et intuitive, en particulier dans des domaines comme <b className="purple">l'éducation, la santé et le bien-être</b>.
+              {t.aboutBody3} <b className="purple">{t.domains}</b>.
               <br />
               <br />
-              Au-delà du code, je m'intéresse à la philosophie des technologies émergentes et à leur impact sur la société. Je participe activement à des hackathons et des événements tech pour échanger des idées et collaborer sur des projets innovants.
+              {t.aboutBody4}
             </p>
           </Col>
           <Col md={4} className="myAvtar">
@@ -35,9 +40,9 @@ function Home2() {
         </Row>
         <Row>
           <Col md={12} className="home-about-social">
-            <h1>Retrouvez-moi sur</h1>
+            <h1>{t.findMe}</h1>
             <p>
-              Je suis toujours ouvert aux discussions sur l'innovation technologique et les projets collaboratifs !
+              {t.social}
             </p>
             <ul className="home-about-social-links">
               <li className="social-icons">

@@ -12,17 +12,22 @@ import livreRecoImg from "../../Assets/Projects/recommendation.png";
 import subsenseImg from "../../Assets/Projects/subsense.png";
 import nutrimindImg from "../../Assets/Projects/nutrimand.png";
 import rawviewImg from "../../Assets/Projects/rawview.png";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { translations } from "../../translations/translations";
 
 function Projects() {
+  const { language } = useLanguage();
+  const t = translations[language].projects;
+
   return (
     <Container fluid className="project-section">
       <Particle />
       <Container>
         <h1 className="project-heading">
-          Mes <strong className="purple">Projets Récents</strong>
+          {t.title} <strong className="purple">{t.titleHighlight}</strong>
         </h1>
         <p style={{ color: "white" }}>
-          Voici quelques projets sur lesquels j'ai travaillé récemment.
+          {t.subtitle}
         </p>
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
           <Col md={4} className="project-card">
