@@ -14,24 +14,37 @@ import {
   SiDocker,
   SiPostgresql,
   SiPandas,
+  SiPostman,
+  SiOcaml,
+  SiGraphql,
+  SiJira,
+  SiConfluence,
 } from "react-icons/si";
+import { TbBrain, TbChecklist } from "react-icons/tb";
 
 function Techstack() {
   const techs = [
-    { id: "c", icon: <SiC />, name: "C" },
     { id: "python", icon: <SiPython />, name: "Python" },
-    { id: "javascript", icon: <SiJavascript />, name: "JavaScript" },
-    { id: "react", icon: <SiReact />, name: "React" },
-    { id: "mongodb", icon: <SiMongodb />, name: "MongoDB" },
-    { id: "mysql", icon: <SiMysql />, name: "MySQL" },
-    { id: "git", icon: <SiGit />, name: "Git" },
     { id: "pytorch", icon: <SiPytorch />, name: "PyTorch" },
     { id: "tensorflow", icon: <SiTensorflow />, name: "TensorFlow" },
+    { id: "langchain", icon: <TbBrain />, name: "LangChain" },
     { id: "fastapi", icon: <SiFastapi />, name: "FastAPI" },
-    { id: "svelte", icon: <SiSvelte />, name: "Svelte" },
+    { id: "react", icon: <SiReact />, name: "React" },
     { id: "docker", icon: <SiDocker />, name: "Docker" },
     { id: "postgresql", icon: <SiPostgresql />, name: "PostgreSQL" },
+    { id: "mongodb", icon: <SiMongodb />, name: "MongoDB" },
+    { id: "graphql", icon: <SiGraphql />, name: "GraphQL/Cypher" },
     { id: "pandas", icon: <SiPandas />, name: "Pandas" },
+    { id: "postman", icon: <SiPostman />, name: "Postman" },
+    { id: "jira", icon: <SiJira />, name: "Jira" },
+    { id: "confluence", icon: <SiConfluence />, name: "Confluence" },
+    { id: "openproject", icon: <TbChecklist />, name: "OpenProject" },
+    { id: "ocaml", icon: <SiOcaml />, name: "OCaml" },
+    { id: "javascript", icon: <SiJavascript />, name: "JavaScript" },
+    { id: "svelte", icon: <SiSvelte />, name: "Svelte" },
+    { id: "mysql", icon: <SiMysql />, name: "MySQL" },
+    { id: "c", icon: <SiC />, name: "C" },
+    { id: "git", icon: <SiGit />, name: "Git" },
   ];
 
   return (

@@ -14,16 +14,16 @@ function Type({ language: languageOverride }) {
     () =>
       language === "fr"
         ? [
-            "Développeur Logiciel",
-            "Étudiant en Informatique",
+            "Étudiant en Master IA",
+            "Ingénieur R&D IA en Alternance chez Siemens DISW",
+            "Développeur Full Stack & IA",
             "Passionné d'IA et de Cybersécurité",
-            "Freelance & Bénévole",
           ]
         : [
-            "Software Developer",
-            "Computer Science Student",
+            "Master's Student in Artificial Intelligence",
+            "AI R&D Engineer Apprentice at Siemens DISW",
+            "Full Stack & AI Developer",
             "AI & Cybersecurity Enthusiast",
-            "Freelancer & Volunteer",
           ],
     [language]
   );

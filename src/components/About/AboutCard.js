@@ -9,53 +9,50 @@ function AboutCard() {
     en: {
       paragraphs: [
         (<>
-          Hello! I'm <span className="text-brand-accent">Yani Mohellebi</span>, a final-year
-          Computer Science undergraduate at the
+          Hello! I'm <span className="text-brand-accent">Yani Mohellebi</span>, a
+          <span className="text-brand-accent"> Master's student in Artificial Intelligence</span> at the
           <span className="text-brand-accent"> University of Burgundy</span> in Dijon, France.
         </>),
         (<>
-          I specialize in data processing and artificial intelligence, and I build
-          end-to-end web solutions that combine data pipelines, AI models, and
-          polished user experiences. My projects span video analytics, smart
-          recommendations, student nutrition coaching, and more - all showcasing
-          my ability to adapt to new contexts and needs.
+          Currently working as an <span className="text-brand-accent">AI R&D Engineer Apprentice at Siemens DISW</span> in Lyon,
+          I split my time between cutting-edge AI research and academic excellence.
+          I develop end-to-end AI solutions combining advanced machine learning, NLP, Computer Vision,
+          and intelligent agent architectures to solve complex industrial challenges.
         </>),
         (<>My areas of expertise include:</>),
       ],
       skills: [
-        "Data analysis and processing with Python and Pandas",
-        "Designing AI models (NLP, Computer Vision)",
-        "Full-stack development (FastAPI, React, Svelte)",
-        "Deployment and orchestration (Docker, CI/CD)",
+        "Advanced AI/ML with TensorFlow, PyTorch, LangChain, LangGraph",
+        "NLP & Computer Vision for industrial applications",
+        "Full-stack development (FastAPI, React, Docker, REST APIs)",
+        "Database management (SQL, Cypher, Flyway) and DevOps (Postman, OCaml)",
       ],
-      quote: "Turning data into intelligent and accessible solutions",
-      footer: "Yani Mohellebi",
+      quote: "Building intelligent systems that bridge AI research and real-world impact",
+      footer: "Yani Mohellebi - Siemens DISW",
     },
     fr: {
       paragraphs: [
         (<>
           Bonjour ! Je suis <span className="text-brand-accent">Yani Mohellebi</span>, étudiant
-          en dernière année de <span className="text-brand-accent">Licence Informatique</span> à
+          en <span className="text-brand-accent">Master Intelligence Artificielle</span> à
           l'<span className="text-brand-accent">Université de Bourgogne</span>, Dijon, France.
         </>),
         (<>
-          Spécialisé dans le traitement des données et l'intelligence artificielle,
-          je développe des solutions web complètes qui intègrent analyse de données,
-          modèles d'IA et interfaces utilisateur modernes. Mes projets couvrent un
-          large éventail de domaines : analyse de vidéos, recommandation de contenu,
-          nutrition intelligente, et bien d'autres, démontrant ma capacité à
-          m'adapter à différents contextes et besoins.
+          Actuellement <span className="text-brand-accent">Ingénieur R&D IA en alternance chez Siemens DISW</span> à Lyon,
+          je partage mon temps entre recherche en IA de pointe et excellence académique.
+          Je développe des solutions d'IA complètes combinant machine learning avancé, NLP, Computer Vision
+          et architectures d'agents intelligents pour résoudre des défis industriels complexes.
         </>),
         (<>Mes domaines d'expertise incluent :</>),
       ],
       skills: [
-        "Analyse et traitement de données avec Python/Pandas",
-        "Développement de modèles d'IA (NLP, Computer Vision)",
-        "Développement full-stack (FastAPI, React, Svelte)",
-        "Déploiement et orchestration (Docker, CI/CD)",
+        "IA/ML avancée avec TensorFlow, PyTorch, LangChain, LangGraph",
+        "NLP & Computer Vision pour applications industrielles",
+        "Développement full-stack (FastAPI, React, Docker, REST APIs)",
+        "Gestion de bases de données (SQL, Cypher, Flyway) et DevOps (Postman, OCaml)",
       ],
-      quote: "Transformer les données en solutions intelligentes et accessibles",
-      footer: "Yani Mohellebi",
+      quote: "Construire des systèmes intelligents qui relient recherche en IA et impact réel",
+      footer: "Yani Mohellebi - Siemens DISW",
     },
   };
 

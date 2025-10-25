@@ -1,0 +1,490 @@
+import React, { useState } from "react";
+import { useLanguage } from "../../context/LanguageContext";
+import { FaBriefcase, FaGithub } from "react-icons/fa";
+import { MdDateRange, MdLocationOn } from "react-icons/md";
+import ProjectModal from "./ProjectModal";
+
+function Experience() {
+  const { language } = useLanguage();
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  const experiences = [
+    {
+      id: "siemens",
+      role: {
+        fr: "Ingénieur R&D IA en Alternance",
+        en: "AI R&D Engineer Apprentice",
+      },
+      company: "Siemens DISW",
+      location: "Lyon, France",
+      period: {
+        fr: "Octobre 2025 - Octobre 2027 (2 ans)",
+        en: "October 2025 - October 2027 (2 years)",
+      },
+      description: {
+        fr: "Développement de solutions d'intelligence artificielle pour des applications industrielles. Travail sur des architectures d'agents intelligents, NLP, et Computer Vision.",
+        en: "Development of artificial intelligence solutions for industrial applications. Working on intelligent agent architectures, NLP, and Computer Vision.",
+      },
+      technologies: [
+        "LangChain",
+        "LangGraph",
+        "PyTorch",
+        "TensorFlow",
+        "Docker",
+        "REST APIs",
+        "SQL",
+        "Cypher",
+        "Jira",
+        "Confluence",
+      ],
+      current: true,
+    },
+    {
+      id: "libiub",
+      role: {
+        fr: "Stagiaire en Recherche IA & Vision par Ordinateur",
+        en: "Research Intern in AI & Computer Vision",
+      },
+      company: {
+        fr: "Laboratoire d'Informatique de l'Université de Bourgogne (LE2I)",
+        en: "Computer Science Laboratory - University of Burgundy (LE2I)",
+      },
+      location: "Dijon, France",
+      period: {
+        fr: "Juin 2025 - Août 2025 (3 mois)",
+        en: "June 2025 - August 2025 (3 months)",
+      },
+      description: {
+        fr: "Stage de recherche axé sur la segmentation sémantique de nuages de points 3D. Développement et comparaison de deux architectures de deep learning (PointNet et KPConv) pour la classification d'objets urbains et d'éléments architecturaux. Travail complet incluant la préparation de datasets, l'entraînement de modèles, et l'analyse de résultats.",
+        en: "Research internship focused on semantic segmentation of 3D point clouds. Development and comparison of two deep learning architectures (PointNet and KPConv) for urban object and architectural element classification. Complete workflow including dataset preparation, model training, and results analysis.",
+      },
+      projects: [
+        {
+          name: {
+            fr: "Segmentation Sémantique",
+            en: "Semantic Segmentation",
+          },
+          description: {
+            fr: "Développement d'algorithmes de segmentation sémantique pour l'analyse d'images",
+            en: "Development of semantic segmentation algorithms for image analysis",
+          },
+          detailedDescription: {
+            fr: "Projet de recherche approfondi sur la segmentation sémantique d'images utilisant des architectures de réseaux de neurones convolutifs avancées. L'objectif était de développer un système capable d'identifier et de classifier chaque pixel d'une image selon sa catégorie sémantique (objets, personnes, végétation, infrastructure, etc.). Le projet a exploré plusieurs architectures CNN de pointe (U-Net, DeepLab) et comparé leurs performances sur des datasets complexes, avec un focus particulier sur l'optimisation des hyperparamètres et la gestion du déséquilibre de classes.",
+            en: "In-depth research project on semantic image segmentation using advanced convolutional neural network architectures. The goal was to develop a system capable of identifying and classifying each pixel of an image according to its semantic category (objects, people, vegetation, infrastructure, etc.). The project explored several state-of-the-art CNN architectures (U-Net, DeepLab) and compared their performance on complex datasets, with a particular focus on hyperparameter optimization and class imbalance management.",
+          },
+          features: [
+            {
+              fr: "🏗️ Architectures multiples : Implémentation comparative U-Net (encodeur-décodeur), DeepLab (atrous convolution), et variations custom",
+              en: "🏗️ Multiple architectures: Comparative implementation of U-Net (encoder-decoder), DeepLab (atrous convolution), and custom variations",
+            },
+            {
+              fr: "🔄 Prétraitement avancé : Normalisation RGB, redimensionnement adaptatif, augmentation (rotation, flip, color jittering, crop aléatoire)",
+              en: "🔄 Advanced preprocessing: RGB normalization, adaptive resizing, augmentation (rotation, flip, color jittering, random crop)",
+            },
+            {
+              fr: "📊 Métriques de segmentation : Pixel Accuracy, mIoU (mean Intersection over Union), F1-Score par classe, matrice de confusion",
+              en: "📊 Segmentation metrics: Pixel Accuracy, mIoU (mean Intersection over Union), per-class F1-Score, confusion matrix",
+            },
+            {
+              fr: "🎨 Visualisation interactive : Overlay prédictions/ground truth, heatmaps de confiance, erreurs par classe avec Matplotlib/Seaborn",
+              en: "🎨 Interactive visualization: Prediction/ground truth overlay, confidence heatmaps, per-class errors with Matplotlib/Seaborn",
+            },
+            {
+              fr: "⚖️ Gestion déséquilibre : Loss pondérée (CrossEntropy weighted), sur-échantillonnage classes minoritaires, focal loss exploration",
+              en: "⚖️ Imbalance handling: Weighted loss (weighted CrossEntropy), minority class oversampling, focal loss exploration",
+            },
+            {
+              fr: "🔬 Optimisation rigoureuse : Grid search hyperparamètres, early stopping, learning rate scheduling (ReduceLROnPlateau)",
+              en: "🔬 Rigorous optimization: Hyperparameter grid search, early stopping, learning rate scheduling (ReduceLROnPlateau)",
+            },
+          ],
+          technologies: [
+            "Python",
+            "PyTorch",
+            "U-Net",
+            "DeepLab",
+            "OpenCV",
+            "NumPy",
+            "Matplotlib",
+            "Seaborn",
+            "Albumentations",
+            "TensorBoard",
+          ],
+          results: {
+            fr: "🎯 Résultats finaux : Amélioration de 15% de l'accuracy par rapport aux méthodes baseline, mIoU atteignant 0.78 sur dataset de validation. Publication des résultats dans le rapport de recherche du laboratoire LE2I. Architectures comparées : U-Net (meilleure généralisation, 82% pixel accuracy), DeepLab v3+ (meilleures frontières d'objets, mIoU 0.80), custom lightweight (×3 plus rapide en inférence). Temps d'entraînement optimisé : 45 min/100 époques sur GTX 1660 Ti.",
+            en: "🎯 Final results: 15% accuracy improvement over baseline methods, mIoU reaching 0.78 on validation dataset. Results published in LE2I laboratory research report. Compared architectures: U-Net (best generalization, 82% pixel accuracy), DeepLab v3+ (better object boundaries, mIoU 0.80), custom lightweight (×3 faster inference). Optimized training time: 45 min/100 epochs on GTX 1660 Ti.",
+          },
+          keyLearnings: {
+            fr: [
+              {
+                title: "🧠 Architectures encoder-decoder",
+                content: "U-Net utilise skip connections entre encodeur et décodeur pour préserver détails spatiaux haute résolution. DeepLab exploite atrous (dilated) convolutions avec différents taux de dilatation pour capturer contexte multi-échelle sans perte de résolution. Atrous Spatial Pyramid Pooling (ASPP) agrège features à 4 échelles (6, 12, 18, 24). U-Net meilleur pour petits datasets, DeepLab pour objets complexes."
+              },
+              {
+                title: "📦 Pipeline de prétraitement critique",
+                content: "Étapes obligatoires : normalisation ImageNet (mean=[0.485,0.456,0.406], std=[0.229,0.224,0.225]) pour transfer learning, redimensionnement 256×256 ou 512×512 (compromis vitesse/précision), padding réfléchi pour préserver bords. Augmentation essentielle : rotation ±30°, flip horizontal/vertical, ColorJitter (brightness ±0.2, contrast ±0.2), RandomCrop 80-100% zone intéressante."
+              },
+              {
+                title: "⚠️ Défi : Déséquilibre de classes extrême",
+                content: "Problème typique segmentation : classe 'background' 70-80% pixels, classes intéressantes <5% chacune. Solutions testées : 1) CrossEntropyLoss avec weights inversement proportionnels à fréquence classe, 2) Focal Loss (γ=2) pour pénaliser exemples faciles, 3) Dice Loss pour classes rares (meilleur pour petit objets). Combinaison Loss = 0.5×CE + 0.5×Dice optimal."
+              },
+              {
+                title: "📈 Hyperparamètres optimaux identifiés",
+                content: "Batch size : 16 (compromis GPU 6GB), Learning rate initial : 1e-3 avec ReduceLROnPlateau (factor=0.5, patience=10), Optimizer : Adam (β1=0.9, β2=0.999), Weight decay : 1e-4 pour régularisation. Early stopping patience 20 époques sur mIoU validation. Scheduler crucial : ×5 amélioration convergence vs learning rate fixe."
+              },
+              {
+                title: "🎯 Métriques de segmentation expliquées",
+                content: "Pixel Accuracy = pixels corrects / total (trompeur si déséquilibre). mIoU (mean IoU) = moyenne IoU toutes classes, où IoU = Intersection / Union (meilleure métrique). F1-Score par classe pour identifier classes problématiques. Matrice de confusion révèle confusions typiques (ex: 'route' vs 'trottoir'). Toujours privilégier mIoU sur Accuracy globale."
+              },
+              {
+                title: "🔬 Comparaison architectures (benchmarks)",
+                content: "U-Net : 82% accuracy, mIoU 0.75, 31M paramètres, 18ms inférence/image 512×512. DeepLab v3+ ResNet50 : 85% accuracy, mIoU 0.80, 41M params, 45ms inférence. Custom lightweight (MobileNetV2 backbone) : 78% accuracy, mIoU 0.68, 8M params, 6ms inférence. Trade-off précision/vitesse : DeepLab pour qualité, Custom pour temps réel."
+              },
+              {
+                title: "🖼️ Visualisation pour debugging",
+                content: "TensorBoard : courbes loss/mIoU train vs val, histogrammes poids/gradients, images prédites toutes 10 époques. Matplotlib : overlay prédiction/ground truth avec transparence 50%, heatmap confiance (probabilités softmax), erreurs colorées par type (faux positifs rouge, faux négatifs bleu). Confusion matrix avec Seaborn reveal patterns."
+              },
+              {
+                title: "💡 Leçons pratiques",
+                content: "Transfer learning depuis ImageNet accélère convergence ×3 (utiliser pretrained encoder). Augmentation massive compense petits datasets (<5000 images). Validation croisée K-fold (K=5) obligatoire pour dataset <10k images. GPU 6GB+ minimum pour U-Net 512×512. Mixed precision (torch.cuda.amp) économise 40% VRAM. Sauvegarder checkpoints toutes 10 époques + meilleur mIoU."
+              },
+              {
+                title: "🔮 Améliorations futures",
+                content: "Tester Transformer-based (SegFormer, Mask2Former) pour attention globale. Implémenter multi-task learning (segmentation + depth estimation). Explorer self-supervised pretraining sur données non-annotées. Optimiser pour déploiement mobile (ONNX, TensorRT quantization). Créer pipeline annotation semi-automatique avec active learning."
+              }
+            ],
+            en: [
+              {
+                title: "🧠 Encoder-decoder architectures",
+                content: "U-Net uses skip connections between encoder and decoder to preserve high-resolution spatial details. DeepLab exploits atrous (dilated) convolutions with different dilation rates to capture multi-scale context without resolution loss. Atrous Spatial Pyramid Pooling (ASPP) aggregates features at 4 scales (6, 12, 18, 24). U-Net better for small datasets, DeepLab for complex objects."
+              },
+              {
+                title: "📦 Critical preprocessing pipeline",
+                content: "Mandatory steps: ImageNet normalization (mean=[0.485,0.456,0.406], std=[0.229,0.224,0.225]) for transfer learning, resize 256×256 or 512×512 (speed/precision trade-off), reflect padding to preserve edges. Essential augmentation: rotation ±30°, horizontal/vertical flip, ColorJitter (brightness ±0.2, contrast ±0.2), RandomCrop 80-100% ROI."
+              },
+              {
+                title: "⚠️ Challenge: Extreme class imbalance",
+                content: "Typical segmentation problem: 'background' class 70-80% pixels, interesting classes <5% each. Tested solutions: 1) CrossEntropyLoss with weights inversely proportional to class frequency, 2) Focal Loss (γ=2) to penalize easy examples, 3) Dice Loss for rare classes (better for small objects). Combined Loss = 0.5×CE + 0.5×Dice optimal."
+              },
+              {
+                title: "📈 Identified optimal hyperparameters",
+                content: "Batch size: 16 (compromise for 6GB GPU), Initial learning rate: 1e-3 with ReduceLROnPlateau (factor=0.5, patience=10), Optimizer: Adam (β1=0.9, β2=0.999), Weight decay: 1e-4 for regularization. Early stopping patience 20 epochs on validation mIoU. Scheduler crucial: ×5 convergence improvement vs fixed learning rate."
+              },
+              {
+                title: "🎯 Segmentation metrics explained",
+                content: "Pixel Accuracy = correct pixels / total (misleading if imbalanced). mIoU (mean IoU) = average IoU all classes, where IoU = Intersection / Union (best metric). Per-class F1-Score to identify problematic classes. Confusion matrix reveals typical confusions (e.g., 'road' vs 'sidewalk'). Always prefer mIoU over global Accuracy."
+              },
+              {
+                title: "🔬 Architecture comparison (benchmarks)",
+                content: "U-Net: 82% accuracy, mIoU 0.75, 31M parameters, 18ms inference/512×512 image. DeepLab v3+ ResNet50: 85% accuracy, mIoU 0.80, 41M params, 45ms inference. Custom lightweight (MobileNetV2 backbone): 78% accuracy, mIoU 0.68, 8M params, 6ms inference. Precision/speed trade-off: DeepLab for quality, Custom for real-time."
+              },
+              {
+                title: "🖼️ Visualization for debugging",
+                content: "TensorBoard: loss/mIoU curves train vs val, weight/gradient histograms, predicted images every 10 epochs. Matplotlib: prediction/ground truth overlay with 50% transparency, confidence heatmap (softmax probabilities), colored errors by type (false positives red, false negatives blue). Confusion matrix with Seaborn reveals patterns."
+              },
+              {
+                title: "💡 Practical lessons",
+                content: "Transfer learning from ImageNet accelerates convergence ×3 (use pretrained encoder). Massive augmentation compensates for small datasets (<5000 images). K-fold cross-validation (K=5) mandatory for datasets <10k images. 6GB+ GPU minimum for U-Net 512×512. Mixed precision (torch.cuda.amp) saves 40% VRAM. Save checkpoints every 10 epochs + best mIoU."
+              },
+              {
+                title: "🔮 Future improvements",
+                content: "Test Transformer-based (SegFormer, Mask2Former) for global attention. Implement multi-task learning (segmentation + depth estimation). Explore self-supervised pretraining on unlabeled data. Optimize for mobile deployment (ONNX, TensorRT quantization). Create semi-automatic annotation pipeline with active learning."
+              }
+            ]
+          },
+          github: "https://github.com/yanimohellebi26/segmentation-semantique",
+          image: null, // À ajouter plus tard
+        },
+        {
+          name: {
+            fr: "Reconnaissance Maison - Nuage de Points",
+            en: "House Recognition - Point Cloud",
+          },
+          description: {
+            fr: "Reconnaissance et classification d'objets architecturaux à partir de nuages de points 3D",
+            en: "Recognition and classification of architectural objects from 3D point clouds",
+          },
+          detailedDescription: {
+            fr: "Projet de recherche complet explorant deux approches complémentaires : d'abord la segmentation urbaine sur le dataset Paris-Lille-3D avec PointNet (infrastructures, véhicules, végétation, mobilier urbain), puis la segmentation architecturale de maisons générées paramétriquement (murs, portes, fenêtres). Le projet a nécessité le développement d'une pipeline complète incluant prétraitement, rééchantillonnage à 1024 points, normalisation, et augmentation de données. Face aux défis de déséquilibre de classes et de ressources GPU limitées, j'ai exploré différentes stratégies d'entraînement et architectures (PointNet, KPConv).",
+            en: "Comprehensive research project exploring two complementary approaches: first, urban segmentation on the Paris-Lille-3D dataset with PointNet (infrastructure, vehicles, vegetation, street furniture), then architectural segmentation of parametrically generated houses (walls, doors, windows). The project required developing a complete pipeline including preprocessing, resampling to 1024 points, normalization, and data augmentation. Facing challenges of class imbalance and limited GPU resources, I explored different training strategies and architectures (PointNet, KPConv).",
+          },
+          features: [
+            {
+              fr: "📊 Segmentation urbaine : 8 classes détectées sur Paris-Lille-3D avec découpage en blocs 10m×10m",
+              en: "📊 Urban segmentation: 8 classes detected on Paris-Lille-3D with 10m×10m block subdivision",
+            },
+            {
+              fr: "🏠 Génération paramétrique de maisons : 4 configurations (rectangle, L, carré, couloir) avec ouvertures variables",
+              en: "🏠 Parametric house generation: 4 configurations (rectangle, L-shape, square, corridor) with variable openings",
+            },
+            {
+              fr: "🎯 Architecture PointNet avec T-Net : invariance aux transformations spatiales (89% accuracy sur cubes, 83% sur maisons)",
+              en: "🎯 PointNet architecture with T-Net: spatial transformation invariance (89% accuracy on cubes, 83% on houses)",
+            },
+            {
+              fr: "⚡ Pipeline optimisée : normalisation centrée, rééchantillonnage 1024 pts, augmentation (rotation, bruit, scaling)",
+              en: "⚡ Optimized pipeline: centered normalization, resampling to 1024 pts, augmentation (rotation, noise, scaling)",
+            },
+            {
+              fr: "📈 Stratégies d'équilibrage : pondération CrossEntropy, sur-échantillonnage minoritaire, early stopping (patience 40)",
+              en: "📈 Balancing strategies: CrossEntropy weighting, minority oversampling, early stopping (patience 40)",
+            },
+            {
+              fr: "🔬 Exploration comparative : PointNet vs KPConv sur données synthétiques (cubes) et réelles (Paris-Lille-3D)",
+              en: "🔬 Comparative exploration: PointNet vs KPConv on synthetic (cubes) and real data (Paris-Lille-3D)",
+            },
+          ],
+          technologies: [
+            "Python",
+            "PyTorch",
+            "PointNet",
+            "KPConv",
+            "Blender (génération)",
+            "Open3D",
+            "NumPy",
+            "Pandas",
+            "TensorBoard",
+            "plyfile",
+          ],
+          results: {
+            fr: "🎓 Résultats clés : 89% accuracy sur dataset urbain Dijon (100 époques, 4 niveaux), 88.96% validation / 82.99% test sur segmentation maisons (murs vs ouvertures), mapping réussi de 10 classes urbaines. Limitations identifiées : GPU insuffisant pour traiter fichiers complets (millions de points), KPConv inefficace sur objets symétriques simples, nécessité d'équilibrage rigoureux des classes pour éviter biais majoritaire (sol 60-70% des points LiDAR urbain).",
+            en: "🎓 Key results: 89% accuracy on Dijon urban dataset (100 epochs, 4 levels), 88.96% validation / 82.99% test on house segmentation (walls vs openings), successful mapping of 10 urban classes. Identified limitations: insufficient GPU for processing complete files (millions of points), KPConv ineffective on simple symmetric objects, rigorous class balancing required to avoid majority bias (ground 60-70% of urban LiDAR points).",
+          },
+          keyLearnings: {
+            fr: [
+              {
+                title: "📦 Préparation de données Paris-Lille-3D",
+                content: "Extraction d'objets annotés depuis .ply → rééchantillonnage uniforme à 1024 points (sous/sur-échantillonnage) → normalisation centrée dans cube unité → conversion en matrices (data: [N,1024,3], label: [N,1]). Dépendances : numpy, pandas, h5py, plyfile, xml.etree pour parsing classes.xml."
+              },
+              {
+                title: "⚠️ Défi majeur : Déséquilibre de classes",
+                content: "Distribution typique LiDAR urbain : Sol 60-70%, Bâtiments 15-20%, Véhicules 5-10%, Mobilier 2-5%, Végétation 3-8%. Sur extraction Paris+Lille : seulement 254 objets totaux (classe 'terrain': 1 objet !). Solution : remapping vers 4 classes principales + pondération CrossEntropy + découpage blocs 10m×10m pour augmenter échantillons."
+              },
+              {
+                title: "🔧 Architecture PointNet adaptée",
+                content: "MLP(64)→ReLU→MLP(128)→MLP(1024)→MaxPooling global→Concat features locales+globales→MLP(512)→MLP(256)→MLP(6 classes)→Softmax. T-Net génère matrice 3×3 pour normaliser orientation. Formule neurone : y = σ(w·x + b) avec ReLU σ(x)=max(0,x)."
+              },
+              {
+                title: "🎲 Génération paramétrique (Blender → Python pur)",
+                content: "Passage de Blender script (imprécis, 1 cube statique) → Python pur : 256-512 pts/face, 10-1000 cubes, rotations aléatoires, bruit gaussien, scaling ±30%. Maisons : 4 formes (L, rectangle, carré, couloir), 1-4 ouvertures (portes 1.8-2.2m, fenêtres 0.8-1.5m), épaisseur murs variable, export .xyz avec features."
+              },
+              {
+                title: "📊 Résultats expérimentaux détaillés",
+                content: "Cubes : 51.37% (50 époques) → 76.66% (150 époques) → 83.71% max (300 époques, 100 cubes). Overfitting détecté à 200+ époques. Dijon.ply urbain : 89% avec 4 niveaux mapping, 100 époques, early stopping mIoU. Maisons synthétiques : 88.96% validation, 82.99% test (27-44 sec/époque, ~35 it/s)."
+              },
+              {
+                title: "🚫 Limites KPConv identifiées",
+                content: "KPConv (15 kernel points, rayon fixe, 1→32→64→128 canaux) : ~1 min/époque (vs 30 sec PointNet), arrêt prématuré époque 20, accuracy <20% sur cubes. Diagnostic : objets symétriques simples → voisinages peu discriminants, nécessite features riches (RGB, normales) en plus de XYZ. PointNet reste optimal pour géométrie pure."
+              },
+              {
+                title: "💡 Leçons stratégiques",
+                content: "PointNet traite OBJETS (pas échantillons bruts) → besoin dataset équilibré (min 30-50 objets/classe). Blocs 10m×10m augmentent échantillons mais introduisent biais label majoritaire. Segmentation sémantique ≠ classification : étiqueter CHAQUE point individuellement crucial. GPU puissant indispensable pour scènes complètes (millions de points). Early stopping patience 40 évite overfitting."
+              },
+              {
+                title: "🔮 Perspectives futures",
+                content: "Tester sur vraies maisons capturées (LiDAR/photogrammétrie) avec annotations manuelles. Implémenter PointNet++ pour géométries locales hiérarchiques. Explorer Transformer-based architectures (Point Transformer). Utiliser serveur GPU pour traiter datasets Paris-Lille complets sans découpage. Intégrer features couleur/intensité si disponibles."
+              }
+            ],
+            en: [
+              {
+                title: "📦 Paris-Lille-3D Data Preparation",
+                content: "Annotated object extraction from .ply → uniform resampling to 1024 points (under/oversampling) → centered normalization in unit cube → conversion to matrices (data: [N,1024,3], label: [N,1]). Dependencies: numpy, pandas, h5py, plyfile, xml.etree for classes.xml parsing."
+              },
+              {
+                title: "⚠️ Major challenge: Class imbalance",
+                content: "Typical urban LiDAR distribution: Ground 60-70%, Buildings 15-20%, Vehicles 5-10%, Furniture 2-5%, Vegetation 3-8%. Paris+Lille extraction: only 254 total objects ('terrain' class: 1 object!). Solution: remapping to 4 main classes + CrossEntropy weighting + 10m×10m block subdivision to increase samples."
+              },
+              {
+                title: "🔧 Adapted PointNet architecture",
+                content: "MLP(64)→ReLU→MLP(128)→MLP(1024)→Global MaxPooling→Concat local+global features→MLP(512)→MLP(256)→MLP(6 classes)→Softmax. T-Net generates 3×3 matrix for orientation normalization. Neuron formula: y = σ(w·x + b) with ReLU σ(x)=max(0,x)."
+              },
+              {
+                title: "🎲 Parametric generation (Blender → Pure Python)",
+                content: "Transition from Blender script (imprecise, 1 static cube) → Pure Python: 256-512 pts/face, 10-1000 cubes, random rotations, gaussian noise, ±30% scaling. Houses: 4 shapes (L, rectangle, square, corridor), 1-4 openings (doors 1.8-2.2m, windows 0.8-1.5m), variable wall thickness, .xyz export with features."
+              },
+              {
+                title: "📊 Detailed experimental results",
+                content: "Cubes: 51.37% (50 epochs) → 76.66% (150 epochs) → 83.71% max (300 epochs, 100 cubes). Overfitting detected at 200+ epochs. Dijon.ply urban: 89% with 4-level mapping, 100 epochs, early stopping mIoU. Synthetic houses: 88.96% validation, 82.99% test (27-44 sec/epoch, ~35 it/s)."
+              },
+              {
+                title: "🚫 KPConv limitations identified",
+                content: "KPConv (15 kernel points, fixed radius, 1→32→64→128 channels): ~1 min/epoch (vs 30 sec PointNet), premature stop epoch 20, accuracy <20% on cubes. Diagnosis: simple symmetric objects → weakly discriminant neighborhoods, requires rich features (RGB, normals) beyond XYZ. PointNet remains optimal for pure geometry."
+              },
+              {
+                title: "💡 Strategic lessons",
+                content: "PointNet processes OBJECTS (not raw samples) → needs balanced dataset (min 30-50 objects/class). 10m×10m blocks increase samples but introduce majority label bias. Semantic segmentation ≠ classification: labeling EACH point individually crucial. Powerful GPU essential for complete scenes (millions of points). Early stopping patience 40 prevents overfitting."
+              },
+              {
+                title: "🔮 Future perspectives",
+                content: "Test on real captured houses (LiDAR/photogrammetry) with manual annotations. Implement PointNet++ for hierarchical local geometries. Explore Transformer-based architectures (Point Transformer). Use GPU server to process complete Paris-Lille datasets without subdivision. Integrate color/intensity features if available."
+              }
+            ]
+          },
+          github:
+            "https://github.com/yanimohellebi26/reconnaissance_maison-nuage-de-points",
+          image: require("../../Assets/Projects/reconnaissance-maison.png"),
+        },
+      ],
+      technologies: [
+        "Python",
+        "PyTorch",
+        "PointNet",
+        "KPConv",
+        "NumPy",
+        "Pandas",
+        "Plyfile",
+        "H5py",
+        "Open3D",
+        "Matplotlib",
+        "Seaborn",
+        "Blender",
+        "CUDA",
+      ],
+      current: false,
+    },
+  ];
+
+  return (
+    <div className="space-y-8">
+      <h2 className="text-center text-2xl font-bold text-brand-accent sm:text-3xl">
+        {language === "fr"
+          ? "Expérience Professionnelle"
+          : "Professional Experience"}
+      </h2>
+
+      <div className="relative space-y-8">
+        {/* Timeline line */}
+        <div className="absolute left-8 top-0 h-full w-0.5 bg-gradient-to-b from-brand-accent via-brand-accent/50 to-transparent" />
+
+        {experiences.map((exp, index) => (
+          <div key={exp.id} className="relative pl-20">
+            {/* Timeline dot */}
+            <div
+              className={`absolute left-6 top-6 h-5 w-5 rounded-full border-4 ${
+                exp.current
+                  ? "animate-pulse border-brand-accent bg-brand-accent"
+                  : "border-brand-accent/50 bg-brand-bg"
+              }`}
+            />
+
+            {/* Experience card */}
+            <div className="group rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm transition-all hover:-translate-y-1 hover:border-brand-accent/40 hover:bg-white/[0.08] hover:shadow-xl">
+              {/* Current badge */}
+              {exp.current && (
+                <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-brand-accent/20 px-3 py-1 text-xs font-semibold text-brand-accent">
+                  <span className="h-2 w-2 animate-pulse rounded-full bg-brand-accent" />
+                  {language === "fr" ? "En cours" : "Current"}
+                </div>
+              )}
+
+              {/* Role and Company */}
+              <div className="mb-4">
+                <h3 className="mb-2 text-xl font-bold text-brand-text">
+                  {language === "fr" ? exp.role.fr : exp.role.en}
+                </h3>
+                <p className="flex items-center gap-2 text-lg font-semibold text-brand-accent">
+                  <FaBriefcase className="text-base" />
+                  {typeof exp.company === "object"
+                    ? language === "fr"
+                      ? exp.company.fr
+                      : exp.company.en
+                    : exp.company}
+                </p>
+              </div>
+
+              {/* Location and Period */}
+              <div className="mb-4 flex flex-wrap gap-4 text-sm text-brand-muted">
+                <div className="flex items-center gap-2">
+                  <MdLocationOn className="text-brand-accent" />
+                  {exp.location}
+                </div>
+                <div className="flex items-center gap-2">
+                  <MdDateRange className="text-brand-accent" />
+                  {language === "fr" ? exp.period.fr : exp.period.en}
+                </div>
+              </div>
+
+              {/* Description */}
+              <p className="mb-4 text-brand-text/80">
+                {language === "fr" ? exp.description.fr : exp.description.en}
+              </p>
+
+              {/* Research Projects (for internship) */}
+              {exp.projects && (
+                <div className="mb-4 space-y-3">
+                  <h4 className="font-semibold text-brand-accent">
+                    {language === "fr"
+                      ? "Projets de Recherche :"
+                      : "Research Projects:"}
+                  </h4>
+                  {exp.projects.map((project, idx) => (
+                    <div
+                      key={idx}
+                      className="cursor-pointer rounded-lg border border-white/5 bg-white/[0.02] p-4 transition-all hover:border-brand-accent/30 hover:bg-white/[0.05] hover:shadow-lg"
+                      onClick={() => setSelectedProject(project)}
+                    >
+                      <div className="mb-2 flex items-start justify-between gap-4">
+                        <h5 className="font-semibold text-brand-text">
+                          {language === "fr"
+                            ? project.name.fr
+                            : project.name.en}
+                        </h5>
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-shrink-0 text-brand-accent transition-colors hover:text-brand-accent/80"
+                          aria-label="GitHub repository"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <FaGithub className="text-xl" />
+                        </a>
+                      </div>
+                      <p className="text-sm text-brand-text/70">
+                        {language === "fr"
+                          ? project.description.fr
+                          : project.description.en}
+                      </p>
+                      <p className="mt-2 text-xs font-medium text-brand-accent">
+                        {language === "fr"
+                          ? "Cliquez pour plus de détails →"
+                          : "Click for more details →"}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Technologies */}
+              <div>
+                <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-brand-muted">
+                  {language === "fr" ? "Technologies" : "Technologies"}
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {exp.technologies.map((tech, idx) => (
+                    <span
+                      key={idx}
+                      className="rounded-lg border border-brand-accent/20 bg-brand-accent/10 px-3 py-1 text-xs font-medium text-brand-accent transition-colors hover:border-brand-accent/40 hover:bg-brand-accent/20"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+          ))}
+      </div>
+
+      {/* Project Modal */}
+      {selectedProject && (
+        <ProjectModal
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
+      )}
+    </div>
+  );
+}
+
+export default Experience;

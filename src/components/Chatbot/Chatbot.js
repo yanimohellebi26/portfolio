@@ -3,11 +3,13 @@ import OpenAI from "openai";
 import { FaComments, FaPaperPlane, FaTimes } from "react-icons/fa";
 import "./Chatbot.css";
 
-// Initialisation du client OpenAI
-const openai = new OpenAI({
-  apiKey: process.env.REACT_APP_OPENAI_API_KEY,
-  dangerouslyAllowBrowser: true // Nécessaire pour utiliser l'API côté client
-});
+// Initialisation du client OpenAI uniquement si la clé API est disponible
+const openai = process.env.REACT_APP_OPENAI_API_KEY 
+  ? new OpenAI({
+      apiKey: process.env.REACT_APP_OPENAI_API_KEY,
+      dangerouslyAllowBrowser: true // Nécessaire pour utiliser l'API côté client
+    })
+  : null;
 
 const normalizeMessage = (text) =>
   text
@@ -19,26 +21,31 @@ const KNOWLEDGE_BASE = [
   {
     keywords: ["nom", "appelle", "qui es", "yani"],
     answer:
-      "Je suis Yani Mohellebi, développeur logiciel et étudiant en Licence Informatique à l'Université de Bourgogne."
+      "Je suis Yani Mohellebi, étudiant en Master IA à l'Université de Bourgogne et Ingénieur R&D IA en alternance chez Siemens DISW à Lyon."
   },
   {
-    keywords: ["formation", "universite", "etudiant", "licence"],
+    keywords: ["formation", "universite", "etudiant", "master", "licence"],
     answer:
-      "Je termine actuellement ma Licence Informatique à l'Université de Bourgogne où je me spécialise en traitement de données et intelligence artificielle."
+      "Je suis actuellement en Master Intelligence Artificielle à l'Université de Bourgogne à Dijon, où je me spécialise en machine learning avancé, NLP et Computer Vision."
   },
   {
-    keywords: ["ou vis", "localisation", "ville", "dijon"],
-    answer: "Je suis basé à Dijon, en France, où j'étudie et je développe la plupart de mes projets."
+    keywords: ["ou vis", "localisation", "ville", "dijon", "lyon"],
+    answer: "Je suis basé entre Dijon (pour mes études à l'université) et Lyon (pour mon alternance chez Siemens DISW). Je fais mes cours à l'Université de Bourgogne et mon alternance à Lyon."
+  },
+  {
+    keywords: ["siemens", "alternance", "travail", "entreprise", "disw"],
+    answer:
+      "🏢 Je suis Ingénieur R&D IA en alternance chez Siemens DISW à Lyon pour une durée de 2 ans. Je travaille sur des projets d'intelligence artificielle appliquée aux défis industriels, en utilisant des technologies de pointe comme LangChain, TensorFlow et PyTorch."
   },
   {
     keywords: ["specialite", "expertise", "domaine", "ia", "donnees"],
     answer:
-      "Mes domaines d'expertise couvrent l'analyse et le traitement de données, le développement de modèles d'IA (NLP et Computer Vision) ainsi que le développement web full-stack."
+      "Mes domaines d'expertise incluent le machine learning avancé, le NLP, la Computer Vision, les architectures d'agents intelligents et le développement full-stack. Je développe des solutions d'IA de bout en bout pour des applications industrielles."
   },
   {
-    keywords: ["competence", "technologie", "stack", "outil"],
+    keywords: ["competence", "technologie", "stack", "outil", "langchain", "langgraph"],
     answer:
-      "Je travaille avec Python, C, JavaScript, React, FastAPI, Svelte, Docker, PostgreSQL, MongoDB, TensorFlow et PyTorch, entre autres technologies."
+      "🚀 Technologies que je maîtrise :\n\n💡 IA/ML : TensorFlow, PyTorch, LangChain, LangGraph\n💻 Backend : FastAPI, REST APIs, Python\n🎨 Frontend : React, Svelte, JavaScript\n🐳 DevOps : Docker, Postman, Flyway\n📊 Databases : PostgreSQL, MongoDB, SQL, Cypher (Neo4j)\n🔧 Autres : OCaml, Pandas, Git"
   },
   {
     keywords: ["projet", "realisation", "portfolio"],
@@ -46,9 +53,19 @@ const KNOWLEDGE_BASE = [
       "Je mène plusieurs projets autour de l'IA appliquée : analyse d'avis culturels avec NeutraView, recommandations littéraires intelligentes, analyse de vidéos Instagram avec SUBSENSE ou encore Nutri-Mind pour l'accompagnement nutritionnel des étudiants sportifs."
   },
   {
-    keywords: ["experience", "freelance", "mission", "disponible"],
+    keywords: ["experience", "freelance", "mission", "disponible", "professionnel"],
     answer:
-      "Je réalise des missions freelance et je suis ouvert aux collaborations sur des projets de data, d'IA ou de développement web."
+      "💼 Expériences professionnelles :\n\n🏢 Alternance Siemens DISW Lyon (oct 2025 - oct 2027)\n• Ingénieur R&D IA\n• Solutions IA industrielles\n\n🔬 Stage Recherche LE2I Dijon (juin - août 2025)\n• Segmentation sémantique\n• Nuages de points 3D\n• 3 projets publiés sur GitHub\n\n💻 Missions freelance et projets académiques avancés en IA"
+  },
+  {
+    keywords: ["stage", "recherche", "le2i", "libiub", "laboratoire", "dijon", "segmentation"],
+    answer:
+      "🔬 Stage de recherche au Laboratoire d'Informatique de l'Université de Bourgogne (LE2I) - juin à août 2025\n\n📊 Projets réalisés :\n1️⃣ Segmentation Sémantique 🎯\n   → Algorithmes d'analyse d'images\n   → GitHub : github.com/yanimohellebi26/segmentation-semantique\n\n2️⃣ Reconnaissance Maison - Nuage de Points 🏠\n   → Classification d'objets 3D architecturaux\n   → GitHub : github.com/yanimohellebi26/reconnaissance_maison-nuage-de-points\n\n💡 Technologies : PyTorch, TensorFlow, OpenCV, Point Cloud Library"
+  },
+  {
+    keywords: ["siemens", "alternance", "travail", "entreprise", "disw"],
+    answer:
+      "🏢 Ingénieur R&D IA en alternance chez Siemens DISW à Lyon (octobre 2025 - octobre 2027)\n\n🚀 Missions principales :\n• Développement de solutions IA pour applications industrielles\n• Architectures d'agents intelligents (LangChain, LangGraph)\n• NLP & Computer Vision\n• APIs REST et intégrations système\n\n💻 Stack : LangChain, PyTorch, TensorFlow, Docker, SQL, Cypher, Jira, Confluence"
   },
   {
     keywords: ["engagement", "benevole", "cbfu", "aggo"],
@@ -158,23 +175,49 @@ const Chatbot = () => {
       const systemPrompt = `Tu es l'assistant virtuel du portfolio de Yani Mohellebi. Voici les informations à connaître :
 
 - **Nom** : Yani Mohellebi
-- **Formation** : Licence Informatique à l'Université de Bourgogne, spécialisé en traitement de données et intelligence artificielle
-- **Localisation** : Dijon, France
-- **Expertise** : Analyse et traitement de données, développement de modèles d'IA (NLP et Computer Vision), développement web full-stack
-- **Technologies** : Python, C, JavaScript, React, FastAPI, Svelte, Docker, PostgreSQL, MongoDB, TensorFlow, PyTorch
-- **Projets** : 
+- **Formation** : Master Intelligence Artificielle à l'Université de Bourgogne (Dijon)
+- **Poste actuel** : Ingénieur R&D IA en alternance chez Siemens DISW (Lyon) - Contrat de 2 ans (octobre 2025 - octobre 2027)
+- **Localisation** : Basé entre Dijon (études) et Lyon (alternance)
+- **Expertise** : Machine Learning avancé, NLP, Computer Vision, architectures d'agents intelligents, développement full-stack
+
+- **Expérience professionnelle** :
+  1. 🏢 Alternance Siemens DISW Lyon (octobre 2025 - octobre 2027)
+     - Ingénieur R&D IA
+     - Développement de solutions IA pour applications industrielles
+     - Architectures d'agents intelligents (LangChain, LangGraph)
+     - NLP, Computer Vision, APIs REST
+  
+  2. 🔬 Stage de recherche - Laboratoire d'Informatique LE2I, Université de Bourgogne (juin - août 2025)
+     - Projets de recherche en IA et Computer Vision
+     - Segmentation sémantique d'images
+     - Reconnaissance d'objets via nuages de points 3D
+     - 3 projets de recherche publiés sur GitHub :
+       * github.com/yanimohellebi26/segmentation-semantique
+       * github.com/yanimohellebi26/reconnaissance_maison-nuage-de-points
+     - Technologies : PyTorch, TensorFlow, OpenCV, Point Cloud Library
+
+- **Technologies principales** :
+  - IA/ML : TensorFlow, PyTorch, LangChain, LangGraph
+  - Backend : FastAPI, REST APIs, Python
+  - Frontend : React, Svelte, JavaScript
+  - DevOps : Docker, Postman, Flyway
+  - Bases de données : PostgreSQL, MongoDB, SQL, Cypher (Neo4j)
+  - Gestion de projet : Jira, Confluence, OpenProject
+  - Autres : OCaml, Pandas, Git
+
+- **Projets portfolio** : 
   - 🎭 NeutraView : Analyse d'avis culturels avec NLP pour détecter les sentiments
   - 📚 Système de recommandations littéraires : Recommandations personnalisées basées sur l'IA
   - 📱 SUBSENSE : Analyse automatique de vidéos Instagram avec Computer Vision
   - 🏃 Nutri-Mind : Application d'accompagnement nutritionnel intelligent pour étudiants sportifs
-- **Expérience** : Missions freelance, ouvert aux collaborations sur des projets de data, d'IA ou de développement web
+
 - **Engagement** : Élu à la CBFU (Commission de la Formation et de la Vie Universitaire), bénévole à AGGO
 - **Langues** : Français et anglais
-- **Passions** : Impact des données sur la prise de décision, cybersécurité, partage de connaissances
+- **Passions** : IA appliquée aux problèmes industriels, architectures d'agents intelligents, cybersécurité, recherche en ML
 
 IMPORTANT : Utilise des emojis pertinents et structure tes réponses de manière claire :
 - Utilise des bullet points (•) pour les listes
-- Ajoute des emojis contextuels (🎯 💡 🚀 📊 🤖 💻 etc.)
+- Ajoute des emojis contextuels (🎯 💡 🚀 📊 🤖 💻 🏢 🔬 etc.)
 - Sépare les idées principales
 - Reste concis mais informatif
 - Tutoie l'utilisateur de manière amicale

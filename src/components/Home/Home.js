@@ -69,8 +69,8 @@ function Home() {
               </div>
               <p className="max-w-xl text-sm text-brand-text/80 sm:text-base leading-relaxed">
                 {language === "fr"
-                  ? "Je conçois des expériences numériques qui relient l'intelligence artificielle aux besoins humains, avec une attention particulière aux détails et à l'accessibilité."
-                  : "I craft digital experiences that connect thoughtful AI to real human needs, with a focus on detail and accessibility."}
+                  ? "Étudiant en Master IA à l'Université de Bourgogne et Ingénieur R&D IA en alternance chez Siemens DISW à Lyon. Je développe des solutions d'intelligence artificielle innovantes qui transforment les défis complexes en opportunités concrètes."
+                  : "Master's student in AI at the University of Burgundy and AI R&D Engineer Apprentice at Siemens DISW in Lyon. I develop innovative artificial intelligence solutions that transform complex challenges into concrete opportunities."}
               </p>
             </div>
           </div>
