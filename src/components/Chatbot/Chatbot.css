@@ -77,13 +77,30 @@
   padding: 0.75rem 0.9rem;
   border-radius: 14px;
   font-size: 0.9rem;
-  line-height: 1.4;
+  line-height: 1.5;
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 .chatbot__message--bot {
   align-self: flex-start;
   background: rgba(148, 163, 255, 0.2);
   color: #e0e7ff;
+}
+
+/* Style pour les emojis dans les messages bot */
+.chatbot__message--bot span {
+  display: block;
+}
+
+/* Amélioration de l'espacement des lignes dans les réponses */
+.chatbot__message--bot p {
+  margin: 0.4rem 0;
+}
+
+.chatbot__message--bot strong {
+  color: #a5b4fc;
+  font-weight: 600;
 }
 
 .chatbot__message--user {
@@ -129,10 +146,16 @@
   transition: transform 0.2s ease;
 }
 
-.chatbot__input button:hover,
-.chatbot__input button:focus {
+.chatbot__input button:not(:disabled):hover,
+.chatbot__input button:not(:disabled):focus {
   transform: translateY(-1px);
   outline: none;
+}
+
+.chatbot__input button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
 }
 
 @media (max-width: 600px) {
