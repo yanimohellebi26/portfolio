@@ -1,0 +1,919 @@
+/* ===============================================
+   SECTION PROJETS - STYLE FUTURISTE ULTRA AMÉLIORÉ
+   =============================================== */
+
+/* Section principale avec effet de profondeur */
+.projects-section-futuristic {
+  position: relative;
+  min-height: 100vh;
+  padding: 140px 0 100px;
+  background: transparent; /* Laisser passer l'AIBackground */
+  overflow: hidden;
+}
+
+/* Grille cyberpunk en arrière-plan améliorée */
+.cyber-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(199, 112, 240, 0.04) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(199, 112, 240, 0.04) 2px, transparent 2px),
+    radial-gradient(ellipse at center, rgba(199, 112, 240, 0.06) 0%, transparent 80%);
+  background-size: 50px 50px, 50px 50px, 100% 100%;
+  animation: grid-move 25s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes grid-move {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  100% {
+    transform: translateY(50px) translateX(50px);
+  }
+}
+
+/* Points lumineux qui se déplacent */
+.cyber-grid::before,
+.cyber-grid::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, rgba(199, 112, 240, 1), transparent 70%);
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(199, 112, 240, 0.8);
+  animation: grid-particle 15s ease-in-out infinite;
+}
+
+.cyber-grid::before {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.cyber-grid::after {
+  bottom: 30%;
+  right: 15%;
+  animation-delay: 7s;
+  animation-duration: 20s;
+}
+
+@keyframes grid-particle {
+  0%, 100% {
+    transform: translate(0, 0);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translate(200px, -100px);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(400px, 50px);
+    opacity: 0.6;
+  }
+  75% {
+    transform: translate(150px, 100px);
+    opacity: 0.8;
+  }
+}
+
+/* ===============================================
+   CARTE DE PROJET - EFFET GLASSMORPHISM ULTRA AVANCÉ
+   =============================================== */
+
+.project-card-futuristic {
+  position: relative;
+  height: 100%;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.project-card-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(24, 19, 47, 0.75) 0%,
+    rgba(30, 25, 60, 0.65) 50%,
+    rgba(24, 19, 47, 0.75) 100%
+  );
+  backdrop-filter: blur(25px) saturate(180%);
+  border-radius: 28px;
+  border: 1.5px solid rgba(199, 112, 240, 0.2);
+  overflow: hidden;
+  transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Effet hover - Élévation 3D améliorée */
+.project-card-futuristic:hover .project-card-inner {
+  transform: translateY(-16px) rotateX(3deg) scale(1.02);
+  border-color: rgba(199, 112, 240, 0.5);
+  box-shadow: 
+    0 30px 70px -12px rgba(199, 112, 240, 0.35),
+    0 0 100px rgba(199, 112, 240, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 0 80px rgba(199, 112, 240, 0.08);
+}
+
+/* Bordure animée avec effet néon amélioré */
+.card-border-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  padding: 2px;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(199, 112, 240, 0.8) 20%,
+    rgba(165, 128, 255, 0.8) 40%,
+    rgba(236, 72, 153, 0.8) 60%,
+    rgba(199, 112, 240, 0.8) 80%,
+    transparent 100%
+  );
+  background-size: 300% 300%;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+  animation: border-rotate 5s linear infinite;
+  pointer-events: none;
+  filter: blur(1px);
+}
+
+.project-card-futuristic:hover .card-border-glow {
+  opacity: 1;
+}
+
+@keyframes border-rotate {
+  0% {
+    background-position: 0% 50%;
+    filter: blur(1px) hue-rotate(0deg);
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+    filter: blur(1px) hue-rotate(360deg);
+  }
+}
+
+/* Ligne de scan futuriste sur l'image améliorée */
+.scan-line {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(199, 112, 240, 0.8) 30%,
+    rgba(199, 112, 240, 1) 50%,
+    rgba(199, 112, 240, 0.8) 70%,
+    transparent 100%
+  );
+  box-shadow: 
+    0 0 20px rgba(199, 112, 240, 0.8),
+    0 0 40px rgba(199, 112, 240, 0.5);
+  opacity: 0;
+  transition: all 0.8s ease;
+  z-index: 10;
+}
+
+.project-card-futuristic:hover .scan-line {
+  opacity: 1;
+  top: 100%;
+  transition: all 2s ease;
+}
+
+/* Effet de particules sur la carte */
+.project-card-inner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    transparent 40%,
+    rgba(199, 112, 240, 0.03) 50%,
+    transparent 60%
+  );
+  animation: particle-spin 20s linear infinite;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+  pointer-events: none;
+}
+
+.project-card-futuristic:hover .project-card-inner::before {
+  opacity: 1;
+}
+
+@keyframes particle-spin {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1.2);
+  }
+}
+
+/* ===============================================
+   BOUTONS FUTURISTES AVEC EFFETS NÉON AVANCÉS
+   =============================================== */
+
+.btn-futuristic {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.875rem 1.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  cursor: pointer;
+  border: 1px solid transparent;
+  text-decoration: none;
+  isolation: isolate;
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Effet de fond animé amélioré */
+.btn-futuristic::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  opacity: 0.9;
+  transition: opacity 0.5s ease;
+  z-index: -1;
+}
+
+.btn-futuristic::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.3) 45%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.3) 55%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  transform: translateX(-100%) skewX(-15deg);
+  transition: transform 0.8s ease;
+  z-index: -1;
+}
+
+.btn-futuristic:hover::before {
+  opacity: 1;
+}
+
+.btn-futuristic:hover::after {
+  transform: translateX(100%) skewX(-15deg);
+}
+
+/* Bouton GitHub - Violet néon amélioré */
+.btn-primary-glow {
+  background: linear-gradient(135deg, rgba(199, 112, 240, 0.9), rgba(135, 82, 225, 0.9));
+  color: #ffffff;
+  box-shadow: 
+    0 4px 20px rgba(199, 112, 240, 0.4),
+    0 0 40px rgba(199, 112, 240, 0.2),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.btn-primary-glow:hover {
+  background: linear-gradient(135deg, rgba(199, 112, 240, 1), rgba(135, 82, 225, 1));
+  box-shadow: 
+    0 8px 35px rgba(199, 112, 240, 0.6),
+    0 0 60px rgba(199, 112, 240, 0.5),
+    inset 0 1px 2px rgba(255, 255, 255, 0.4);
+  transform: translateY(-3px) scale(1.05);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Bouton Demo - Vert/Cyan néon amélioré */
+.btn-success-glow {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.9), rgba(6, 182, 212, 0.9));
+  color: #0f0b22;
+  box-shadow: 
+    0 4px 20px rgba(16, 185, 129, 0.4),
+    0 0 40px rgba(16, 185, 129, 0.2),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.btn-success-glow:hover {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 1), rgba(6, 182, 212, 1));
+  box-shadow: 
+    0 8px 35px rgba(16, 185, 129, 0.6),
+    0 0 60px rgba(16, 185, 129, 0.5),
+    inset 0 1px 2px rgba(255, 255, 255, 0.4);
+  transform: translateY(-3px) scale(1.05);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Bouton Collaboration - Rose/Violet néon amélioré */
+.btn-collab-glow {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.9), rgba(236, 72, 153, 0.9));
+  color: #ffffff;
+  box-shadow: 
+    0 4px 20px rgba(236, 72, 153, 0.4),
+    0 0 40px rgba(236, 72, 153, 0.2),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.btn-collab-glow:hover {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 1), rgba(236, 72, 153, 1));
+  box-shadow: 
+    0 8px 35px rgba(236, 72, 153, 0.6),
+    0 0 60px rgba(236, 72, 153, 0.5),
+    inset 0 1px 2px rgba(255, 255, 255, 0.4);
+  transform: translateY(-3px) scale(1.05);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Effet de pulsation sur les icônes amélioré */
+.btn-futuristic:hover svg {
+  animation: icon-pulse 1.2s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px currentColor);
+}
+
+@keyframes icon-pulse {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.15) rotate(-5deg);
+  }
+  50% {
+    transform: scale(1.25) rotate(0deg);
+  }
+  75% {
+    transform: scale(1.15) rotate(5deg);
+  }
+}
+
+/* ===============================================
+   ANIMATIONS D'APPARITION AMÉLIORÉES
+   =============================================== */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes expand {
+  from {
+    width: 0;
+    opacity: 0;
+    filter: blur(5px);
+  }
+  to {
+    width: 4rem;
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-delay {
+  animation: fade-in 1s ease-out 0.3s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 1s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease infinite;
+}
+
+.animate-expand {
+  animation: expand 1.2s ease-out forwards;
+}
+
+/* ===============================================
+   RESPONSIVE AMÉLIORÉ
+   =============================================== */
+
+@media (max-width: 768px) {
+  .projects-section-futuristic {
+    padding: 110px 0 70px;
+  }
+
+  .project-card-inner {
+    border-radius: 24px;
+  }
+
+  .btn-futuristic {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.8125rem;
+  }
+
+  .project-card-futuristic:hover .project-card-inner {
+    transform: translateY(-10px) scale(1.01);
+  }
+}
+
+/* ===============================================
+   EFFETS DE LUEUR SUPPLÉMENTAIRES
+   =============================================== */
+
+/* Effet de halo autour des cartes au hover */
+.project-card-inner::after {
+  content: '';
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(
+    circle at center,
+    rgba(199, 112, 240, 0.15) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.7s ease;
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(20px);
+}
+
+.project-card-futuristic:hover .project-card-inner::after {
+  opacity: 1;
+}
+
+/* Amélioration des performances */
+.project-card-futuristic,
+.project-card-inner,
+.btn-futuristic {
+  will-change: transform;
+}
+
+.project-card-futuristic:not(:hover) {
+  will-change: auto;
+}
+
+/* Mode réduit pour les animations (accessibilité) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .project-card-futuristic:hover .project-card-inner {
+    transform: translateY(-6px);
+  }
+
+  .btn-futuristic:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* ===============================================
+   EFFET DE REFLET SUR LES CARTES
+   =============================================== */
+
+.project-card-inner {
+  position: relative;
+}
+
+.project-card-inner:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 100%
+  );
+  transform: skewX(-25deg);
+  transition: left 0.8s ease;
+}
+
+.project-card-futuristic:hover .project-card-inner:before {
+  left: 175%;
+}
+
+/* ===============================================
+   CARTE DE PROJET - EFFET GLASSMORPHISM AVANCÉ
+   =============================================== */
+
+.project-card-futuristic {
+  position: relative;
+  height: 100%;
+  perspective: 1000px;
+}
+
+.project-card-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: rgba(24, 19, 47, 0.6);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 24px;
+  border: 1px solid rgba(199, 112, 240, 0.15);
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+}
+
+/* Effet hover - Élévation 3D */
+.project-card-futuristic:hover .project-card-inner {
+  transform: translateY(-12px) rotateX(2deg);
+  border-color: rgba(199, 112, 240, 0.4);
+  box-shadow: 
+    0 25px 50px -12px rgba(199, 112, 240, 0.25),
+    0 0 80px rgba(199, 112, 240, 0.15),
+    inset 0 0 60px rgba(199, 112, 240, 0.05);
+}
+
+/* Bordure animée avec effet néon */
+.card-border-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 2px;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(199, 112, 240, 0.6) 25%,
+    rgba(165, 128, 255, 0.6) 50%,
+    rgba(199, 112, 240, 0.6) 75%,
+    transparent 100%
+  );
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  animation: border-rotate 4s linear infinite;
+  pointer-events: none;
+}
+
+.project-card-futuristic:hover .card-border-glow {
+  opacity: 1;
+}
+
+@keyframes border-rotate {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* Ligne de scan futuriste sur l'image */
+.scan-line {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(199, 112, 240, 0.3) 50%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: all 0.8s ease;
+}
+
+.project-card-futuristic:hover .scan-line {
+  opacity: 1;
+  top: 100%;
+  transition: all 1.5s ease;
+}
+
+/* ===============================================
+   BOUTONS FUTURISTES AVEC EFFETS NÉON
+   =============================================== */
+
+.btn-futuristic {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  cursor: pointer;
+  border: 1px solid transparent;
+  text-decoration: none;
+  isolation: isolate;
+}
+
+/* Effet de fond animé */
+.btn-futuristic::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  opacity: 0.8;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.btn-futuristic::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+  z-index: -1;
+}
+
+.btn-futuristic:hover::after {
+  transform: translateX(100%);
+}
+
+/* Bouton GitHub - Violet néon */
+.btn-primary-glow {
+  background: linear-gradient(135deg, rgba(199, 112, 240, 0.8), rgba(135, 82, 225, 0.8));
+  color: #ffffff;
+  box-shadow: 
+    0 4px 15px rgba(199, 112, 240, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.btn-primary-glow:hover {
+  background: linear-gradient(135deg, rgba(199, 112, 240, 1), rgba(135, 82, 225, 1));
+  box-shadow: 
+    0 8px 30px rgba(199, 112, 240, 0.5),
+    0 0 40px rgba(199, 112, 240, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  border-color: rgba(199, 112, 240, 0.5);
+}
+
+/* Bouton Demo - Vert/Cyan néon */
+.btn-success-glow {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.8), rgba(6, 182, 212, 0.8));
+  color: #0f0b22;
+  box-shadow: 
+    0 4px 15px rgba(16, 185, 129, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.btn-success-glow:hover {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 1), rgba(6, 182, 212, 1));
+  box-shadow: 
+    0 8px 30px rgba(16, 185, 129, 0.5),
+    0 0 40px rgba(16, 185, 129, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  border-color: rgba(16, 185, 129, 0.5);
+}
+
+/* Bouton Collaboration - Rose/Violet néon */
+.btn-collab-glow {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.8), rgba(236, 72, 153, 0.8));
+  color: #ffffff;
+  box-shadow: 
+    0 4px 15px rgba(236, 72, 153, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.btn-collab-glow:hover {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 1), rgba(236, 72, 153, 1));
+  box-shadow: 
+    0 8px 30px rgba(236, 72, 153, 0.5),
+    0 0 40px rgba(236, 72, 153, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  border-color: rgba(236, 72, 153, 0.5);
+}
+
+/* Effet de pulsation sur les icônes */
+.btn-futuristic:hover svg {
+  animation: icon-pulse 1s ease-in-out infinite;
+}
+
+@keyframes icon-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+/* ===============================================
+   ANIMATIONS D'APPARITION
+   =============================================== */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes expand {
+  from {
+    width: 0;
+  }
+  to {
+    width: 4rem;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-delay {
+  animation: fade-in 0.8s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+.animate-expand {
+  animation: expand 1s ease-out forwards;
+}
+
+/* ===============================================
+   RESPONSIVE
+   =============================================== */
+
+@media (max-width: 768px) {
+  .projects-section-futuristic {
+    padding: 100px 0 60px;
+  }
+
+  .project-card-inner {
+    border-radius: 20px;
+  }
+
+  .btn-futuristic {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.8125rem;
+  }
+
+  .project-card-futuristic:hover .project-card-inner {
+    transform: translateY(-8px);
+  }
+}
+
+/* ===============================================
+   EFFETS DE LUEUR SUPPLÉMENTAIRES
+   =============================================== */
+
+/* Particules flottantes autour des cartes au hover */
+@keyframes float-particle {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) translateX(20px);
+    opacity: 0;
+  }
+}
+
+/* Amélioration des performances */
+.project-card-futuristic,
+.project-card-inner,
+.btn-futuristic {
+  will-change: transform;
+}
+
+/* Mode réduit pour les animations (accessibilité) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .project-card-futuristic:hover .project-card-inner {
+    transform: translateY(-4px);
+  }
+}

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import emailjs from "emailjs-com";
+import { useLanguage } from "../../context/LanguageContext";
+import "../GlobalFuturistic.css";
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -8,6 +9,38 @@ function Contact() {
     email: "",
     message: "",
   });
+  const { language } = useLanguage();
+
+  const copy = {
+    en: {
+      heading: {
+        lead: "Contact",
+        highlight: "Me",
+      },
+      nameLabel: "Name",
+      namePlaceholder: "Enter your name",
+      emailLabel: "Email",
+      emailPlaceholder: "Enter your email",
+      messageLabel: "Message",
+      messagePlaceholder: "Enter your message",
+      submit: "Send",
+    },
+    fr: {
+      heading: {
+        lead: "Contactez",
+        highlight: "Moi",
+      },
+      nameLabel: "Nom",
+      namePlaceholder: "Entrez votre nom",
+      emailLabel: "Email",
+      emailPlaceholder: "Entrez votre email",
+      messageLabel: "Message",
+      messagePlaceholder: "Entrez votre message",
+      submit: "Envoyer",
+    },
+  };
+
+  const text = copy[language] || copy.en;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,63 +59,63 @@ function Contact() {
   };
 
   return (
-    <Container fluid className="contact-section">
-      <Container>
-        <Row style={{ justifyContent: "center", padding: "10px", position: "relative", zIndex: 10 }}>
-          <Col
-            md={8}
-            style={{
-              justifyContent: "center",
-              paddingTop: "30px",
-              paddingBottom: "50px",
-            }}
-          >
-            <h1 style={{ fontSize: "2.1em", paddingBottom: "20px" }}>
-              Contactez <strong className="purple">Moi</strong>
-            </h1>
-            <Form onSubmit={handleSubmit}>
-              <Form.Group controlId="formName">
-                <Form.Label>Nom</Form.Label>
-                <Form.Control
+    <section className="section-futuristic" id="contact">
+      {/* Effets de fond */}
+      <div className="floating-light floating-light-1" />
+      <div className="floating-light floating-light-2" />
+      <div className="cyber-grid-bg" />
+      
+      <div className="relative z-10 mx-auto max-w-4xl px-6 lg:px-8">
+        <div className="glass-card-futuristic p-10 animate-fade-in">
+          <h1 className="text-3xl font-semibold text-white sm:text-4xl mb-8">
+            {text.heading.lead} <span className="text-gradient-futuristic">{text.heading.highlight}</span>
+          </h1>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid gap-6 sm:grid-cols-2">
+              <label className="flex flex-col gap-2 text-sm font-medium text-brand-text/80">
+                <span>{text.nameLabel}</span>
+                <input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="Entrez votre nom"
+                  placeholder={text.namePlaceholder}
                   required
+                  className="input-futuristic"
                 />
-              </Form.Group>
-              <Form.Group controlId="formEmail">
-                <Form.Label>Email</Form.Label>
-                <Form.Control
+              </label>
+              <label className="flex flex-col gap-2 text-sm font-medium text-brand-text/80">
+                <span>{text.emailLabel}</span>
+                <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="Entrez votre email"
+                  placeholder={text.emailPlaceholder}
                   required
+                  className="input-futuristic"
                 />
-              </Form.Group>
-              <Form.Group controlId="formMessage">
-                <Form.Label>Message</Form.Label>
-                <Form.Control
-                  as="textarea"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={3}
-                  placeholder="Entrez votre message"
-                  required
-                />
-              </Form.Group>
-              <Button variant="primary" type="submit" style={{ marginTop: "20px" }}>
-                Envoyer
-              </Button>
-            </Form>
-          </Col>
-        </Row>
-      </Container>
-    </Container>
+              </label>
+            </div>
+            <label className="flex flex-col gap-2 text-sm font-medium text-brand-text/80">
+              <span>{text.messageLabel}</span>
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                rows={5}
+                placeholder={text.messagePlaceholder}
+                required
+                className="input-futuristic textarea-futuristic"
+              />
+            </label>
+            <button type="submit" className="btn-futuristic-global text-sm uppercase tracking-wider">
+              {text.submit}
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
   );
 }
 

@@ -1,5 +1,4 @@
 import React from "react";
-import { Col, Row } from "react-bootstrap";
 import {
   SiC,
   SiPython,
@@ -36,14 +35,21 @@ function Techstack() {
   ];
 
   return (
-    <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
+    <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-5">
       {techs.map((tech) => (
-        <Col xs={4} md={2} className="tech-icons" key={tech.id}>
-          {tech.icon}
-          <p className="tech-name">{tech.name}</p>
-        </Col>
+        <div
+          key={tech.id}
+          className="group flex flex-col items-center gap-3 rounded-2xl border border-white/5 bg-white/[0.04] p-6 text-brand-text/80 transition hover:-translate-y-1 hover:border-brand-accent/40 hover:bg-brand-accent/10 hover:text-brand-accent"
+        >
+          <span className="text-3xl sm:text-4xl" aria-hidden="true">
+            {tech.icon}
+          </span>
+          <span className="text-xs font-semibold uppercase tracking-[0.35em] text-brand-muted/80">
+            {tech.name}
+          </span>
+        </div>
       ))}
-    </Row>
+    </div>
   );
 }
 

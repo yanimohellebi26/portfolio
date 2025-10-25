@@ -248,6 +248,7 @@ button:focus {
   background-size: cover !important;
   width: 100%;
   height: 100%;
+  pointer-events: none;
 }
 
 .home-header {
@@ -256,7 +257,7 @@ button:focus {
 
 .home-section {
   position: relative;
-  z-index: -1;
+  z-index: 1;
   background-image: var(--image-gradient), url(./Assets/home-bg.jpg);
   background-position: top center;
   background-repeat: no-repeat;
@@ -268,6 +269,45 @@ button:focus {
   padding: 9rem 0 2rem !important;
   color: whitesmoke;
   text-align: left;
+}
+
+.language-toggle {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 50px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.language-toggle-btn {
+  align-items: center;
+  background: rgba(199, 112, 240, 0.12);
+  border: 1px solid rgba(199, 112, 240, 0.7);
+  border-radius: 999px;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 0.95rem;
+  gap: 0.4rem;
+  padding: 0.4rem 1.2rem;
+  backdrop-filter: blur(12px);
+  transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  pointer-events: auto;
+}
+
+.language-toggle-btn:hover,
+.language-toggle-btn:focus {
+  background: linear-gradient(135deg, #c770f0 0%, #8752e1 100%);
+  border-color: transparent;
+  box-shadow: 0 10px 25px rgba(135, 82, 225, 0.35);
+  color: #0d0520;
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.language-toggle-icon {
+  font-size: 1.05rem;
+  line-height: 1;
 }
 
 .heading {
@@ -295,6 +335,14 @@ button:focus {
 }
 
 @media (max-width: 767px) {
+  .language-toggle {
+    justify-content: center;
+    padding: 0 20px 20px;
+  }
+  .language-toggle-btn {
+    width: 100%;
+    justify-content: center;
+  }
   .Typewriter__wrapper {
     font-size: 1.4em !important;
     font-weight: 500 !important;
