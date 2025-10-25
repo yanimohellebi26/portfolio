@@ -11,7 +11,6 @@ const AIBackground = () => {
     const ctx = canvas.getContext('2d');
     let animationFrameId;
     let particles = [];
-    let connections = [];
     let nodes = [];
     let mouseX = -1000;
     let mouseY = -1000;
@@ -260,7 +259,6 @@ const AIBackground = () => {
 
         // Rotation simplifiée
         const cos = Math.cos(this.rotationY);
-        const sin = Math.sin(this.rotationY);
         
         const edges = [
           [0,1],[1,2],[2,3],[3,0],[4,5],[5,6],
@@ -462,23 +460,6 @@ const AIBackground = () => {
             ctx.stroke();
           }
         }
-      }
-    };
-
-    // Dessiner du code binaire qui défile
-    const drawBinaryRain = () => {
-      const time = Date.now() * 0.001;
-      ctx.font = '12px "Courier New", monospace';
-      ctx.textAlign = 'center';
-      
-      for (let i = 0; i < 20; i++) {
-        const x = (i / 20) * canvas.width;
-        const y = ((time * 50 + i * 100) % canvas.height);
-        const binary = Math.random() > 0.5 ? '1' : '0';
-        const opacity = Math.max(0, 1 - (y / canvas.height)) * 0.15;
-        
-        ctx.fillStyle = `rgba(40, 198, 255, ${opacity})`;
-        ctx.fillText(binary, x, y);
       }
     };
 

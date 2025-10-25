@@ -9,6 +9,7 @@ import Resume from "./components/Resume/ResumeNew";
 import Contact from "./components/Contact/Contact";
 import Blog from "./components/Blog/Blog";
 import AIBackground from "./components/AIBackground";
+import Chatbot from "./components/Chatbot/Chatbot";
 import {
   BrowserRouter as Router,
   Route,
@@ -54,6 +55,7 @@ function App() {
             </Routes>
           </main>
           <Footer />
+          <Chatbot />
         </div>
       </Router>
     </LanguageProvider>
