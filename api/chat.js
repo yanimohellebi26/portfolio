@@ -1,65 +1,10 @@
-"use strict";
-
-const express = require("express");
-const cors = require("cors");
-const dotenv = require("dotenv");
 const OpenAI = require("openai");
-const rateLimit = require("express-rate-limit");
-
-dotenv.config();
-
-const app = express();
-const port = process.env.PORT || 5001;
-const apiKey = process.env.OPENAI_API_KEY || process.env.openIAapi;
-const allowedOrigin = process.env.CLIENT_ORIGIN || null;
 
 const MAX_MESSAGE_LENGTH = 500;
 
-let openaiClient = null;
-if (apiKey) {
-  openaiClient = new OpenAI({ apiKey });
-} else {
-  console.warn(
-    "[chatbot] OpenAI API key is not defined. Set OPENAI_API_KEY in your environment to enable AI responses."
-  );
-}
-
-app.use(
-  cors(
-    allowedOrigin
-      ? {
-          origin: allowedOrigin,
-          credentials: false
-        }
-      : undefined
-  )
-);
-app.use(express.json({ limit: "1mb" }));
-
-const chatLimiter = rateLimit({
-  windowMs: 60 * 1000,
-  max: 20,
-  standardHeaders: true,
-  legacyHeaders: false,
-  message: { error: "Trop de requêtes. Réessayez dans une minute." }
-});
-
-const normalizeHistory = (history = []) => {
-  if (!Array.isArray(history)) {
-    return [];
-  }
-
-  return history
-    .slice(-10)
-    .map((entry) => {
-      const role = entry.sender === "bot" ? "assistant" : "user";
-      return {
-        role,
-        content: String(entry.text || "")
-      };
-    })
-    .filter((item) => item.content.trim().length > 0);
-};
+const rateLimitMap = new Map();
+const RATE_LIMIT_WINDOW_MS = 60 * 1000;
+const RATE_LIMIT_MAX = 20;
 
 const SYSTEM_PROMPT = `Tu es l'assistant virtuel du portfolio de Yani Mohellebi. Voici les informations à connaître :
 
@@ -116,7 +61,52 @@ Si on te pose des questions trop personnelles (vie amoureuse, situation sentimen
 
 Si la question n'est pas liée au portfolio, redirige poliment vers les informations disponibles.`;
 
-app.post("/api/chat", chatLimiter, async (req, res) => {
+const normalizeHistory = (history) => {
+  if (!Array.isArray(history)) {
+    return [];
+  }
+
+  return history
+    .slice(-10)
+    .map((entry) => ({
+      role: entry.sender === "bot" ? "assistant" : "user",
+      content: String(entry.text || ""),
+    }))
+    .filter((item) => item.content.trim().length > 0);
+};
+
+const checkRateLimit = (ip) => {
+  const now = Date.now();
+  const record = rateLimitMap.get(ip);
+
+  if (!record || now - record.windowStart > RATE_LIMIT_WINDOW_MS) {
+    rateLimitMap.set(ip, { windowStart: now, count: 1 });
+    return true;
+  }
+
+  if (record.count >= RATE_LIMIT_MAX) {
+    return false;
+  }
+
+  record.count += 1;
+  return true;
+};
+
+module.exports = async function handler(req, res) {
+  if (req.method !== "POST") {
+    res.setHeader("Allow", "POST");
+    return res.status(405).json({ error: "Method not allowed" });
+  }
+
+  const clientIp =
+    req.headers["x-forwarded-for"]?.split(",")[0]?.trim() ||
+    req.socket?.remoteAddress ||
+    "unknown";
+
+  if (!checkRateLimit(clientIp)) {
+    return res.status(429).json({ error: "Trop de requêtes. Réessayez dans une minute." });
+  }
+
   const { message, history } = req.body || {};
 
   if (!message || !String(message).trim()) {
@@ -127,45 +117,42 @@ app.post("/api/chat", chatLimiter, async (req, res) => {
 
   if (trimmedMessage.length > MAX_MESSAGE_LENGTH) {
     return res.status(400).json({
-      error: `Le message ne doit pas dépasser ${MAX_MESSAGE_LENGTH} caractères.`
+      error: `Le message ne doit pas dépasser ${MAX_MESSAGE_LENGTH} caractères.`,
     });
   }
 
-  if (!openaiClient) {
+  const apiKey = process.env.OPENAI_API_KEY;
+
+  if (!apiKey) {
     return res.status(500).json({
-      error:
-        "Le serveur n'est pas configuré avec une clé OpenAI. Ajoutez OPENAI_API_KEY dans votre fichier .env."
+      error: "Le serveur n'est pas configuré avec une clé OpenAI.",
     });
   }
 
+  const openai = new OpenAI({ apiKey });
   const sanitizedHistory = normalizeHistory(history);
 
   try {
-    const response = await openaiClient.chat.completions.create({
+    const response = await openai.chat.completions.create({
       model: process.env.OPENAI_MODEL || "gpt-4o-mini",
       temperature: 0.7,
       max_tokens: 200,
       messages: [
         { role: "system", content: SYSTEM_PROMPT },
         ...sanitizedHistory,
-        { role: "user", content: trimmedMessage }
-      ]
+        { role: "user", content: trimmedMessage },
+      ],
     });
 
     const reply =
       response?.choices?.[0]?.message?.content?.trim() ||
       "Je suis désolé, je n'ai pas de réponse pour le moment.";
 
-    return res.json({ reply });
+    return res.status(200).json({ reply });
   } catch (error) {
-    console.error("[chatbot] OpenAI error:", error?.response?.data || error?.message || error);
-    return res
-      .status(502)
-      .json({ error: "Impossible d'obtenir une réponse de l'assistant pour le moment." });
+    console.error("[chatbot] OpenAI error:", error?.message || error);
+    return res.status(502).json({
+      error: "Impossible d'obtenir une réponse de l'assistant pour le moment.",
+    });
   }
-});
-
-app.listen(port, () => {
-  console.log(`[chatbot] Serveur IA prêt sur http://localhost:${port}`);
-});
-
+};

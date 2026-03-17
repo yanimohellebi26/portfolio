@@ -1,15 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import OpenAI from "openai";
 import { FaComments, FaPaperPlane, FaTimes } from "react-icons/fa";
 import "./Chatbot.css";
-
-// Initialisation du client OpenAI uniquement si la clé API est disponible
-const openai = process.env.REACT_APP_OPENAI_API_KEY 
-  ? new OpenAI({
-      apiKey: process.env.REACT_APP_OPENAI_API_KEY,
-      dangerouslyAllowBrowser: true // Nécessaire pour utiliser l'API côté client
-    })
-  : null;
 
 const normalizeMessage = (text) =>
   text
@@ -171,95 +162,28 @@ const Chatbot = () => {
     setIsLoading(true);
 
     try {
-      // Créer le contexte avec les informations du portfolio
-      const systemPrompt = `Tu es l'assistant virtuel du portfolio de Yani Mohellebi. Voici les informations à connaître :
-
-- **Nom** : Yani Mohellebi
-- **Formation** : Master Intelligence Artificielle à l'Université de Bourgogne (Dijon)
-- **Poste actuel** : Ingénieur R&D IA en alternance chez Siemens DISW (Lyon) - Contrat de 2 ans (octobre 2025 - octobre 2027)
-- **Localisation** : Basé entre Dijon (études) et Lyon (alternance)
-- **Expertise** : Machine Learning avancé, NLP, Computer Vision, architectures d'agents intelligents, développement full-stack
-
-- **Expérience professionnelle** :
-  1. 🏢 Alternance Siemens DISW Lyon (octobre 2025 - octobre 2027)
-     - Ingénieur R&D IA
-     - Développement de solutions IA pour applications industrielles
-     - Architectures d'agents intelligents (LangChain, LangGraph)
-     - NLP, Computer Vision, APIs REST
-  
-  2. 🔬 Stage de recherche - Laboratoire d'Informatique LE2I, Université de Bourgogne (juin - août 2025)
-     - Projets de recherche en IA et Computer Vision
-     - Segmentation sémantique d'images
-     - Reconnaissance d'objets via nuages de points 3D
-     - 3 projets de recherche publiés sur GitHub :
-       * github.com/yanimohellebi26/segmentation-semantique
-       * github.com/yanimohellebi26/reconnaissance_maison-nuage-de-points
-     - Technologies : PyTorch, TensorFlow, OpenCV, Point Cloud Library
-
-- **Technologies principales** :
-  - IA/ML : TensorFlow, PyTorch, LangChain, LangGraph
-  - Backend : FastAPI, REST APIs, Python
-  - Frontend : React, Svelte, JavaScript
-  - DevOps : Docker, Postman, Flyway
-  - Bases de données : PostgreSQL, MongoDB, SQL, Cypher (Neo4j)
-  - Gestion de projet : Jira, Confluence, OpenProject
-  - Autres : OCaml, Pandas, Git
-
-- **Projets portfolio** : 
-  - 🎭 NeutraView : Analyse d'avis culturels avec NLP pour détecter les sentiments
-  - 📚 Système de recommandations littéraires : Recommandations personnalisées basées sur l'IA
-  - 📱 SUBSENSE : Analyse automatique de vidéos Instagram avec Computer Vision
-  - 🏃 Nutri-Mind : Application d'accompagnement nutritionnel intelligent pour étudiants sportifs
-
-- **Engagement** : Élu à la CBFU (Commission de la Formation et de la Vie Universitaire), bénévole à AGGO
-- **Langues** : Français et anglais
-- **Passions** : IA appliquée aux problèmes industriels, architectures d'agents intelligents, cybersécurité, recherche en ML
-
-IMPORTANT : Utilise des emojis pertinents et structure tes réponses de manière claire :
-- Utilise des bullet points (•) pour les listes
-- Ajoute des emojis contextuels (🎯 💡 🚀 📊 🤖 💻 🏢 🔬 etc.)
-- Sépare les idées principales
-- Reste concis mais informatif
-- Tutoie l'utilisateur de manière amicale
-
-RÈGLES POUR QUESTIONS PERSONNELLES :
-Si on te pose des questions trop personnelles (vie amoureuse, situation sentimentale, vie privée intime, etc.), réponds avec humour et professionnalisme :
-- Utilise des emojis amusants (😅 🤖 💼 🔒)
-- Redirige gentiment vers le côté professionnel
-- Reste léger et sympathique
-- Exemples de réponses :
-  "😅 Haha, je suis un chatbot, je n'ai pas accès à ce genre d'infos ! Parlons plutôt de ses projets tech 💻"
-  "🤖 Beep boop ! Cette information est classée confidentielle 🔒 Mais je peux te parler de ses compétences professionnelles !"
-  "😄 Désolé, je suis programmé pour parler de code, pas de cœur ! Intéresse-toi plutôt à ses projets 🚀"
-
-Si la question n'est pas liée au portfolio, redirige poliment vers les informations disponibles.`;
-
-      // Appel à l'API OpenAI avec GPT-4o-mini (plus rapide et moins cher)
-      const completion = await openai.chat.completions.create({
-        model: "gpt-4o-mini",
-        messages: [
-          { role: "system", content: systemPrompt },
-          ...messages.slice(-5).map(msg => ({
-            role: msg.sender === "user" ? "user" : "assistant",
-            content: msg.text
-          })),
-          { role: "user", content: trimmedMessage }
-        ],
-        temperature: 0.7,
-        max_tokens: 200
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: trimmedMessage,
+          history: messages.slice(-10),
+        }),
       });
 
-      const botReply = completion.choices[0]?.message?.content?.trim();
-      
-      if (botReply) {
-        setMessages((prev) => [...prev, { sender: "bot", text: botReply }]);
+      if (!res.ok) {
+        throw new Error(`Server responded with ${res.status}`);
+      }
+
+      const data = await res.json();
+
+      if (data.reply) {
+        setMessages((prev) => [...prev, { sender: "bot", text: data.reply }]);
       } else {
-        throw new Error("Réponse vide reçue de l'API");
+        throw new Error("Empty reply from server");
       }
     } catch (error) {
-      console.error("[chatbot] Erreur lors de l'appel OpenAI:", error);
-      
-      // Fallback sur la base de connaissances locale
+      console.error("[chatbot] Error:", error);
       const fallbackResponse = getBotResponse(trimmedMessage);
       setMessages((prev) => [...prev, { sender: "bot", text: fallbackResponse }]);
     } finally {

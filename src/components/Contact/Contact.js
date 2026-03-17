@@ -53,7 +53,7 @@ function Contact() {
       .then((result) => {
           console.log(result.text);
       }, (error) => {
-          console.log(error.text);
+          console.error("[contact] EmailJS error:", error.text);
       });
     setFormData({ name: "", email: "", message: "" });
   };
