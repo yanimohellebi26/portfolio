@@ -49,7 +49,7 @@ function Footer() {
       <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-8 px-6 text-sm text-brand-muted lg:flex-row lg:justify-between lg:px-8">
         <div className="space-y-2 text-center lg:text-left">
           <p className="text-brand-text/90 font-medium">{designedBy}</p>
-          <p className="text-brand-text/60">{copyright}</p>
+          <p className="text-brand-text/75">{copyright}</p>
         </div>
         <ul className="flex items-center gap-4">
           {socials.map(({ href, label, icon }) => (

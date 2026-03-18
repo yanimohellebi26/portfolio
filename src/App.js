@@ -1,13 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense, lazy } from "react";
 import Preloader from "./components/Pre";
 import Navbar from "./components/Navbar";
-import Home from "./components/Home/Home";
-import About from "./components/About/About";
-import Projects from "./components/Projects/Projects";
 import Footer from "./components/Footer";
-import Resume from "./components/Resume/ResumeNew";
-import Contact from "./components/Contact/Contact";
-import Blog from "./components/Blog/Blog";
 import AIBackground from "./components/AIBackground";
 import Chatbot from "./components/Chatbot/Chatbot";
 import {
@@ -18,6 +12,13 @@ import {
 } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import { LanguageProvider } from "./context/LanguageContext";
+
+const Home = lazy(() => import("./components/Home/Home"));
+const About = lazy(() => import("./components/About/About"));
+const Projects = lazy(() => import("./components/Projects/Projects"));
+const Resume = lazy(() => import("./components/Resume/ResumeNew"));
+const Contact = lazy(() => import("./components/Contact/Contact"));
+const Blog = lazy(() => import("./components/Blog/Blog"));
 
 function App() {
   const [load, updateLoad] = useState(true);
@@ -44,15 +45,17 @@ function App() {
           <Navbar />
           <ScrollToTop />
           <main className="flex-1">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/project" element={<Projects />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/resume" element={<Resume />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="*" element={<Navigate to="/" />} />
-            </Routes>
+            <Suspense fallback={null}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/project" element={<Projects />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/resume" element={<Resume />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="*" element={<Navigate to="/" />} />
+              </Routes>
+            </Suspense>
           </main>
           <Footer />
           <Chatbot />

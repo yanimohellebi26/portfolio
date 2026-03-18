@@ -1,5 +1,4 @@
 import React from "react";
-import Particle from "../Particle";
 import BlogCards from "./BlogCards";
 import Bneutralview from "../../Assets/Blog/Bneutralview.png";
 import Brecommendation from "../../Assets/Blog/Brecommendation.png";
@@ -302,7 +301,6 @@ Pour comprendre ce qu'on regarde. Et mieux choisir ce qu'on écoute.`,
 
   return (
     <section className="section-shell" id="blog">
-      <Particle />
       <div className="relative z-10 mx-auto max-w-6xl px-6 lg:px-8">
         <div className="mx-auto max-w-3xl space-y-4 text-center">
           <h1 className="text-3xl font-semibold text-white sm:text-4xl">

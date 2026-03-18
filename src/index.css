@@ -66,6 +66,17 @@
     transform-origin: 70% 70%;
     animation: wave 2.1s infinite;
   }
+
+  .fade-section {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+
+  .fade-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 #tsparticles {

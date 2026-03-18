@@ -5,12 +5,14 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { ImPointRight } from "react-icons/im";
 import myImg from "../../Assets/moi.png";
 import { useLanguage } from "../../context/LanguageContext";
+import useFadeIn from "../../hooks/useFadeIn";
 import "../GlobalFuturistic.css";
 
 function Home2({ language: languageOverride }) {
   const { language: contextLanguage } = useLanguage();
   const language = languageOverride || contextLanguage || "en";
   const isFrench = language === "fr";
+  const { ref: fadeRef, visible } = useFadeIn();
   const socials = [
     {
       href: "https://github.com/yanimohellebi26",
@@ -40,7 +42,7 @@ function Home2({ language: languageOverride }) {
   ];
 
   return (
-    <div id="about" className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-16 lg:px-8">
+    <div ref={fadeRef} id="about" className={`fade-section${visible ? " is-visible" : ""} relative z-10 mx-auto w-full max-w-6xl px-6 pb-16 lg:px-8`}>
       <div className="grid items-start gap-12 lg:grid-cols-[1.3fr_0.7fr]">
         <div className="space-y-8 text-base leading-relaxed">
           <h2 className="font-display text-3xl font-semibold text-white sm:text-4xl">
@@ -163,7 +165,7 @@ function Home2({ language: languageOverride }) {
                     href={href}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-lg text-white transition hover:border-brand-accent/40 hover:bg-brand-accent/15 hover:text-brand-accent"
+                    className="social-card-futuristic"
                   >
                     <span className="sr-only">{label}</span>
                     {icon}

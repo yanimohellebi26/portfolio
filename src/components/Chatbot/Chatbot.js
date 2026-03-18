@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FaComments, FaPaperPlane, FaTimes } from "react-icons/fa";
+import { useLanguage } from "../../context/LanguageContext";
 import "./Chatbot.css";
 
 const normalizeMessage = (text) =>
@@ -103,19 +104,58 @@ const KNOWLEDGE_BASE = [
   keywords: item.keywords.map((keyword) => normalizeMessage(keyword))
 }));
 
+const UI_COPY = {
+  fr: {
+    welcome:
+      "👋 Bonjour ! Je suis l'assistant virtuel du portfolio de Yani.\n\n💬 Pose-moi des questions sur :\n• 🎓 Sa formation\n• 💼 Ses projets\n• 💻 Ses compétences\n• 📧 Comment le contacter",
+    header: "Assistant Portfolio",
+    placeholder: "Pose ta question ici...",
+    inputAriaLabel: "Zone de saisie de la question",
+    sendAriaLabel: "Envoyer le message",
+    closeAriaLabel: "Fermer la discussion",
+    openAriaLabel: "Ouvrir la discussion",
+    typing: "Assistant en train d'écrire\u2026",
+    fallback:
+      "Merci pour ta question ! Je n'ai pas encore la réponse, mais tu peux consulter les sections de mon portfolio ou m'envoyer un message via le formulaire de contact. Tu peux aussi me demander : \"Quelle est ta formation ?\", \"Quels sont tes projets ?\" ou \"Dans quelles technologies travailles-tu ?\"",
+  },
+  en: {
+    welcome:
+      "👋 Hi! I'm Yani's portfolio virtual assistant.\n\n💬 Ask me about:\n• 🎓 His education\n• 💼 His projects\n• 💻 His skills\n• 📧 How to contact him",
+    header: "Portfolio Assistant",
+    placeholder: "Ask your question here...",
+    inputAriaLabel: "Question input area",
+    sendAriaLabel: "Send message",
+    closeAriaLabel: "Close chat",
+    openAriaLabel: "Open chat",
+    typing: "Assistant is typing\u2026",
+    fallback:
+      "Thanks for your question! I don't have the answer yet, but you can browse the portfolio sections or send a message via the contact form. You can also ask: \"What is your education?\", \"What are your projects?\" or \"What technologies do you use?\"",
+  },
+};
+
 const Chatbot = () => {
+  const { language } = useLanguage();
+  const text = UI_COPY[language] || UI_COPY.en;
+
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
-    {
-      sender: "bot",
-      text: "👋 Bonjour ! Je suis l'assistant virtuel du portfolio de Yani.\n\n💬 Pose-moi des questions sur :\n• 🎓 Sa formation\n• 💼 Ses projets\n• 💻 Ses compétences\n• 📧 Comment le contacter"
-    }
+    { sender: "bot", text: text.welcome }
   ]);
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
+  const prevLangRef = useRef(language);
 
   const knowledgeBase = KNOWLEDGE_BASE;
+
+  // Reset welcome message when language changes
+  useEffect(() => {
+    if (prevLangRef.current !== language) {
+      prevLangRef.current = language;
+      const currentText = UI_COPY[language] || UI_COPY.en;
+      setMessages([{ sender: "bot", text: currentText.welcome }]);
+    }
+  }, [language]);
 
   useEffect(() => {
     if (messagesEndRef.current) {
@@ -147,7 +187,7 @@ const Chatbot = () => {
       return entry.answer;
     }
 
-    return "Merci pour ta question ! Je n'ai pas encore la réponse, mais tu peux consulter les sections de mon portfolio ou m'envoyer un message via le formulaire de contact. Tu peux aussi me demander : \"Quelle est ta formation ?\", \"Quels sont tes projets ?\" ou \"Dans quelles technologies travailles-tu ?\"";
+    return text.fallback;
   };
 
   const handleSendMessage = async () => {
@@ -207,13 +247,13 @@ const Chatbot = () => {
               <span role="img" aria-label="assistant">
                 🤖
               </span>
-              <strong> Assistant Portfolio</strong>
+              <strong> {text.header}</strong>
             </div>
             <button
               type="button"
               className="chatbot__close"
               onClick={toggleChat}
-              aria-label="Fermer la discussion"
+              aria-label={text.closeAriaLabel}
             >
               <FaTimes />
             </button>
@@ -231,7 +271,7 @@ const Chatbot = () => {
             ))}
             {isLoading && (
               <div className="chatbot__message chatbot__message--bot">
-                <span>Assistant en train d'écrire&hellip;</span>
+                <span>{text.typing}</span>
               </div>
             )}
             <div ref={messagesEndRef} />
@@ -241,14 +281,14 @@ const Chatbot = () => {
               value={inputValue}
               onChange={(event) => setInputValue(event.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="Pose ta question ici..."
-              aria-label="Zone de saisie de la question"
+              placeholder={text.placeholder}
+              aria-label={text.inputAriaLabel}
               rows={2}
             />
             <button
               type="button"
               onClick={handleSendMessage}
-              aria-label="Envoyer le message"
+              aria-label={text.sendAriaLabel}
               disabled={isLoading}
             >
               <FaPaperPlane />
@@ -260,7 +300,7 @@ const Chatbot = () => {
         type="button"
         className="chatbot__toggle"
         onClick={toggleChat}
-        aria-label={isOpen ? "Fermer la discussion" : "Ouvrir la discussion"}
+        aria-label={isOpen ? text.closeAriaLabel : text.openAriaLabel}
       >
         {isOpen ? <FaTimes /> : <FaComments />}
       </button>
