@@ -6,26 +6,22 @@ import { useLanguage } from "../../context/LanguageContext";
 import "../GlobalFuturistic.css";
 
 function Home() {
-  const { language, toggleLanguage } = useLanguage();
+  const { language } = useLanguage();
 
   const copy = {
     en: {
       greeting: "Hello!",
       intro: "I AM",
       alt: "Home illustration",
-      toggle: "Switch to French",
-      toggleAria: "Switch language to French",
     },
     fr: {
       greeting: "Bonjour !",
       intro: "JE SUIS",
       alt: "Illustration Accueil",
-      toggle: "Passer en anglais",
-      toggleAria: "Changer la langue en anglais",
     },
   };
 
-  const { greeting, intro, alt, toggle, toggleAria } = copy[language];
+  const { greeting, intro, alt } = copy[language];
 
   return (
     <section id="home" className="section-futuristic relative overflow-hidden">
@@ -38,24 +34,12 @@ function Home() {
         <div className="grid items-center gap-16 lg:grid-cols-[1.05fr_0.95fr]">
           {/* Contenu principal avec animations */}
           <div className="space-y-10 animate-fade-in">
-            <div className="flex items-center justify-between gap-4">
-              <p className="font-display text-xs uppercase tracking-[0.45em] text-brand-muted">
-                {greeting}
-                <span className="wave ml-3" role="img" aria-label="wave">
-                  👋🏻
-                </span>
-              </p>
-              <button
-                type="button"
-                className="btn-futuristic-global inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] uppercase tracking-[0.3em]"
-                onClick={toggleLanguage}
-                aria-label={toggleAria}
-                title={toggleAria}
-              >
-                <span aria-hidden="true" className="text-base">🌐</span>
-                {toggle}
-              </button>
-            </div>
+            <p className="font-display text-xs uppercase tracking-[0.45em] text-brand-muted">
+              {greeting}
+              <span className="wave ml-3" role="img" aria-label="wave">
+                👋🏻
+              </span>
+            </p>
 
             <div className="space-y-6 text-left">
               <h1 className="text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">

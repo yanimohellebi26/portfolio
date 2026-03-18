@@ -13,7 +13,7 @@ import "./GlobalFuturistic.css";
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { language } = useLanguage();
+  const { language, toggleLanguage } = useLanguage();
   const location = useLocation();
 
   const labels = {
@@ -99,6 +99,16 @@ function NavBar() {
               </Link>
             );
           })}
+          <button
+            type="button"
+            onClick={toggleLanguage}
+            className="nav-link-futuristic ml-1 flex items-center gap-1.5 text-xs uppercase tracking-widest"
+            aria-label={language === "fr" ? "Switch to English" : "Passer en français"}
+            title={language === "fr" ? "Switch to English" : "Passer en français"}
+          >
+            <span aria-hidden="true">🌐</span>
+            {language === "fr" ? "EN" : "FR"}
+          </button>
         </nav>
         <button
           type="button"
@@ -149,6 +159,15 @@ function NavBar() {
               </Link>
             );
           })}
+          <button
+            type="button"
+            onClick={toggleLanguage}
+            className="glass-card-futuristic flex items-center gap-3 px-4 py-3 text-sm font-medium text-brand-text/80 hover:text-white transition"
+            aria-label={language === "fr" ? "Switch to English" : "Passer en français"}
+          >
+            <span aria-hidden="true">🌐</span>
+            <span>{language === "fr" ? "English" : "Français"}</span>
+          </button>
         </nav>
       </div>
     </header>

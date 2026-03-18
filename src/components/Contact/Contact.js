@@ -9,6 +9,7 @@ function Contact() {
     email: "",
     message: "",
   });
+  const [status, setStatus] = useState("idle"); // idle | sending | success | error
   const { language } = useLanguage();
 
   const copy = {
@@ -24,6 +25,9 @@ function Contact() {
       messageLabel: "Message",
       messagePlaceholder: "Enter your message",
       submit: "Send",
+      sending: "Sending...",
+      success: "Message sent successfully!",
+      error: "An error occurred. Please try again.",
     },
     fr: {
       heading: {
@@ -37,6 +41,9 @@ function Contact() {
       messageLabel: "Message",
       messagePlaceholder: "Entrez votre message",
       submit: "Envoyer",
+      sending: "Envoi en cours...",
+      success: "Message envoyé avec succès !",
+      error: "Une erreur est survenue. Veuillez réessayer.",
     },
   };
 
@@ -49,13 +56,17 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setStatus("sending");
     emailjs.sendForm('service_a091azb', 'template_hq93ohv', e.target, 'w6zAF_jeZxe0ft_gA')
-      .then((result) => {
-          console.log(result.text);
+      .then(() => {
+          setStatus("success");
+          setFormData({ name: "", email: "", message: "" });
+          setTimeout(() => setStatus("idle"), 5000);
       }, (error) => {
           console.error("[contact] EmailJS error:", error.text);
+          setStatus("error");
+          setTimeout(() => setStatus("idle"), 5000);
       });
-    setFormData({ name: "", email: "", message: "" });
   };
 
   return (
@@ -64,12 +75,24 @@ function Contact() {
       <div className="floating-light floating-light-1" />
       <div className="floating-light floating-light-2" />
       <div className="cyber-grid-bg" />
-      
+
       <div className="relative z-10 mx-auto max-w-4xl px-6 lg:px-8">
         <div className="glass-card-futuristic p-10 animate-fade-in">
           <h1 className="text-3xl font-semibold text-white sm:text-4xl mb-8">
             {text.heading.lead} <span className="text-gradient-futuristic">{text.heading.highlight}</span>
           </h1>
+
+          {status === "success" && (
+            <div className="mb-6 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 px-5 py-4 text-sm text-emerald-300 backdrop-blur-sm">
+              {text.success}
+            </div>
+          )}
+          {status === "error" && (
+            <div className="mb-6 rounded-2xl border border-red-500/30 bg-red-500/10 px-5 py-4 text-sm text-red-300 backdrop-blur-sm">
+              {text.error}
+            </div>
+          )}
+
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid gap-6 sm:grid-cols-2">
               <label className="flex flex-col gap-2 text-sm font-medium text-brand-text/80">
@@ -109,8 +132,14 @@ function Contact() {
                 className="input-futuristic textarea-futuristic"
               />
             </label>
-            <button type="submit" className="btn-futuristic-global text-sm uppercase tracking-wider">
-              {text.submit}
+            <button
+              type="submit"
+              disabled={status === "sending"}
+              className={`btn-futuristic-global text-sm uppercase tracking-wider ${
+                status === "sending" ? "opacity-60 cursor-not-allowed" : ""
+              }`}
+            >
+              {status === "sending" ? text.sending : text.submit}
             </button>
           </form>
         </div>
