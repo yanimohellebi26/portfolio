@@ -1,5 +1,6 @@
 import React from "react";
 import ProjectCard from "./ProjectCards";
+import ragImg from "../../Assets/Projects/rag-master.png";
 import mindImg from "../../Assets/Projects/mind.png";
 import spamImg from "../../Assets/Projects/spam.jpg";
 import drollImg from "../../Assets/Projects/droll.png";
@@ -10,6 +11,7 @@ import livreRecoImg from "../../Assets/Projects/recommendation.png";
 import subsenseImg from "../../Assets/Projects/subsense.png";
 import nutrimindImg from "../../Assets/Projects/nutrimand.png";
 import rawviewImg from "../../Assets/Projects/rawview.png";
+import segmentationImg from "../../Assets/Projects/reconnaissance-maison.png";
 import { useLanguage } from "../../context/LanguageContext";
 import "./ProjectsFuturistic.css";
 
@@ -31,71 +33,17 @@ function Projects() {
 
   const projects = [
     {
-      id: "mind",
-      imgPath: mindImg,
+      id: "rag-master",
+      imgPath: ragImg,
       title: {
-        en: "The Mind - AI and Network Communication",
-        fr: "The Mind - IA et Communication Réseau",
+        en: "RAG-Master1 - AI Teaching Assistant",
+        fr: "RAG-Master1 - Assistant Pédagogique IA",
       },
       description: {
-        en: "Built a multiplayer edition of The Mind with optimized network communication. Player connections rely on TCP sockets with mutex-protected synchronization. Trained an AI on 10,000 games using XGBoost to predict the optimal time to play each card. Interface delivered with SDL2.\n\n**Tech stack:** C, XGBoost, PyTorch, TCP sockets, Mutexes, SDL2",
-        fr: "Développement d'une version multijoueur du jeu The Mind avec une communication réseau optimisée. Utilisation des sockets TCP pour la connexion des joueurs et gestion de la synchronisation via mutex. IA entraînée sur 10 000 parties avec XGBoost pour prédire le moment optimal de jeu. Interface réalisée en SDL2.\n\n**Technologies utilisées :** C, XGBoost, PyTorch, Sockets TCP, Mutex, SDL2",
+        en: "Full-stack RAG-based teaching assistant for Master 1 Computer Science courses. Features a conversational chat with query rewriting, hybrid search (BM25 + semantic), re-ranking, and source traceability. Includes a Copilot Tools panel (quizzes, flashcards, mind maps, charts) and MCP server integration for YouTube transcript indexing.\n\n**Tech stack:** Python, Flask, React, OpenAI API, ChromaDB, GitHub Copilot SDK, MCP, BM25",
+        fr: "Assistant pédagogique RAG complet pour les cours de Master 1 Informatique. Chat conversationnel avec réécriture de requêtes, recherche hybride (BM25 + sémantique), re-ranking et traçabilité des sources. Panneau Copilot Tools (quiz, flashcards, mind maps, graphiques) et intégration de serveurs MCP pour l'indexation de transcriptions YouTube.\n\n**Technologies utilisées :** Python, Flask, React, OpenAI API, ChromaDB, GitHub Copilot SDK, MCP, BM25",
       },
-      ghLink: "https://github.com/yanimohellebi26/the_mind",
-    },
-    {
-      id: "spam",
-      imgPath: spamImg,
-      title: {
-        en: "AI-Powered Spam Detector",
-        fr: "Détecteur de Spam avec IA",
-      },
-      description: {
-        en: "Built an intelligent Telegram bot that filters spam messages. Implemented logistic regression with TF-IDF vectorisation to classify texts, coupled with data cleaning, cross-validation, and metrics such as precision, recall, and F1-score.\n\n**Tech stack:** Python, Scikit-learn, Pandas, TF-IDF, Telegram API",
-        fr: "Création d'un bot Telegram intelligent pour filtrer les spams. Implémentation d'un modèle de régression logistique et vectorisation TF-IDF pour classifier les messages. Nettoyage et traitement des données, validation croisée et analyse des performances avec précision, rappel, et F1-score.\n\n**Technologies utilisées :** Python, Scikit-learn, Pandas, TF-IDF, Telegram API",
-      },
-      ghLink: "https://github.com/yanimohellebi26/detecteur-spam.git",
-    },
-    {
-      id: "drol",
-      imgPath: drollImg,
-      title: {
-        en: "Modernising the DROL Game",
-        fr: "Modernisation du Jeu DROL",
-      },
-      description: {
-        en: "Rebuilt DROL with both cooperative and competitive multiplayer modes. Network traffic is managed with UDP to keep gameplay responsive while synchronising player states. Developed in Java on GNU/Linux with an overhauled interface and event system.\n\n**Tech stack:** Java, Swing, UDP, Linux",
-        fr: "Refonte du jeu DROL avec mode multijoueur coopératif et compétitif. Gestion du réseau avec UDP pour assurer la fluidité et la synchronisation des états de jeu. Développement en Java sous GNU/Linux, avec optimisation de l'interface et de la gestion des événements.\n\n**Technologies utilisées :** Java, Swing, UDP, Linux",
-      },
-      ghLink: "https://github.com/yanimohellebi26/DROL-GAME",
-    },
-    {
-      id: "flowers",
-      imgPath: flowersImg,
-      title: {
-        en: "Online Flower Shop",
-        fr: "Boutique en Ligne de Fleurs",
-      },
-      description: {
-        en: "Developed an e-commerce site for flower sales with dedicated flows for customers and vendors backed by SQLite. Built as a software engineering project with collaborative GitLab management, task planning, and weekly follow-ups.\n\n**Tech stack:** HTML, CSS, PHP, SQLite, GitLab",
-        fr: "Développement d'un site e-commerce pour la vente de fleurs avec gestion des utilisateurs et vendeurs via une base de données SQLite. Projet réalisé dans le cadre du génie logiciel avec gestion collaborative sur GitLab, planification des tâches en équipe et réunions hebdomadaires pour suivre l'avancement.\n\n**Technologies utilisées :** HTML, CSS, PHP, SQLite, GitLab",
-      },
-      ghLink: "https://github.com/yanimohellebi26/boutique-roses.git",
-    },
-    {
-      id: "cheat",
-      imgPath: cheatImg,
-      title: {
-        en: "Video-Based Exam Cheating Detection",
-        fr: "Détection de triche aux examens (vidéo)",
-      },
-      description: {
-        en: "Created a video-based system that flags suspicious behaviour during exams. Combined motion detection and activity analysis models to surface anomalies, with an architecture ready for future audio detection. Ships with a deployable web interface.\n\n**Tech stack:** OpenCV, PyTorch, FastAPI, JavaScript, HTML",
-        fr: "Création d'un système de détection de triche aux examens basé sur la vidéo. Utilisation de modèles de détection de mouvement et d'analyse d'activité visuelle pour repérer les comportements suspects. Système extensible avec une future intégration de la détection audio. Déployable via une interface web.\n\n**Technologies utilisées :** OpenCV, PyTorch, FastAPI, JavaScript, HTML",
-      },
-      ghLink: "https://github.com/yanimohellebi26/detection_triche.git",
-      collabLink:
-        "https://github.com/yanimohellebi26/detection_triche/issues/new?assignees=&labels=collaboration&template=collaboration_request.md",
+      ghLink: "https://github.com/yanimohellebi26/RAG-Master1",
     },
     {
       id: "neutraview",
@@ -105,26 +53,12 @@ function Projects() {
         fr: "NeutraView - Analyse Neutre d'Avis Culturels",
       },
       description: {
-        en: "Delivered a full web platform that analyses reviews of books, films, and series. AI modules produce objective summaries, sentiment detection, and psychological profiles based on past reviews. The modular architecture is thoroughly documented, proxied through Vite/React, and packaged with containers.\n\n**Tech stack:** FastAPI, React, OpenAI API, Hugging Face Transformers, PyTorch, PostgreSQL, Docker",
-        fr: "Développement complet d'une plateforme web pour analyser les avis de livres, films ou séries. Le système intègre des modules d'IA pour effectuer des résumés objectifs, détecter les sentiments, et établir un profil psychologique des utilisateurs à partir de leurs anciens avis. L'architecture est modulaire et documentée, avec gestion des appels via un proxy Vite/React et déploiement en conteneurs.\n\n**Technologies utilisées :** FastAPI, React, OpenAI API, Hugging Face Transformers, PyTorch, PostgreSQL, Docker",
+        en: "Full web platform that analyses reviews of books, films, and series. AI modules produce objective summaries, sentiment detection, and psychological profiles based on past reviews. Modular architecture with a Vite/React frontend, FastAPI backend, and containerised deployment.\n\n**Tech stack:** FastAPI, React, Vite, TypeScript, OpenAI API, Hugging Face Transformers, Docker",
+        fr: "Plateforme web complète pour analyser les avis de livres, films ou séries. Modules d'IA pour résumés objectifs, détection de sentiments et profils psychologiques des utilisateurs. Architecture modulaire avec frontend React/Vite, backend FastAPI et déploiement en conteneurs.\n\n**Technologies utilisées :** FastAPI, React, Vite, TypeScript, OpenAI API, Hugging Face Transformers, Docker",
       },
-      ghLink: "https://github.com/yanimohellebi26/NeutraView.git",
+      ghLink: "https://github.com/yanimohellebi26/NeutraView",
       collabLink:
         "https://github.com/yanimohellebi26/NeutraView/issues/new?assignees=&labels=collaboration&template=collaboration_request.md",
-    },
-    {
-      id: "book-rec",
-      imgPath: livreRecoImg,
-      title: {
-        en: "Smart Book Recommendation",
-        fr: "Recommandation Intelligente de Livres",
-      },
-      description: {
-        en: "Built a personalised literary recommendation site where readers share their favourite book and what they loved about it. The AI analyses conveyed emotions, the main character profile, and returns tailored suggestions.\n\n**Tech stack:** React, OpenAI API, Emotion Detection, Tailwind CSS",
-        fr: "Développement d'un site de recommandation littéraire personnalisé où l'utilisateur entre le titre d'un livre et ce qu'il a préféré dedans. L'IA analyse les émotions transmises par l'œuvre, le profil du personnage principal et propose des recommandations personnalisées.\n\n**Technologies utilisées :** React, OpenAI API, Emotion Detection, Tailwind CSS",
-      },
-      demoLink: "https://recommendation-livre.vercel.app/",
-      ghLink: "https://github.com/yanimohellebi26/recommendation-livre.git",
     },
     {
       id: "subsense",
@@ -134,42 +68,136 @@ function Projects() {
         fr: "SUBSENSE - Analyse Intelligente de Vidéos Instagram",
       },
       description: {
-        en: "SUBSENSE is a full web application for deep analysis of Instagram videos. Users provide a video link and spoken language; the AI downloads the video, extracts audio, and produces a faithful multilingual transcript. Natural language models then evaluate speaker personalities and the underlying content.\n\n**Tech stack:** FastAPI, React, Whisper, FFmpeg, yt-dlp, GPT-4, PyTorch, SentenceTransformer",
-        fr: "SUBSENSE est une application web complète pour analyser en profondeur des vidéos Instagram. L'utilisateur fournit un lien vidéo et la langue parlée ; l'IA télécharge la vidéo, en extrait l'audio, puis génère une transcription fidèle et multilingue. Ensuite, des modèles de traitement du langage naturel évaluent les personnalités des interlocuteurs et le contenu de la vidéo.\n\n**Technologies utilisées :** FastAPI, React, Whisper, FFmpeg, yt-dlp, GPT-4, PyTorch, SentenceTransformer",
+        en: "Web application for deep analysis of Instagram videos. Users provide a video link and spoken language; the backend downloads the video via yt-dlp, extracts audio with FFmpeg, and produces a multilingual transcript using Whisper. OpenAI then evaluates speaker personalities and content.\n\n**Tech stack:** Python, React, Vite, Whisper, FFmpeg, yt-dlp, OpenAI API",
+        fr: "Application web pour l'analyse en profondeur de vidéos Instagram. L'utilisateur fournit un lien vidéo et la langue parlée ; le backend télécharge la vidéo via yt-dlp, extrait l'audio avec FFmpeg et génère une transcription multilingue avec Whisper. OpenAI évalue ensuite les personnalités et le contenu.\n\n**Technologies utilisées :** Python, React, Vite, Whisper, FFmpeg, yt-dlp, OpenAI API",
       },
-      ghLink: "https://github.com/yanimohellebi26/instagram-video.git",
+      ghLink: "https://github.com/yanimohellebi26/instagram-video",
       collabLink:
         "https://github.com/yanimohellebi26/instagram-video/issues/new?assignees=&labels=collaboration&template=collaboration_request.md",
-    },
-    {
-      id: "nutrimind",
-      imgPath: nutrimindImg,
-      title: {
-        en: "NUTRI-MIND - Nutrition AI for Student Lifters",
-        fr: "NUTRI-MIND – IA Nutritionnelle pour la Musculation Étudiante",
-      },
-      description: {
-        en: "Developed an end-to-end application for budget-conscious strength athletes. The system computes daily macro targets from personal inputs, then automatically generates a weekly meal plan, a budget-aware shopping list, and straightforward recipes.\n\n**Tech stack:** FastAPI, React, Python, Pydantic, MVC, PostgreSQL, Docker",
-        fr: "Développement d'une application complète destinée aux pratiquants de musculation avec budget serré. Le système calcule les besoins journaliers en macros à partir de paramètres individuels puis génère automatiquement un menu hebdomadaire optimisé, une liste de courses adaptée au budget, et des recettes simples.\n\n**Technologies utilisées :** FastAPI, React, Python, Pydantic, MVC, PostgreSQL, Docker",
-      },
-      ghLink: "https://github.com/yanimohellebi26/muscule_ia.git",
-      collabLink:
-        "https://github.com/yanimohellebi26/muscule_ia/issues/new?assignees=&labels=collaboration&template=collaboration_request.md",
     },
     {
       id: "rawview",
       imgPath: rawviewImg,
       title: {
         en: "RAWVIEW - A Disconnected Review Interface",
-        fr: "RAWVIEW – Interface Philosophique d'Avis Déconnectés",
+        fr: "RAWVIEW – Interface d'Avis sans Influence Sociale",
       },
       description: {
-        en: "RAWVIEW delivers a review experience free from social influence. The architecture relies on a FastAPI backend tied to PostgreSQL and orchestrated with Docker. Custom NLP modules analyse user language to surface cognitive biases.\n\n**Tech stack:** SvelteKit, FastAPI, PostgreSQL, Hugging Face Transformers, PyTorch, Docker, Radix UI",
-        fr: "RAWVIEW est une application web conçue pour offrir une expérience d'avis déconnectée de toute influence sociale. L'architecture repose sur un backend FastAPI connecté à une base PostgreSQL, le tout orchestré via Docker. Le système utilise des modules personnalisés en NLP pour analyser le langage des utilisateurs et détecter les biais cognitifs.\n\n**Technologies utilisées :** SvelteKit, FastAPI, PostgreSQL, HuggingFace Transformers, PyTorch, Docker, Radix UI",
+        en: "A review platform designed to eliminate social influence bias. SvelteKit frontend with a FastAPI backend orchestrated via Docker. Custom NLP modules (sentiment analysis, bias detection, clustering, recommendations) analyse user language to surface cognitive biases.\n\n**Tech stack:** SvelteKit, FastAPI, Python, NLP, Docker",
+        fr: "Plateforme d'avis conçue pour éliminer les biais d'influence sociale. Frontend SvelteKit avec backend FastAPI orchestré via Docker. Modules NLP personnalisés (analyse de sentiment, détection de biais, clustering, recommandations) pour analyser le langage des utilisateurs.\n\n**Technologies utilisées :** SvelteKit, FastAPI, Python, NLP, Docker",
       },
-      ghLink: "https://github.com/yanimohellebi26/review.git",
+      ghLink: "https://github.com/yanimohellebi26/review",
       collabLink:
         "https://github.com/yanimohellebi26/review/issues/new?assignees=&labels=collaboration&template=collaboration_request.md",
+    },
+    {
+      id: "mind",
+      imgPath: mindImg,
+      title: {
+        en: "The Mind - AI and Network Communication",
+        fr: "The Mind - IA et Communication Réseau",
+      },
+      description: {
+        en: "Multiplayer edition of The Mind with optimised network communication. Player connections rely on TCP sockets with mutex-protected synchronisation. AI trained on 10,000 games using XGBoost to predict the optimal moment to play each card. Interface delivered with SDL2.\n\n**Tech stack:** C, Python, XGBoost, TCP Sockets, Mutexes, SDL2, Shell",
+        fr: "Version multijoueur du jeu The Mind avec communication réseau optimisée. Connexion des joueurs via sockets TCP et synchronisation protégée par mutex. IA entraînée sur 10 000 parties avec XGBoost pour prédire le moment optimal de jeu. Interface réalisée en SDL2.\n\n**Technologies utilisées :** C, Python, XGBoost, Sockets TCP, Mutex, SDL2, Shell",
+      },
+      ghLink: "https://github.com/yanimohellebi26/the_mind",
+    },
+    {
+      id: "cheat",
+      imgPath: cheatImg,
+      title: {
+        en: "Video-Based Exam Cheating Detection",
+        fr: "Détection de Triche aux Examens par Vidéo",
+      },
+      description: {
+        en: "Video-based system that flags suspicious behaviour during exams. Combines motion detection and activity analysis to surface anomalies, with an architecture ready for future audio detection. Ships with a deployable web interface.\n\n**Tech stack:** Python, OpenCV, JavaScript, HTML",
+        fr: "Système de détection de triche aux examens basé sur la vidéo. Détection de mouvement et analyse d'activité visuelle pour repérer les comportements suspects. Architecture extensible avec future intégration audio. Interface web déployable.\n\n**Technologies utilisées :** Python, OpenCV, JavaScript, HTML",
+      },
+      ghLink: "https://github.com/yanimohellebi26/detection_triche",
+      collabLink:
+        "https://github.com/yanimohellebi26/detection_triche/issues/new?assignees=&labels=collaboration&template=collaboration_request.md",
+    },
+    {
+      id: "segmentation",
+      imgPath: segmentationImg,
+      title: {
+        en: "3D Semantic Segmentation of Urban Scenes",
+        fr: "Segmentation Sémantique 3D de Scènes Urbaines",
+      },
+      description: {
+        en: "Deep learning pipeline for 3D semantic segmentation of urban scenes from point clouds (PLY format). Implements PointNet and PointNet++ architectures with custom dataset preparation, training, inference, and scene reconstruction from segmented blocks.\n\n**Tech stack:** Python, PyTorch, PointNet, PointNet++, NumPy, Open3D",
+        fr: "Pipeline de deep learning pour la segmentation sémantique 3D de scènes urbaines à partir de nuages de points (format PLY). Implémentation des architectures PointNet et PointNet++ avec préparation de dataset, entraînement, inférence et reconstruction de scènes à partir de blocs segmentés.\n\n**Technologies utilisées :** Python, PyTorch, PointNet, PointNet++, NumPy, Open3D",
+      },
+      ghLink: "https://github.com/yanimohellebi26/segmentation-semantique",
+    },
+    {
+      id: "book-rec",
+      imgPath: livreRecoImg,
+      title: {
+        en: "Smart Book Recommendation",
+        fr: "Recommandation Intelligente de Livres",
+      },
+      description: {
+        en: "Personalised literary recommendation site where readers share their favourite book and what they loved about it. Flask backend queries OpenAI and the Open Library API to analyse conveyed emotions and return tailored suggestions. React frontend with Vite.\n\n**Tech stack:** Flask, React, Vite, Python, OpenAI API, Open Library API",
+        fr: "Site de recommandation littéraire personnalisé. L'utilisateur entre le titre d'un livre et ce qu'il a préféré. Le backend Flask interroge OpenAI et l'API Open Library pour analyser les émotions et proposer des recommandations. Frontend React avec Vite.\n\n**Technologies utilisées :** Flask, React, Vite, Python, OpenAI API, Open Library API",
+      },
+      demoLink: "https://recommendation-livre.vercel.app/",
+      ghLink: "https://github.com/yanimohellebi26/recommendation-livre",
+    },
+    {
+      id: "nutrimind",
+      imgPath: nutrimindImg,
+      title: {
+        en: "NUTRI-MIND - Nutrition Planner for Student Lifters",
+        fr: "NUTRI-MIND – Planificateur Nutritionnel pour Étudiants Sportifs",
+      },
+      description: {
+        en: "React application for budget-conscious strength athletes. Computes daily macro targets from personal inputs, then generates a weekly meal plan, a budget-aware shopping list, and straightforward recipes. Features a dashboard, progress tracking, and recipe library.\n\n**Tech stack:** React, JavaScript, CSS",
+        fr: "Application React pour les pratiquants de musculation avec budget serré. Calcul des besoins journaliers en macros à partir de paramètres individuels, puis génération d'un menu hebdomadaire, d'une liste de courses adaptée au budget et de recettes simples. Dashboard, suivi de progression et bibliothèque de recettes.\n\n**Technologies utilisées :** React, JavaScript, CSS",
+      },
+      ghLink: "https://github.com/yanimohellebi26/muscule_ia",
+      collabLink:
+        "https://github.com/yanimohellebi26/muscule_ia/issues/new?assignees=&labels=collaboration&template=collaboration_request.md",
+    },
+    {
+      id: "drol",
+      imgPath: drollImg,
+      title: {
+        en: "Modernising the DROL Game",
+        fr: "Modernisation du Jeu DROL",
+      },
+      description: {
+        en: "Rebuilt DROL with both cooperative and competitive multiplayer modes. Network traffic is managed with UDP to keep gameplay responsive while synchronising player states. Developed in Java on GNU/Linux with an overhauled interface and event system.\n\n**Tech stack:** Java, Swing, UDP Sockets, Linux",
+        fr: "Refonte du jeu DROL avec mode multijoueur coopératif et compétitif. Gestion du réseau avec UDP pour assurer la fluidité et la synchronisation des états de jeu. Développement en Java sous GNU/Linux, avec optimisation de l'interface et de la gestion des événements.\n\n**Technologies utilisées :** Java, Swing, Sockets UDP, Linux",
+      },
+      ghLink: "https://github.com/yanimohellebi26/DROL-GAME",
+    },
+    {
+      id: "spam",
+      imgPath: spamImg,
+      title: {
+        en: "AI-Powered Spam Detector",
+        fr: "Détecteur de Spam avec IA",
+      },
+      description: {
+        en: "Intelligent Telegram bot that filters spam messages. Logistic regression with TF-IDF vectorisation to classify texts, coupled with data cleaning, cross-validation, and metrics such as precision, recall, and F1-score.\n\n**Tech stack:** Python, Scikit-learn, Pandas, TF-IDF, Telegram API",
+        fr: "Bot Telegram intelligent pour filtrer les spams. Régression logistique avec vectorisation TF-IDF pour classifier les messages. Nettoyage de données, validation croisée et analyse des performances avec précision, rappel et F1-score.\n\n**Technologies utilisées :** Python, Scikit-learn, Pandas, TF-IDF, Telegram API",
+      },
+      ghLink: "https://github.com/yanimohellebi26/detecteur-spam",
+    },
+    {
+      id: "flowers",
+      imgPath: flowersImg,
+      title: {
+        en: "Online Flower Shop",
+        fr: "Boutique en Ligne de Fleurs",
+      },
+      description: {
+        en: "E-commerce site for flower sales with dedicated flows for customers and vendors. Built as a software engineering project with collaborative GitLab management, task planning, and weekly follow-ups.\n\n**Tech stack:** Java, Swing, SQLite, GitLab",
+        fr: "Site e-commerce pour la vente de fleurs avec gestion des utilisateurs et vendeurs. Projet réalisé dans le cadre du génie logiciel avec gestion collaborative sur GitLab, planification des tâches en équipe et réunions hebdomadaires.\n\n**Technologies utilisées :** Java, Swing, SQLite, GitLab",
+      },
+      ghLink: "https://github.com/yanimohellebi26/boutique-roses",
     },
   ];
 
