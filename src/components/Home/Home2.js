@@ -68,7 +68,7 @@ function Home2({ language: languageOverride }) {
           </p>
 
           {/* Domaines d'expertise */}
-          <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm">
+          <div className="rounded-2xl border border-brand-accent/15 bg-white/[0.06] p-6 backdrop-blur-sm">
             <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-white">
               <span className="text-brand-accent">⚡</span>
               {isFrench ? "Expertise technique" : "Technical expertise"}

@@ -11,12 +11,10 @@
   from {
     opacity: 0;
     transform: translateY(30px);
-    filter: blur(10px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
-    filter: blur(0);
   }
 }
 
@@ -24,12 +22,10 @@
   from {
     opacity: 0;
     transform: translateY(50px) scale(0.95);
-    filter: blur(8px);
   }
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
-    filter: blur(0);
   }
 }
 
@@ -66,10 +62,10 @@
 
 @keyframes gradient-shift {
   0%, 100% {
-    background-position: 0% 50%;
+    transform: translateX(0);
   }
   50% {
-    background-position: 100% 50%;
+    transform: translateX(3%);
   }
 }
 
@@ -135,13 +131,13 @@
 
 @keyframes border-dance {
   0% {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: scale(1) rotate(0deg);
   }
   50% {
-    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    transform: scale(1.02) rotate(1deg);
   }
   100% {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: scale(1) rotate(0deg);
   }
 }
 
@@ -536,7 +532,6 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradient-shift 5s ease infinite;
   position: relative;
   display: inline-block;
   filter: drop-shadow(0 0 20px rgba(199, 112, 240, 0.4));
@@ -597,10 +592,19 @@
   background-size: 400% 400%;
   border-radius: inherit;
   z-index: -1;
-  animation: gradient-shift 4s ease infinite;
+  animation: border-glow-shift 4s ease infinite;
   opacity: 0;
   transition: opacity 0.5s ease;
   filter: blur(8px);
+}
+
+@keyframes border-glow-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 .border-glow-animated:hover::before {

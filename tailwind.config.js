@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["'Manrope'", "system-ui", "-apple-system", "BlinkMacSystemFont", "'Segoe UI'", "sans-serif"],
-        display: ["'Space Grotesk'", "'Manrope'", "sans-serif"],
+        display: ["'Clash Display'", "'Manrope'", "sans-serif"],
       },
       colors: {
         brand: {
