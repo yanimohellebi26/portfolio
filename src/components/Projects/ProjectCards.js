@@ -2,7 +2,7 @@ import React from "react";
 import { BsGithub, BsPlayFill } from "react-icons/bs";
 import { useLanguage } from "../../context/LanguageContext";
 
-function ProjectCards({ imgPath, title, description, ghLink, demoLink, collabLink }) {
+function ProjectCards({ imgPath, title, description, ghLink, demoLink, collabLink, category, featured }) {
   const { language } = useLanguage();
 
   const labels = {
@@ -52,11 +52,20 @@ function ProjectCards({ imgPath, title, description, ghLink, demoLink, collabLin
           <img
             src={imgPath}
             alt={title}
-            loading="lazy"
             className="h-52 w-full object-cover object-center transform transition-all duration-700 group-hover:scale-110 group-hover:rotate-1"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0f0b22] via-[#0f0b22]/50 to-transparent opacity-60" />
           
+          {/* Category badge + Featured star */}
+          <div className="absolute top-3 left-3 z-20 flex items-center gap-2">
+            {category && (
+              <span className="category-badge">{category}</span>
+            )}
+            {featured && (
+              <span className="featured-star" title="Featured">⭐</span>
+            )}
+          </div>
+
           {/* Effet de scan lumineux */}
           <div className="scan-line" />
         </div>

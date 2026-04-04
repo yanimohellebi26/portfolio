@@ -1,214 +1,557 @@
-import React from "react";
+import React, { useState } from "react";
 import ProjectCard from "./ProjectCards";
-import ragImg from "../../Assets/Projects/rag-master.png";
+/* ── existing images ── */
 import mindImg from "../../Assets/Projects/mind.png";
 import spamImg from "../../Assets/Projects/spam.jpg";
 import drollImg from "../../Assets/Projects/droll.png";
 import flowersImg from "../../Assets/Projects/flowers.png";
-import cheatImg from "../../Assets/Projects/cheat.webp";
-import neutraviewImg from "../../Assets/Projects/neutralview.png";
+import cheatImg from "../../Assets/Projects/cheat-gemini.png";
+import neutraviewImg from "../../Assets/Projects/neutraview-gemini.png";
 import livreRecoImg from "../../Assets/Projects/recommendation.png";
 import subsenseImg from "../../Assets/Projects/subsense.png";
 import nutrimindImg from "../../Assets/Projects/nutrimand.png";
-import rawviewImg from "../../Assets/Projects/rawview.png";
-import segmentationImg from "../../Assets/Projects/reconnaissance-maison.png";
+import rawviewImg from "../../Assets/Projects/rawview-gemini.png";
+import ragImg from "../../Assets/Projects/rag-master-gemini.png";
+import segUrbanImg from "../../Assets/Projects/reconnaissance-maison.png";
+import lyonNightImg from "../../Assets/Projects/lyon-night.png";
+import parisImg from "../../Assets/Projects/paris-night.png";
+import ecommerceImg from "../../Assets/Projects/ecommerce.png";
+/* ── new images ── */
+import angryGeoImg from "../../Assets/Projects/angry-men-geopol.png";
+import angryReproImg from "../../Assets/Projects/angry-men-repro.png";
+import barsLyonImg from "../../Assets/Projects/bars-lyon.png";
+import booksAiImg from "../../Assets/Projects/books-ai.png";
+import bucketSortImg from "../../Assets/Projects/bucket-sort.png";
+import cineAgentImg from "../../Assets/Projects/cine-agent.png";
+import graphColorImg from "../../Assets/Projects/graph-coloring.png";
+import legendesImg from "../../Assets/Projects/legendes-amazighes.png";
+import linkedinImg from "../../Assets/Projects/linkedin-chatbot.png";
+import movieCardImg from "../../Assets/Projects/movie-card.png";
+import movieQuotesImg from "../../Assets/Projects/movie-quotes.png";
+import hackathonImg from "../../Assets/Projects/hackathon-mistral.png";
+import poissonImg from "../../Assets/Projects/poisson-opengl.png";
+import question2Img from "../../Assets/Projects/question2-ml.png";
+import recoMaisonImg from "../../Assets/Projects/reco-maison.png";
+import segCubeImg from "../../Assets/Projects/seg-face-cube.png";
+import aportfolioImg from "../../Assets/Projects/aportfolio.png";
 import { useLanguage } from "../../context/LanguageContext";
 import "./ProjectsFuturistic.css";
 
+/* ── categories ── */
+const CATEGORIES = [
+  { id: "all",      icon: "🔥", en: "All",          fr: "Tous" },
+  { id: "featured", icon: "⭐", en: "Featured",     fr: "Favoris" },
+  { id: "ai",       icon: "🧠", en: "AI & ML",      fr: "IA & ML" },
+  { id: "web",      icon: "🌐", en: "Web",           fr: "Web" },
+  { id: "game",     icon: "🎮", en: "Game",          fr: "Jeu" },
+  { id: "3d",       icon: "🔮", en: "3D & Vision",   fr: "3D & Vision" },
+  { id: "data",     icon: "📊", en: "Data & Algo",   fr: "Data & Algo" },
+];
+
 function Projects() {
   const { language } = useLanguage();
+  const [activeFilter, setActiveFilter] = useState("all");
 
   const copy = {
     en: {
-      heading: { lead: "My", highlight: "Recent Projects" },
-      subtitle: "Here are a few projects I've been working on lately.",
+      heading: { lead: "My", highlight: "Projects" },
+      subtitle: "A complete overview of everything I've built — filter by domain or explore my favourites.",
+      count: (n) => `${n} project${n > 1 ? "s" : ""}`,
     },
     fr: {
-      heading: { lead: "Mes", highlight: "Projets Récents" },
-      subtitle: "Voici quelques projets sur lesquels j'ai travaillé récemment.",
+      heading: { lead: "Mes", highlight: "Projets" },
+      subtitle: "Vue d'ensemble de tout ce que j'ai construit — filtrez par domaine ou explorez mes favoris.",
+      count: (n) => `${n} projet${n > 1 ? "s" : ""}`,
     },
   };
 
   const text = copy[language] || copy.en;
 
+  /* ══════════════════════════════════════════════
+     PROJECT DATA — 32 projects, 7 categories
+     ══════════════════════════════════════════════ */
   const projects = [
+    /* ── AI & ML ────────────────────────────── */
     {
-      id: "rag-master",
-      imgPath: ragImg,
+      id: "angry-geopol",
+      imgPath: angryGeoImg,
+      category: "ai",
+      featured: true,
       title: {
-        en: "RAG-Master1 - AI Teaching Assistant",
-        fr: "RAG-Master1 - Assistant Pédagogique IA",
+        en: "12 Angry Agents — Geopolitical Debate Simulator",
+        fr: "12 Angry Agents — Simulateur de Débat Géopolitique",
       },
       description: {
-        en: "Full-stack RAG-based teaching assistant for Master 1 Computer Science courses. Features a conversational chat with query rewriting, hybrid search (BM25 + semantic), re-ranking, and source traceability. Includes a Copilot Tools panel (quizzes, flashcards, mind maps, charts) and MCP server integration for YouTube transcript indexing.\n\n**Tech stack:** Python, Flask, React, OpenAI API, ChromaDB, GitHub Copilot SDK, MCP, BM25",
-        fr: "Assistant pédagogique RAG complet pour les cours de Master 1 Informatique. Chat conversationnel avec réécriture de requêtes, recherche hybride (BM25 + sémantique), re-ranking et traçabilité des sources. Panneau Copilot Tools (quiz, flashcards, mind maps, graphiques) et intégration de serveurs MCP pour l'indexation de transcriptions YouTube.\n\n**Technologies utilisées :** Python, Flask, React, OpenAI API, ChromaDB, GitHub Copilot SDK, MCP, BM25",
+        en: "Multi-agent geopolitical debate with 12 AI agents from 7 providers. Real-time media corpus scraping (60+ sources), 3-layer RAG pipeline, and a live dashboard tracking convergence, polarisation, entropy, and influence graphs.\n\n**Tech stack:** Python, FastAPI, React, Next.js, PostgreSQL, Redis, Qdrant, Scrapy, Playwright, LiteLLM, D3.js",
+        fr: "Débat géopolitique multi-agents avec 12 IA de 7 fournisseurs. Scraping de corpus médiatique en temps réel (60+ sources), pipeline RAG à 3 couches, et dashboard live mesurant convergence, polarisation, entropie et graphes d'influence.\n\n**Technologies utilisées :** Python, FastAPI, React, Next.js, PostgreSQL, Redis, Qdrant, Scrapy, Playwright, LiteLLM, D3.js",
+      },
+      ghLink: "https://github.com/yanimohellebi26/12_angry_man_geopol",
+    },
+    {
+      id: "angry-repro",
+      imgPath: angryReproImg,
+      category: "ai",
+      title: {
+        en: "12 Angry Men — Computational Jury Reproduction",
+        fr: "12 Angry Men — Reproduction Computationnelle du Jury",
+      },
+      description: {
+        en: "Computational reproduction of jury dynamics from the film '12 Angry Men' using LLM agents. Tests different models and configurations, measures fidelity via DTW/Spearman correlation, and detects persuasion tipping points.\n\n**Tech stack:** Python, FastAPI, PostgreSQL, LangGraph, NumPy, NetworkX, SciPy",
+        fr: "Reproduction computationnelle de la dynamique du jury du film '12 Angry Men' avec des agents LLM. Teste différents modèles, mesure la fidélité via DTW/Spearman et détecte les points de basculement de persuasion.\n\n**Technologies utilisées :** Python, FastAPI, PostgreSQL, LangGraph, NumPy, NetworkX, SciPy",
+      },
+      ghLink: "https://github.com/yanimohellebi26/12_angry_man_reproduction",
+    },
+    {
+      id: "rag",
+      imgPath: ragImg,
+      category: "ai",
+      featured: true,
+      title: {
+        en: "RAG-Master1 — AI Teaching Assistant",
+        fr: "RAG-Master1 — Assistant Pédagogique IA",
+      },
+      description: {
+        en: "Full-stack RAG-based teaching assistant for Master 1 Computer Science courses. Features conversational chat with query rewriting, hybrid search (BM25 + semantic), re-ranking, and source traceability. Includes a Copilot Tools panel (quizzes, flashcards, mind maps) and MCP server integration.\n\n**Tech stack:** Python, FastAPI, React, OpenAI API, ChromaDB, BM25, MCP",
+        fr: "Assistant pédagogique RAG full-stack pour les cours de Master 1 Informatique. Chat conversationnel avec query rewriting, recherche hybride (BM25 + sémantique), re-ranking et traçabilité des sources. Panneau Copilot Tools et intégration serveurs MCP.\n\n**Technologies utilisées :** Python, FastAPI, React, OpenAI API, ChromaDB, BM25, MCP",
       },
       ghLink: "https://github.com/yanimohellebi26/RAG-Master1",
     },
     {
+      id: "cine-agent",
+      imgPath: cineAgentImg,
+      category: "ai",
+      featured: true,
+      title: {
+        en: "CineAgent — AI Alternate Film Endings",
+        fr: "CineAgent — Fins Alternatives de Films par IA",
+      },
+      description: {
+        en: "AI-powered platform generating alternate film endings. Multi-agent backend (LangGraph) analyses narrative structure and generates endings in creative modes: Butterfly Effect, Genre Swap, and more. Full-stack with FastAPI + Next.js.\n\n**Tech stack:** Python, FastAPI, LangGraph, PostgreSQL, Celery, Redis, Next.js 14, Tailwind, Tavily",
+        fr: "Plateforme IA générant des fins de films alternatives. Backend multi-agents (LangGraph) analysant la structure narrative pour produire des fins en modes créatifs : Effet Papillon, Genre Swap, etc. Full-stack FastAPI + Next.js.\n\n**Technologies utilisées :** Python, FastAPI, LangGraph, PostgreSQL, Celery, Redis, Next.js 14, Tailwind, Tavily",
+      },
+      ghLink: "https://github.com/yanimohellebi26/cineAgent",
+    },
+    {
       id: "neutraview",
       imgPath: neutraviewImg,
+      category: "ai",
+      featured: true,
       title: {
-        en: "NeutraView - Neutral Cultural Reviews",
-        fr: "NeutraView - Analyse Neutre d'Avis Culturels",
+        en: "NeutraView — Neutral Cultural Reviews",
+        fr: "NeutraView — Analyse Neutre d'Avis Culturels",
       },
       description: {
-        en: "Full web platform that analyses reviews of books, films, and series. AI modules produce objective summaries, sentiment detection, and psychological profiles based on past reviews. Modular architecture with a Vite/React frontend, FastAPI backend, and containerised deployment.\n\n**Tech stack:** FastAPI, React, Vite, TypeScript, OpenAI API, Hugging Face Transformers, Docker",
-        fr: "Plateforme web complète pour analyser les avis de livres, films ou séries. Modules d'IA pour résumés objectifs, détection de sentiments et profils psychologiques des utilisateurs. Architecture modulaire avec frontend React/Vite, backend FastAPI et déploiement en conteneurs.\n\n**Technologies utilisées :** FastAPI, React, Vite, TypeScript, OpenAI API, Hugging Face Transformers, Docker",
+        en: "Full web platform analysing reviews of books, films, and series. AI modules produce objective summaries, sentiment detection, and psychological profiles. Modular architecture documented, proxied through Vite/React, and deployed with Docker.\n\n**Tech stack:** FastAPI, React, OpenAI API, Hugging Face, PyTorch, PostgreSQL, Docker",
+        fr: "Plateforme web analysant les avis de livres, films et séries. Modules IA pour résumés objectifs, détection de sentiments et profils psychologiques. Architecture modulaire avec proxy Vite/React et déploiement conteneurisé.\n\n**Technologies utilisées :** FastAPI, React, OpenAI API, Hugging Face, PyTorch, PostgreSQL, Docker",
       },
-      ghLink: "https://github.com/yanimohellebi26/NeutraView",
-      collabLink:
-        "https://github.com/yanimohellebi26/NeutraView/issues/new?assignees=&labels=collaboration&template=collaboration_request.md",
-    },
-    {
-      id: "subsense",
-      imgPath: subsenseImg,
-      title: {
-        en: "SUBSENSE - Intelligent Instagram Video Analysis",
-        fr: "SUBSENSE - Analyse Intelligente de Vidéos Instagram",
-      },
-      description: {
-        en: "Web application for deep analysis of Instagram videos. Users provide a video link and spoken language; the backend downloads the video via yt-dlp, extracts audio with FFmpeg, and produces a multilingual transcript using Whisper. OpenAI then evaluates speaker personalities and content.\n\n**Tech stack:** Python, React, Vite, Whisper, FFmpeg, yt-dlp, OpenAI API",
-        fr: "Application web pour l'analyse en profondeur de vidéos Instagram. L'utilisateur fournit un lien vidéo et la langue parlée ; le backend télécharge la vidéo via yt-dlp, extrait l'audio avec FFmpeg et génère une transcription multilingue avec Whisper. OpenAI évalue ensuite les personnalités et le contenu.\n\n**Technologies utilisées :** Python, React, Vite, Whisper, FFmpeg, yt-dlp, OpenAI API",
-      },
-      ghLink: "https://github.com/yanimohellebi26/instagram-video",
-      collabLink:
-        "https://github.com/yanimohellebi26/instagram-video/issues/new?assignees=&labels=collaboration&template=collaboration_request.md",
-    },
-    {
-      id: "rawview",
-      imgPath: rawviewImg,
-      title: {
-        en: "RAWVIEW - A Disconnected Review Interface",
-        fr: "RAWVIEW – Interface d'Avis sans Influence Sociale",
-      },
-      description: {
-        en: "A review platform designed to eliminate social influence bias. SvelteKit frontend with a FastAPI backend orchestrated via Docker. Custom NLP modules (sentiment analysis, bias detection, clustering, recommendations) analyse user language to surface cognitive biases.\n\n**Tech stack:** SvelteKit, FastAPI, Python, NLP, Docker",
-        fr: "Plateforme d'avis conçue pour éliminer les biais d'influence sociale. Frontend SvelteKit avec backend FastAPI orchestré via Docker. Modules NLP personnalisés (analyse de sentiment, détection de biais, clustering, recommandations) pour analyser le langage des utilisateurs.\n\n**Technologies utilisées :** SvelteKit, FastAPI, Python, NLP, Docker",
-      },
-      ghLink: "https://github.com/yanimohellebi26/review",
-      collabLink:
-        "https://github.com/yanimohellebi26/review/issues/new?assignees=&labels=collaboration&template=collaboration_request.md",
-    },
-    {
-      id: "mind",
-      imgPath: mindImg,
-      title: {
-        en: "The Mind - AI and Network Communication",
-        fr: "The Mind - IA et Communication Réseau",
-      },
-      description: {
-        en: "Multiplayer edition of The Mind with optimised network communication. Player connections rely on TCP sockets with mutex-protected synchronisation. AI trained on 10,000 games using XGBoost to predict the optimal moment to play each card. Interface delivered with SDL2.\n\n**Tech stack:** C, Python, XGBoost, TCP Sockets, Mutexes, SDL2, Shell",
-        fr: "Version multijoueur du jeu The Mind avec communication réseau optimisée. Connexion des joueurs via sockets TCP et synchronisation protégée par mutex. IA entraînée sur 10 000 parties avec XGBoost pour prédire le moment optimal de jeu. Interface réalisée en SDL2.\n\n**Technologies utilisées :** C, Python, XGBoost, Sockets TCP, Mutex, SDL2, Shell",
-      },
-      ghLink: "https://github.com/yanimohellebi26/the_mind",
-    },
-    {
-      id: "cheat",
-      imgPath: cheatImg,
-      title: {
-        en: "Video-Based Exam Cheating Detection",
-        fr: "Détection de Triche aux Examens par Vidéo",
-      },
-      description: {
-        en: "Video-based system that flags suspicious behaviour during exams. Combines motion detection and activity analysis to surface anomalies, with an architecture ready for future audio detection. Ships with a deployable web interface.\n\n**Tech stack:** Python, OpenCV, JavaScript, HTML",
-        fr: "Système de détection de triche aux examens basé sur la vidéo. Détection de mouvement et analyse d'activité visuelle pour repérer les comportements suspects. Architecture extensible avec future intégration audio. Interface web déployable.\n\n**Technologies utilisées :** Python, OpenCV, JavaScript, HTML",
-      },
-      ghLink: "https://github.com/yanimohellebi26/detection_triche",
-      collabLink:
-        "https://github.com/yanimohellebi26/detection_triche/issues/new?assignees=&labels=collaboration&template=collaboration_request.md",
-    },
-    {
-      id: "segmentation",
-      imgPath: segmentationImg,
-      title: {
-        en: "3D Semantic Segmentation of Urban Scenes",
-        fr: "Segmentation Sémantique 3D de Scènes Urbaines",
-      },
-      description: {
-        en: "Deep learning pipeline for 3D semantic segmentation of urban scenes from point clouds (PLY format). Implements PointNet and PointNet++ architectures with custom dataset preparation, training, inference, and scene reconstruction from segmented blocks.\n\n**Tech stack:** Python, PyTorch, PointNet, PointNet++, NumPy, Open3D",
-        fr: "Pipeline de deep learning pour la segmentation sémantique 3D de scènes urbaines à partir de nuages de points (format PLY). Implémentation des architectures PointNet et PointNet++ avec préparation de dataset, entraînement, inférence et reconstruction de scènes à partir de blocs segmentés.\n\n**Technologies utilisées :** Python, PyTorch, PointNet, PointNet++, NumPy, Open3D",
-      },
-      ghLink: "https://github.com/yanimohellebi26/segmentation-semantique",
-    },
-    {
-      id: "book-rec",
-      imgPath: livreRecoImg,
-      title: {
-        en: "Smart Book Recommendation",
-        fr: "Recommandation Intelligente de Livres",
-      },
-      description: {
-        en: "Personalised literary recommendation site where readers share their favourite book and what they loved about it. Flask backend queries OpenAI and the Open Library API to analyse conveyed emotions and return tailored suggestions. React frontend with Vite.\n\n**Tech stack:** Flask, React, Vite, Python, OpenAI API, Open Library API",
-        fr: "Site de recommandation littéraire personnalisé. L'utilisateur entre le titre d'un livre et ce qu'il a préféré. Le backend Flask interroge OpenAI et l'API Open Library pour analyser les émotions et proposer des recommandations. Frontend React avec Vite.\n\n**Technologies utilisées :** Flask, React, Vite, Python, OpenAI API, Open Library API",
-      },
-      demoLink: "https://recommendation-livre.vercel.app/",
-      ghLink: "https://github.com/yanimohellebi26/recommendation-livre",
-    },
-    {
-      id: "nutrimind",
-      imgPath: nutrimindImg,
-      title: {
-        en: "NUTRI-MIND - Nutrition Planner for Student Lifters",
-        fr: "NUTRI-MIND – Planificateur Nutritionnel pour Étudiants Sportifs",
-      },
-      description: {
-        en: "React application for budget-conscious strength athletes. Computes daily macro targets from personal inputs, then generates a weekly meal plan, a budget-aware shopping list, and straightforward recipes. Features a dashboard, progress tracking, and recipe library.\n\n**Tech stack:** React, JavaScript, CSS",
-        fr: "Application React pour les pratiquants de musculation avec budget serré. Calcul des besoins journaliers en macros à partir de paramètres individuels, puis génération d'un menu hebdomadaire, d'une liste de courses adaptée au budget et de recettes simples. Dashboard, suivi de progression et bibliothèque de recettes.\n\n**Technologies utilisées :** React, JavaScript, CSS",
-      },
-      ghLink: "https://github.com/yanimohellebi26/muscule_ia",
-      collabLink:
-        "https://github.com/yanimohellebi26/muscule_ia/issues/new?assignees=&labels=collaboration&template=collaboration_request.md",
-    },
-    {
-      id: "drol",
-      imgPath: drollImg,
-      title: {
-        en: "Modernising the DROL Game",
-        fr: "Modernisation du Jeu DROL",
-      },
-      description: {
-        en: "Rebuilt DROL with both cooperative and competitive multiplayer modes. Network traffic is managed with UDP to keep gameplay responsive while synchronising player states. Developed in Java on GNU/Linux with an overhauled interface and event system.\n\n**Tech stack:** Java, Swing, UDP Sockets, Linux",
-        fr: "Refonte du jeu DROL avec mode multijoueur coopératif et compétitif. Gestion du réseau avec UDP pour assurer la fluidité et la synchronisation des états de jeu. Développement en Java sous GNU/Linux, avec optimisation de l'interface et de la gestion des événements.\n\n**Technologies utilisées :** Java, Swing, Sockets UDP, Linux",
-      },
-      ghLink: "https://github.com/yanimohellebi26/DROL-GAME",
+      ghLink: "https://github.com/yanimohellebi26/NeutraView.git",
+      collabLink: "https://github.com/yanimohellebi26/NeutraView/issues/new?assignees=&labels=collaboration&template=collaboration_request.md",
     },
     {
       id: "spam",
       imgPath: spamImg,
+      category: "ai",
       title: {
         en: "AI-Powered Spam Detector",
         fr: "Détecteur de Spam avec IA",
       },
       description: {
-        en: "Intelligent Telegram bot that filters spam messages. Logistic regression with TF-IDF vectorisation to classify texts, coupled with data cleaning, cross-validation, and metrics such as precision, recall, and F1-score.\n\n**Tech stack:** Python, Scikit-learn, Pandas, TF-IDF, Telegram API",
-        fr: "Bot Telegram intelligent pour filtrer les spams. Régression logistique avec vectorisation TF-IDF pour classifier les messages. Nettoyage de données, validation croisée et analyse des performances avec précision, rappel et F1-score.\n\n**Technologies utilisées :** Python, Scikit-learn, Pandas, TF-IDF, Telegram API",
+        en: "Intelligent Telegram bot that filters spam messages. Logistic regression with TF-IDF vectorisation, data cleaning, cross-validation, and full performance metrics.\n\n**Tech stack:** Python, Scikit-learn, Pandas, TF-IDF, Telegram API",
+        fr: "Bot Telegram intelligent filtrant les spams. Régression logistique + TF-IDF, nettoyage de données, validation croisée et analyse complète des performances.\n\n**Technologies utilisées :** Python, Scikit-learn, Pandas, TF-IDF, Telegram API",
       },
-      ghLink: "https://github.com/yanimohellebi26/detecteur-spam",
+      ghLink: "https://github.com/yanimohellebi26/detecteur-spam.git",
+    },
+    {
+      id: "cheat",
+      imgPath: cheatImg,
+      category: "ai",
+      title: {
+        en: "Video-Based Exam Cheating Detection",
+        fr: "Détection de Triche aux Examens (vidéo)",
+      },
+      description: {
+        en: "Video-based system that flags suspicious behaviour during exams. Combines motion detection and activity analysis to surface anomalies, with architecture ready for future audio detection.\n\n**Tech stack:** OpenCV, PyTorch, FastAPI, JavaScript, HTML",
+        fr: "Système de détection de triche basé sur la vidéo. Détection de mouvement et analyse d'activité pour repérer les comportements suspects, extensible pour l'audio.\n\n**Technologies utilisées :** OpenCV, PyTorch, FastAPI, JavaScript, HTML",
+      },
+      ghLink: "https://github.com/yanimohellebi26/detection_triche.git",
+      collabLink: "https://github.com/yanimohellebi26/detection_triche/issues/new?assignees=&labels=collaboration&template=collaboration_request.md",
+    },
+    {
+      id: "subsense",
+      imgPath: subsenseImg,
+      category: "ai",
+      title: {
+        en: "SUBSENSE — Instagram Video Analysis",
+        fr: "SUBSENSE — Analyse de Vidéos Instagram",
+      },
+      description: {
+        en: "Full web app for deep analysis of Instagram videos. Extracts audio, generates multilingual transcripts with Whisper, then evaluates speaker personalities and content with NLP models.\n\n**Tech stack:** FastAPI, React, Whisper, FFmpeg, yt-dlp, GPT-4, PyTorch, SentenceTransformer",
+        fr: "Application web pour l'analyse approfondie de vidéos Instagram. Extraction audio, transcription multilingue Whisper, puis évaluation des personnalités et du contenu par NLP.\n\n**Technologies utilisées :** FastAPI, React, Whisper, FFmpeg, yt-dlp, GPT-4, PyTorch, SentenceTransformer",
+      },
+      ghLink: "https://github.com/yanimohellebi26/instagram-video.git",
+      collabLink: "https://github.com/yanimohellebi26/instagram-video/issues/new?assignees=&labels=collaboration&template=collaboration_request.md",
+    },
+    {
+      id: "nutrimind",
+      imgPath: nutrimindImg,
+      category: "ai",
+      title: {
+        en: "NUTRI-MIND — Nutrition AI for Student Lifters",
+        fr: "NUTRI-MIND — IA Nutritionnelle Musculation Étudiante",
+      },
+      description: {
+        en: "End-to-end app for budget-conscious strength athletes. Computes daily macros, generates a weekly meal plan, a budget-aware shopping list, and simple recipes.\n\n**Tech stack:** FastAPI, React, Python, Pydantic, MVC, PostgreSQL, Docker",
+        fr: "Application complète pour pratiquants de musculation à petit budget. Calcul de macros, menu hebdomadaire, liste de courses budgétée et recettes simples.\n\n**Technologies utilisées :** FastAPI, React, Python, Pydantic, MVC, PostgreSQL, Docker",
+      },
+      ghLink: "https://github.com/yanimohellebi26/muscule_ia.git",
+      collabLink: "https://github.com/yanimohellebi26/muscule_ia/issues/new?assignees=&labels=collaboration&template=collaboration_request.md",
+    },
+    {
+      id: "rawview",
+      imgPath: rawviewImg,
+      category: "ai",
+      title: {
+        en: "RAWVIEW — Disconnected Review Interface",
+        fr: "RAWVIEW — Interface d'Avis Déconnectés",
+      },
+      description: {
+        en: "Review experience free from social influence. FastAPI + PostgreSQL orchestrated with Docker. Custom NLP modules analyse language to surface cognitive biases.\n\n**Tech stack:** SvelteKit, FastAPI, PostgreSQL, Hugging Face, PyTorch, Docker, Radix UI",
+        fr: "Expérience d'avis sans influence sociale. FastAPI + PostgreSQL orchestré Docker. Modules NLP personnalisés pour détecter les biais cognitifs.\n\n**Technologies utilisées :** SvelteKit, FastAPI, PostgreSQL, Hugging Face, PyTorch, Docker, Radix UI",
+      },
+      ghLink: "https://github.com/yanimohellebi26/review.git",
+      collabLink: "https://github.com/yanimohellebi26/review/issues/new?assignees=&labels=collaboration&template=collaboration_request.md",
+    },
+    {
+      id: "book-rec",
+      imgPath: livreRecoImg,
+      category: "ai",
+      title: {
+        en: "Smart Book Recommendation",
+        fr: "Recommandation Intelligente de Livres",
+      },
+      description: {
+        en: "Personalised literary recommendation site. Readers share their favourite book and what they loved; AI analyses emotions, character profile, and returns tailored suggestions.\n\n**Tech stack:** React, OpenAI API, Emotion Detection, Tailwind CSS",
+        fr: "Site de recommandation littéraire personnalisé. L'IA analyse les émotions transmises et le profil du personnage pour proposer des suggestions sur mesure.\n\n**Technologies utilisées :** React, OpenAI API, Emotion Detection, Tailwind CSS",
+      },
+      demoLink: "https://recommendation-livre.vercel.app/",
+      ghLink: "https://github.com/yanimohellebi26/recommendation-livre.git",
+    },
+    {
+      id: "books-ai",
+      imgPath: booksAiImg,
+      category: "ai",
+      title: {
+        en: "BookBot — AI Reading Companion",
+        fr: "BookBot — Compagnon de Lecture IA",
+      },
+      description: {
+        en: "AI book recommendation engine. Describe how a book made you feel and BookBot generates 3 personalised picks (Popular, Deep, Character-driven) via GPT, with metadata from Open Library.\n\n**Tech stack:** Python, FastAPI, React 19, Vite 6, OpenAI API, Open Library API, Vercel, Render",
+        fr: "Moteur de recommandation IA. Décrivez vos émotions de lecture et BookBot génère 3 suggestions (Populaire, Profond, Personnage) via GPT, enrichies par Open Library.\n\n**Technologies utilisées :** Python, FastAPI, React 19, Vite 6, OpenAI API, Open Library API, Vercel, Render",
+      },
+      ghLink: "https://github.com/yanimohellebi26/books",
+    },
+    {
+      id: "linkedin-chat",
+      imgPath: linkedinImg,
+      category: "ai",
+      title: {
+        en: "LinkedIn AI Chatbot",
+        fr: "Chatbot IA LinkedIn",
+      },
+      description: {
+        en: "AI assistant for LinkedIn users to craft personalised connection requests, follow-ups, and engagement posts. LLM maintains professional tone with real-time streaming dialogue.\n\n**Tech stack:** Python, FastAPI, React, Vite, OpenAI API, LLM Prompt Engineering",
+        fr: "Assistant IA pour LinkedIn : demandes de connexion, relances et publications personnalisées. LLM avec ton professionnel et dialogue en streaming temps réel.\n\n**Technologies utilisées :** Python, FastAPI, React, Vite, OpenAI API, Prompt Engineering",
+      },
+      ghLink: "https://github.com/yanimohellebi26/linkedin-ai-chatbot",
+    },
+    /* ── Web ────────────────────────────── */
+    {
+      id: "lyon",
+      imgPath: lyonNightImg,
+      category: "web",
+      featured: true,
+      title: {
+        en: "LyonByNight — Interactive Nightlife PWA",
+        fr: "LyonByNight — PWA de Découverte Nocturne",
+      },
+      description: {
+        en: "Progressive Web App for Lyon's nightlife — bars, clubs, live events on an interactive Mapbox map with an AI chat assistant. Features offline mode, i18n, and group planning with social voting.\n\n**Tech stack:** Next.js 16, TypeScript, Tailwind CSS v4, shadcn/ui, Supabase, Mapbox, OpenAI, PWA",
+        fr: "PWA pour la vie nocturne lyonnaise — bars, clubs, événements sur carte Mapbox interactive avec assistant IA. Mode hors-ligne, i18n et planification de groupe.\n\n**Technologies utilisées :** Next.js 16, TypeScript, Tailwind CSS v4, shadcn/ui, Supabase, Mapbox, OpenAI, PWA",
+      },
+      ghLink: "https://github.com/yanimohellebi26/LyonByNight",
+    },
+    {
+      id: "bars-lyon",
+      imgPath: barsLyonImg,
+      category: "web",
+      title: {
+        en: "Bars Lyon — Nightlife Guide with AI & Maps",
+        fr: "Bars Lyon — Guide Nocturne avec IA & Cartes",
+      },
+      description: {
+        en: "Interactive Lyon nightlife guide with Mapbox, advanced filters, events calendar, AI chatbot (RAG + GPT-4o), and venue comparator. Mobile PWA-ready with i18n (FR/EN).\n\n**Tech stack:** Next.js 16, TypeScript, Tailwind CSS v4, shadcn/ui, Mapbox GL JS, OpenAI, Supabase, Vercel",
+        fr: "Guide interactif de la vie nocturne lyonnaise avec Mapbox, filtres avancés, calendrier d'événements, chatbot IA (RAG + GPT-4o) et comparateur. PWA mobile bilingue.\n\n**Technologies utilisées :** Next.js 16, TypeScript, Tailwind CSS v4, shadcn/ui, Mapbox GL JS, OpenAI, Supabase, Vercel",
+      },
+      ghLink: "https://github.com/yanimohellebi26/bars_lyon",
+    },
+    {
+      id: "paris",
+      imgPath: parisImg,
+      category: "web",
+      title: {
+        en: "Paris Nightlife — Bar & Club Comparator",
+        fr: "Paris Nightlife — Comparateur de Bars & Clubs",
+      },
+      description: {
+        en: "React app for discovering and comparing bars and clubs across Paris. Venue cards show ratings, atmosphere, price range, and map location. Built-in side-by-side comparator.\n\n**Tech stack:** React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Vercel",
+        fr: "Application React pour comparer bars et clubs parisiens. Fiches visuelles avec notes, ambiance, tarifs et carte. Comparateur intégré côte à côte.\n\n**Technologies utilisées :** React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Vercel",
+      },
+      ghLink: "https://github.com/yanimohellebi26/paris",
+    },
+    {
+      id: "ecommerce",
+      imgPath: ecommerceImg,
+      category: "web",
+      title: {
+        en: "Multi-Role E-Commerce Platform",
+        fr: "Plateforme E-Commerce Multi-Rôles",
+      },
+      description: {
+        en: "Full PHP e-commerce platform with three user roles — customer, vendor, admin — each with dashboards. Custom MVC in vanilla PHP/MySQL with role-based access and order tracking.\n\n**Tech stack:** PHP, MySQL, PDO, JavaScript, jQuery, CSS, MVC",
+        fr: "Plateforme e-commerce PHP avec trois rôles (client, vendeur, admin). Architecture MVC en PHP/MySQL avec contrôle d'accès et suivi des commandes.\n\n**Technologies utilisées :** PHP, MySQL, PDO, JavaScript, jQuery, CSS, MVC",
+      },
+      ghLink: "https://github.com/yanimohellebi26/e-commerce",
     },
     {
       id: "flowers",
       imgPath: flowersImg,
+      category: "web",
       title: {
         en: "Online Flower Shop",
         fr: "Boutique en Ligne de Fleurs",
       },
       description: {
-        en: "E-commerce site for flower sales with dedicated flows for customers and vendors. Built as a software engineering project with collaborative GitLab management, task planning, and weekly follow-ups.\n\n**Tech stack:** Java, Swing, SQLite, GitLab",
-        fr: "Site e-commerce pour la vente de fleurs avec gestion des utilisateurs et vendeurs. Projet réalisé dans le cadre du génie logiciel avec gestion collaborative sur GitLab, planification des tâches en équipe et réunions hebdomadaires.\n\n**Technologies utilisées :** Java, Swing, SQLite, GitLab",
+        en: "E-commerce site for flower sales with customer and vendor flows backed by SQLite. Collaborative software engineering project with GitLab CI and weekly follow-ups.\n\n**Tech stack:** HTML, CSS, PHP, SQLite, GitLab",
+        fr: "Site e-commerce de vente de fleurs avec gestion utilisateurs et vendeurs sous SQLite. Projet collaboratif avec GitLab CI et suivi hebdomadaire.\n\n**Technologies utilisées :** HTML, CSS, PHP, SQLite, GitLab",
       },
-      ghLink: "https://github.com/yanimohellebi26/boutique-roses",
+      ghLink: "https://github.com/yanimohellebi26/boutique-roses.git",
+    },
+    {
+      id: "movie-card",
+      imgPath: movieCardImg,
+      category: "web",
+      title: {
+        en: "MovieCard — Film Card Generator",
+        fr: "MovieCard — Générateur de Fiches Film",
+      },
+      description: {
+        en: "Movie card generation app with Supabase backend. Animated Next.js frontend with metadata extraction, search, and beautiful card layouts.\n\n**Tech stack:** Next.js 16, React 19, TypeScript, Supabase, Framer Motion, Lucide Icons",
+        fr: "Application de génération de fiches film avec backend Supabase. Frontend Next.js animé avec extraction de métadonnées et mise en page élégante.\n\n**Technologies utilisées :** Next.js 16, React 19, TypeScript, Supabase, Framer Motion, Lucide Icons",
+      },
+      ghLink: "https://github.com/yanimohellebi26/MovieCard",
+    },
+    {
+      id: "movie-quotes",
+      imgPath: movieQuotesImg,
+      category: "web",
+      title: {
+        en: "MovieQuotes — Quote Capture Extension",
+        fr: "MovieQuotes — Extension Capture de Citations",
+      },
+      description: {
+        en: "Chrome extension + companion app for capturing movie quotes from video players. AI-powered speech-to-text with Whisper, multi-phase roadmap: extension → desktop (Rust) → mobile → hardware.\n\n**Tech stack:** TypeScript, Next.js, Vercel Serverless, PostgreSQL (Neon), Whisper, Gemini",
+        fr: "Extension Chrome + app compagnon pour capturer des citations de films. Speech-to-text IA avec Whisper, roadmap multi-phases : extension → desktop (Rust) → mobile.\n\n**Technologies utilisées :** TypeScript, Next.js, Vercel Serverless, PostgreSQL (Neon), Whisper, Gemini",
+      },
+      ghLink: "https://github.com/yanimohellebi26/MovieQuotes",
+    },
+    {
+      id: "aportfolio",
+      imgPath: aportfolioImg,
+      category: "web",
+      title: {
+        en: "Aportfolio — Static Portfolio",
+        fr: "Aportfolio — Portfolio Statique",
+      },
+      description: {
+        en: "Personal portfolio website built from scratch with vanilla HTML, CSS, and JavaScript. Clean responsive design showcasing projects and skills.\n\n**Tech stack:** HTML, CSS, JavaScript",
+        fr: "Portfolio personnel créé de zéro en HTML, CSS et JavaScript. Design responsive épuré présentant projets et compétences.\n\n**Technologies utilisées :** HTML, CSS, JavaScript",
+      },
+      ghLink: "https://github.com/yanimohellebi26/Aportfolio",
+    },
+    /* ── Game ────────────────────────────── */
+    {
+      id: "hackathon",
+      imgPath: hackathonImg,
+      category: "game",
+      title: {
+        en: "Amazigh Odyssey — AI RPG with Mistral",
+        fr: "Amazigh Odyssey — RPG IA avec Mistral",
+      },
+      description: {
+        en: "AI RPG game set in mythical Numidia using Mistral AI as Game Master. MCP servers for world state, combat, inventory, lore. Tifinagh-based magic system with 10+ glyphs and spell combinations.\n\n**Tech stack:** Python, Mistral AI, MCP Servers, QLoRA Fine-tuning, W&B, Rich TUI, Tamazight",
+        fr: "Jeu RPG IA dans la Numidie mythique avec Mistral AI comme Maître du Jeu. Serveurs MCP pour état du monde, combat, inventaire. Système magique basé sur le Tifinagh.\n\n**Technologies utilisées :** Python, Mistral AI, Serveurs MCP, QLoRA, W&B, Rich TUI, Tamazight",
+      },
+      ghLink: "https://github.com/yanimohellebi26/hackathon_mistral",
+    },
+    {
+      id: "mind",
+      imgPath: mindImg,
+      category: "game",
+      title: {
+        en: "The Mind — AI & Network Communication",
+        fr: "The Mind — IA et Communication Réseau",
+      },
+      description: {
+        en: "Multiplayer edition of The Mind with TCP sockets and mutex-protected sync. AI trained on 10,000 games with XGBoost to predict optimal card timing. Interface in SDL2.\n\n**Tech stack:** C, XGBoost, PyTorch, TCP sockets, Mutexes, SDL2",
+        fr: "Version multijoueur de The Mind avec sockets TCP et mutex. IA entraînée sur 10 000 parties (XGBoost) pour prédire le timing optimal. Interface SDL2.\n\n**Technologies utilisées :** C, XGBoost, PyTorch, Sockets TCP, Mutex, SDL2",
+      },
+      ghLink: "https://github.com/yanimohellebi26/the_mind",
+    },
+    {
+      id: "drol",
+      imgPath: drollImg,
+      category: "game",
+      title: {
+        en: "Modernising the DROL Game",
+        fr: "Modernisation du Jeu DROL",
+      },
+      description: {
+        en: "Rebuilt DROL with cooperative and competitive multiplayer. UDP networking for responsive gameplay and player state sync. Developed in Java on GNU/Linux.\n\n**Tech stack:** Java, Swing, UDP, Linux",
+        fr: "Refonte de DROL en multijoueur coopératif et compétitif. Réseau UDP pour une synchronisation fluide. Java sous GNU/Linux.\n\n**Technologies utilisées :** Java, Swing, UDP, Linux",
+      },
+      ghLink: "https://github.com/yanimohellebi26/DROL-GAME",
+    },
+    /* ── 3D & Vision ────────────────────── */
+    {
+      id: "seg-urban",
+      imgPath: segUrbanImg,
+      category: "3d",
+      title: {
+        en: "3D Semantic Segmentation — Urban Scenes",
+        fr: "Segmentation Sémantique 3D — Scènes Urbaines",
+      },
+      description: {
+        en: "Deep learning pipeline for 3D semantic segmentation of urban point clouds (PLY). PointNet & PointNet++ with real Paris-Lille-Dijon lidar scans, block training, and colour-coded reconstruction.\n\n**Tech stack:** Python, PyTorch, PointNet, PointNet++, NumPy, Open3D, CloudCompare",
+        fr: "Pipeline de deep learning pour segmentation sémantique 3D de nuages de points urbains. PointNet & PointNet++ sur scans lidar réels, entraînement par blocs et reconstruction colorée.\n\n**Technologies utilisées :** Python, PyTorch, PointNet, PointNet++, NumPy, Open3D, CloudCompare",
+      },
+      ghLink: "https://github.com/yanimohellebi26/segmentation-semantique",
+    },
+    {
+      id: "reco-maison",
+      imgPath: recoMaisonImg,
+      category: "3d",
+      title: {
+        en: "House Style Recognition from Point Clouds",
+        fr: "Reconnaissance de Styles de Maisons en 3D",
+      },
+      description: {
+        en: "Deep learning pipeline recognising architectural house styles from 3D point clouds using PointNet/PointNet++ trained on procedural synthetic data.\n\n**Tech stack:** Python, PyTorch, PointNet, PointNet++, NumPy, Matplotlib",
+        fr: "Pipeline de deep learning reconnaissant les styles architecturaux de maisons à partir de nuages de points 3D, entraîné sur données synthétiques.\n\n**Technologies utilisées :** Python, PyTorch, PointNet, PointNet++, NumPy, Matplotlib",
+      },
+      ghLink: "https://github.com/yanimohellebi26/reconnaissance_maison-nuage-de-points",
+    },
+    {
+      id: "seg-cube",
+      imgPath: segCubeImg,
+      category: "3d",
+      title: {
+        en: "3D Cube Face Segmentation",
+        fr: "Segmentation de Faces de Cube 3D",
+      },
+      description: {
+        en: "PointNet and KPConv trained to identify cube faces in 3D point clouds. Synthetic testbed validating segmentation architectures with known ground truth.\n\n**Tech stack:** Python, PyTorch, PointNet, KPConv, NumPy",
+        fr: "PointNet et KPConv entraînés pour identifier les faces de cubes en nuages de points 3D. Banc d'essai synthétique avec vérité terrain connue.\n\n**Technologies utilisées :** Python, PyTorch, PointNet, KPConv, NumPy",
+      },
+      ghLink: "https://github.com/yanimohellebi26/segmentation-face-cube",
+    },
+    {
+      id: "poisson-gl",
+      imgPath: poissonImg,
+      category: "3d",
+      title: {
+        en: "3D Fish — OpenGL Rendering",
+        fr: "Poisson 3D — Rendu OpenGL",
+      },
+      description: {
+        en: "3D fish model demonstrating OpenGL fundamentals: geometry, texturing, Phong shading, and real-time camera control with transformations.\n\n**Tech stack:** C++, OpenGL, GLUT (freeglut), Texture Mapping, Phong Shading",
+        fr: "Modèle de poisson 3D illustrant les fondamentaux OpenGL : géométrie, textures, éclairage Phong et contrôle caméra temps réel.\n\n**Technologies utilisées :** C++, OpenGL, GLUT (freeglut), Texture Mapping, Phong Shading",
+      },
+      ghLink: "https://github.com/yanimohellebi26/poisson-OPENGL",
+    },
+    {
+      id: "legendes",
+      imgPath: legendesImg,
+      category: "3d",
+      title: {
+        en: "Légendes Amazighes — AR/VR Experience",
+        fr: "Légendes Amazighes — Expérience AR/VR",
+      },
+      description: {
+        en: "Augmented and virtual reality interactive experience about Amazigh legends and mythology built in Unity. Spatial storytelling with immersive 3D environments.\n\n**Tech stack:** Unity, C#, AR/VR, Spatial Design",
+        fr: "Expérience interactive en réalité augmentée et virtuelle sur les légendes et la mythologie amazighes. Narration spatiale dans des environnements 3D immersifs.\n\n**Technologies utilisées :** Unity, C#, AR/VR, Design Spatial",
+      },
+      ghLink: "https://github.com/yanimohellebi26/Legendes_Amazighes",
+    },
+    /* ── Data & Algo ────────────────────── */
+    {
+      id: "bucket-sort",
+      imgPath: bucketSortImg,
+      category: "data",
+      title: {
+        en: "Distributed Bucket Sort — MPI",
+        fr: "Bucket Sort Distribué — MPI",
+      },
+      description: {
+        en: "Distributed implementation of Bucket Sort using MPI for parallel processing. Includes benchmarked Top-K extraction and performance comparison across process counts.\n\n**Tech stack:** C, MPI, OpenMPI, Python, Matplotlib, Bash",
+        fr: "Implémentation distribuée du Bucket Sort via MPI. Extraction Top-K benchmarkée et comparaison de performances selon le nombre de processus.\n\n**Technologies utilisées :** C, MPI, OpenMPI, Python, Matplotlib, Bash",
+      },
+      ghLink: "https://github.com/yanimohellebi26/Bucket_Sort",
+    },
+    {
+      id: "graph-color",
+      imgPath: graphColorImg,
+      category: "data",
+      title: {
+        en: "Graph Colouring — Greedy vs DSatur",
+        fr: "Coloration de Graphes — Greedy vs DSatur",
+      },
+      description: {
+        en: "Comparative study of graph colouring algorithms: Greedy vs DSatur. Empirical benchmarks across different graph types with performance visualisations.\n\n**Tech stack:** Java, Graph Theory, DSatur, Greedy, CSV Benchmarking",
+        fr: "Étude comparative d'algorithmes de coloration : Greedy vs DSatur. Benchmarks empiriques sur différents types de graphes avec visualisations.\n\n**Technologies utilisées :** Java, Théorie des Graphes, DSatur, Greedy, Benchmarks CSV",
+      },
+      ghLink: "https://github.com/yanimohellebi26/coloration-tons-graph",
+    },
+    {
+      id: "question2",
+      imgPath: question2Img,
+      category: "data",
+      title: {
+        en: "ML Package & API — Python Pipeline",
+        fr: "Package ML & API — Pipeline Python",
+      },
+      description: {
+        en: "Complete Python ML walkthrough: custom OLS regression as pip-installable package, exposed via REST API, and containerised with Docker for reproducible deployment.\n\n**Tech stack:** Python, FastAPI, Docker, scikit-learn, Pydantic, pip Packaging",
+        fr: "Parcours ML complet : régression OLS packagée pip, exposée via API REST et conteneurisée Docker pour un déploiement reproductible.\n\n**Technologies utilisées :** Python, FastAPI, Docker, scikit-learn, Pydantic, pip Packaging",
+      },
+      ghLink: "https://github.com/yanimohellebi26/question2_project",
     },
   ];
+
+  /* ── filter logic ── */
+  const filtered = activeFilter === "all"
+    ? projects
+    : activeFilter === "featured"
+    ? projects.filter((p) => p.featured)
+    : projects.filter((p) => p.category === activeFilter);
 
   return (
     <section className="section-shell projects-section-futuristic" id="projects">
       {/* Effet de grille futuriste en arrière-plan */}
       <div className="cyber-grid" />
-      
+
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-        {/* En-tête avec animation */}
-        <div className="mx-auto max-w-3xl space-y-6 text-center mb-16">
+        {/* En-tête */}
+        <div className="mx-auto max-w-3xl space-y-6 text-center mb-12">
           <div className="relative inline-block">
             <h1 className="text-4xl font-bold text-white sm:text-5xl lg:text-6xl animate-fade-in">
               {text.heading.lead}{" "}
@@ -221,7 +564,7 @@ function Projects() {
             </h1>
           </div>
           <p className="text-lg text-gray-400 animate-fade-in-delay">{text.subtitle}</p>
-          
+
           {/* Ligne décorative */}
           <div className="flex items-center justify-center gap-4 pt-4">
             <div className="h-[2px] w-16 bg-gradient-to-r from-transparent to-brand-accent animate-expand" />
@@ -230,13 +573,30 @@ function Projects() {
           </div>
         </div>
 
-        {/* Grille de projets avec animations échelonnées */}
+        {/* ── Filter bar ── */}
+        <div className="filter-bar-wrapper">
+          <div className="filter-bar">
+            {CATEGORIES.map((cat) => (
+              <button
+                key={cat.id}
+                className={`filter-btn ${activeFilter === cat.id ? "filter-btn-active" : ""}`}
+                onClick={() => setActiveFilter(cat.id)}
+              >
+                <span className="filter-icon">{cat.icon}</span>
+                <span>{cat[language] || cat.en}</span>
+              </button>
+            ))}
+          </div>
+          <p className="project-count">{text.count(filtered.length)}</p>
+        </div>
+
+        {/* ── Project grid ── */}
         <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-          {projects.map((project, index) => (
+          {filtered.map((project, index) => (
             <div
               key={project.id}
               className="animate-fade-in-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              style={{ animationDelay: `${index * 0.08}s` }}
             >
               <ProjectCard
                 imgPath={project.imgPath}
@@ -245,6 +605,11 @@ function Projects() {
                 ghLink={project.ghLink}
                 demoLink={project.demoLink}
                 collabLink={project.collabLink}
+                category={
+                  CATEGORIES.find((c) => c.id === project.category)?.[language] ||
+                  CATEGORIES.find((c) => c.id === project.category)?.en
+                }
+                featured={project.featured}
               />
             </div>
           ))}
