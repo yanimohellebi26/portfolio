@@ -6,7 +6,7 @@ import spamImg from "../../Assets/Projects/spam.jpg";
 import drollImg from "../../Assets/Projects/droll.png";
 import cheatImg from "../../Assets/Projects/cheat-gemini.png";
 import neutraviewImg from "../../Assets/Projects/neutraview-gemini.png";
-import livreRecoImg from "../../Assets/Projects/recommendation.png";
+import livreRecoImg from "../../Assets/Projects/books-ai.png";
 import subsenseImg from "../../Assets/Projects/subsense.png";
 import nutrimindImg from "../../Assets/Projects/nutrimand.png";
 import rawviewImg from "../../Assets/Projects/rawview-gemini.png";
@@ -72,7 +72,6 @@ function Projects() {
       id: "angry-geopol",
       imgPath: angryGeoImg,
       category: "ai",
-      featured: true,
       title: {
         en: "12 Angry Agents — Geopolitical Debate Simulator",
         fr: "12 Angry Agents — Simulateur de Débat Géopolitique",
@@ -116,7 +115,6 @@ function Projects() {
       id: "cine-agent",
       imgPath: cineAgentImg,
       category: "ai",
-      featured: true,
       title: {
         en: "CineAgent — AI Alternate Film Endings",
         fr: "CineAgent — Fins Alternatives de Films par IA",
@@ -131,7 +129,6 @@ function Projects() {
       id: "neutraview",
       imgPath: neutraviewImg,
       category: "ai",
-      featured: true,
       title: {
         en: "NeutraView — Neutral Cultural Reviews",
         fr: "NeutraView — Analyse Neutre d'Avis Culturels",
@@ -286,6 +283,7 @@ function Projects() {
       id: "movie-card",
       imgPath: movieCardImg,
       category: "web",
+      featured: true,
       title: {
         en: "MovieCard — Film Card Generator",
         fr: "MovieCard — Générateur de Fiches Film",
