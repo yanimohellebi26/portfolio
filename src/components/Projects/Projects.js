@@ -4,23 +4,19 @@ import ProjectCard from "./ProjectCards";
 import mindImg from "../../Assets/Projects/mind.png";
 import spamImg from "../../Assets/Projects/spam.jpg";
 import drollImg from "../../Assets/Projects/droll.png";
-import flowersImg from "../../Assets/Projects/flowers.png";
 import cheatImg from "../../Assets/Projects/cheat-gemini.png";
 import neutraviewImg from "../../Assets/Projects/neutraview-gemini.png";
 import livreRecoImg from "../../Assets/Projects/recommendation.png";
 import subsenseImg from "../../Assets/Projects/subsense.png";
 import nutrimindImg from "../../Assets/Projects/nutrimand.png";
 import rawviewImg from "../../Assets/Projects/rawview-gemini.png";
-import ragImg from "../../Assets/Projects/rag-master-gemini.png";
+import ragImg from "../../Assets/Projects/rag-master.png";
 import segUrbanImg from "../../Assets/Projects/reconnaissance-maison.png";
-import lyonNightImg from "../../Assets/Projects/lyon-night.png";
-import parisImg from "../../Assets/Projects/paris-night.png";
 import ecommerceImg from "../../Assets/Projects/ecommerce.png";
 /* ── new images ── */
 import angryGeoImg from "../../Assets/Projects/angry-men-geopol.png";
 import angryReproImg from "../../Assets/Projects/angry-men-repro.png";
 import barsLyonImg from "../../Assets/Projects/bars-lyon.png";
-import booksAiImg from "../../Assets/Projects/books-ai.png";
 import bucketSortImg from "../../Assets/Projects/bucket-sort.png";
 import cineAgentImg from "../../Assets/Projects/cine-agent.png";
 import graphColorImg from "../../Assets/Projects/graph-coloring.png";
@@ -68,7 +64,7 @@ function Projects() {
   const text = copy[language] || copy.en;
 
   /* ══════════════════════════════════════════════
-     PROJECT DATA — 32 projects, 7 categories
+     PROJECT DATA — 28 projects, 7 categories
      ══════════════════════════════════════════════ */
   const projects = [
     /* ── AI & ML ────────────────────────────── */
@@ -141,8 +137,8 @@ function Projects() {
         fr: "NeutraView — Analyse Neutre d'Avis Culturels",
       },
       description: {
-        en: "Full web platform analysing reviews of books, films, and series. AI modules produce objective summaries, sentiment detection, and psychological profiles. Modular architecture documented, proxied through Vite/React, and deployed with Docker.\n\n**Tech stack:** FastAPI, React, OpenAI API, Hugging Face, PyTorch, PostgreSQL, Docker",
-        fr: "Plateforme web analysant les avis de livres, films et séries. Modules IA pour résumés objectifs, détection de sentiments et profils psychologiques. Architecture modulaire avec proxy Vite/React et déploiement conteneurisé.\n\n**Technologies utilisées :** FastAPI, React, OpenAI API, Hugging Face, PyTorch, PostgreSQL, Docker",
+        en: "Web platform for bias-free analysis of book, film, and series reviews. AI modules generate objective summaries, detect sentiment, and build psychological profiles of works. Modular architecture with a React frontend proxied through Vite, containerised with Docker.\n\n**Tech stack:** FastAPI, React, OpenAI API, Hugging Face, PyTorch, PostgreSQL, Docker",
+        fr: "Plateforme web pour analyser les avis culturels (livres, films, séries) sans biais. Modules IA pour résumés objectifs, détection de sentiments et profils psychologiques. Architecture modulaire avec frontend React via Vite, déploiement Docker.\n\n**Technologies utilisées :** FastAPI, React, OpenAI API, Hugging Face, PyTorch, PostgreSQL, Docker",
       },
       ghLink: "https://github.com/yanimohellebi26/NeutraView.git",
       collabLink: "https://github.com/yanimohellebi26/NeutraView/issues/new?assignees=&labels=collaboration&template=collaboration_request.md",
@@ -215,8 +211,8 @@ function Projects() {
         fr: "RAWVIEW — Interface d'Avis Déconnectés",
       },
       description: {
-        en: "Review experience free from social influence. FastAPI + PostgreSQL orchestrated with Docker. Custom NLP modules analyse language to surface cognitive biases.\n\n**Tech stack:** SvelteKit, FastAPI, PostgreSQL, Hugging Face, PyTorch, Docker, Radix UI",
-        fr: "Expérience d'avis sans influence sociale. FastAPI + PostgreSQL orchestré Docker. Modules NLP personnalisés pour détecter les biais cognitifs.\n\n**Technologies utilisées :** SvelteKit, FastAPI, PostgreSQL, Hugging Face, PyTorch, Docker, Radix UI",
+        en: "Platform for leaving reviews free from social influence — no visible ratings, no follower counts. Custom NLP modules scan the text to surface cognitive biases. Backend FastAPI + PostgreSQL orchestrated with Docker.\n\n**Tech stack:** SvelteKit, FastAPI, PostgreSQL, Hugging Face, PyTorch, Docker, Radix UI",
+        fr: "Plateforme pour publier des avis sans influence sociale — pas de notes visibles, pas de compteurs. Modules NLP sur mesure pour détecter les biais cognitifs. Backend FastAPI + PostgreSQL orchestré avec Docker.\n\n**Technologies utilisées :** SvelteKit, FastAPI, PostgreSQL, Hugging Face, PyTorch, Docker, Radix UI",
       },
       ghLink: "https://github.com/yanimohellebi26/review.git",
       collabLink: "https://github.com/yanimohellebi26/review/issues/new?assignees=&labels=collaboration&template=collaboration_request.md",
@@ -225,31 +221,19 @@ function Projects() {
       id: "book-rec",
       imgPath: livreRecoImg,
       category: "ai",
+      featured: true,
       title: {
-        en: "Smart Book Recommendation",
-        fr: "Recommandation Intelligente de Livres",
+        en: "BookBot — Smart Book Recommendation",
+        fr: "BookBot — Recommandation Intelligente de Livres",
       },
       description: {
-        en: "Personalised literary recommendation site. Readers share their favourite book and what they loved; AI analyses emotions, character profile, and returns tailored suggestions.\n\n**Tech stack:** React, OpenAI API, Emotion Detection, Tailwind CSS",
-        fr: "Site de recommandation littéraire personnalisé. L'IA analyse les émotions transmises et le profil du personnage pour proposer des suggestions sur mesure.\n\n**Technologies utilisées :** React, OpenAI API, Emotion Detection, Tailwind CSS",
+        en: "Deployed literary recommendation app. Describe what you loved about a book — BookBot analyses your emotions and reader profile to suggest 3 personalised picks (Popular, Deep, Character-driven) via GPT.\n\n**Tech stack:** Python, FastAPI, React, OpenAI API, Open Library API, Vercel",
+        fr: "Application de recommandation littéraire déployée. Décrivez ce que vous avez aimé dans un livre — BookBot analyse vos émotions et votre profil de lecteur pour proposer 3 suggestions personnalisées via GPT.\n\n**Technologies utilisées :** Python, FastAPI, React, OpenAI API, Open Library API, Vercel",
       },
       demoLink: "https://recommendation-livre.vercel.app/",
       ghLink: "https://github.com/yanimohellebi26/recommendation-livre.git",
     },
-    {
-      id: "books-ai",
-      imgPath: booksAiImg,
-      category: "ai",
-      title: {
-        en: "BookBot — AI Reading Companion",
-        fr: "BookBot — Compagnon de Lecture IA",
-      },
-      description: {
-        en: "AI book recommendation engine. Describe how a book made you feel and BookBot generates 3 personalised picks (Popular, Deep, Character-driven) via GPT, with metadata from Open Library.\n\n**Tech stack:** Python, FastAPI, React 19, Vite 6, OpenAI API, Open Library API, Vercel, Render",
-        fr: "Moteur de recommandation IA. Décrivez vos émotions de lecture et BookBot génère 3 suggestions (Populaire, Profond, Personnage) via GPT, enrichies par Open Library.\n\n**Technologies utilisées :** Python, FastAPI, React 19, Vite 6, OpenAI API, Open Library API, Vercel, Render",
-      },
-      ghLink: "https://github.com/yanimohellebi26/books",
-    },
+    /* books-ai removed — same project as book-rec (Smart Book Recommendation) */
     {
       id: "linkedin-chat",
       imgPath: linkedinImg,
@@ -267,7 +251,7 @@ function Projects() {
     /* ── Web ────────────────────────────── */
     {
       id: "lyon",
-      imgPath: lyonNightImg,
+      imgPath: barsLyonImg,
       category: "web",
       featured: true,
       title: {
@@ -275,39 +259,14 @@ function Projects() {
         fr: "LyonByNight — PWA de Découverte Nocturne",
       },
       description: {
-        en: "Progressive Web App for Lyon's nightlife — bars, clubs, live events on an interactive Mapbox map with an AI chat assistant. Features offline mode, i18n, and group planning with social voting.\n\n**Tech stack:** Next.js 16, TypeScript, Tailwind CSS v4, shadcn/ui, Supabase, Mapbox, OpenAI, PWA",
-        fr: "PWA pour la vie nocturne lyonnaise — bars, clubs, événements sur carte Mapbox interactive avec assistant IA. Mode hors-ligne, i18n et planification de groupe.\n\n**Technologies utilisées :** Next.js 16, TypeScript, Tailwind CSS v4, shadcn/ui, Supabase, Mapbox, OpenAI, PWA",
+        en: "Progressive Web App for discovering Lyon's nightlife — bars, clubs, and live events on an interactive Mapbox map with an AI chat assistant. Supports offline mode, bilingual (FR/EN), and group planning with social voting.\n\n**Tech stack:** Next.js 16, TypeScript, Tailwind CSS v4, shadcn/ui, Supabase, Mapbox, OpenAI, PWA",
+        fr: "PWA pour découvrir la vie nocturne lyonnaise — bars, clubs et événements sur une carte Mapbox interactive avec un assistant IA. Mode hors-ligne, bilingue FR/EN et planification de soirée en groupe.\n\n**Technologies utilisées :** Next.js 16, TypeScript, Tailwind CSS v4, shadcn/ui, Supabase, Mapbox, OpenAI, PWA",
       },
       ghLink: "https://github.com/yanimohellebi26/LyonByNight",
+      demoLink: "https://lyon-inky.vercel.app/fr",
     },
-    {
-      id: "bars-lyon",
-      imgPath: barsLyonImg,
-      category: "web",
-      title: {
-        en: "Bars Lyon — Nightlife Guide with AI & Maps",
-        fr: "Bars Lyon — Guide Nocturne avec IA & Cartes",
-      },
-      description: {
-        en: "Interactive Lyon nightlife guide with Mapbox, advanced filters, events calendar, AI chatbot (RAG + GPT-4o), and venue comparator. Mobile PWA-ready with i18n (FR/EN).\n\n**Tech stack:** Next.js 16, TypeScript, Tailwind CSS v4, shadcn/ui, Mapbox GL JS, OpenAI, Supabase, Vercel",
-        fr: "Guide interactif de la vie nocturne lyonnaise avec Mapbox, filtres avancés, calendrier d'événements, chatbot IA (RAG + GPT-4o) et comparateur. PWA mobile bilingue.\n\n**Technologies utilisées :** Next.js 16, TypeScript, Tailwind CSS v4, shadcn/ui, Mapbox GL JS, OpenAI, Supabase, Vercel",
-      },
-      ghLink: "https://github.com/yanimohellebi26/bars_lyon",
-    },
-    {
-      id: "paris",
-      imgPath: parisImg,
-      category: "web",
-      title: {
-        en: "Paris Nightlife — Bar & Club Comparator",
-        fr: "Paris Nightlife — Comparateur de Bars & Clubs",
-      },
-      description: {
-        en: "React app for discovering and comparing bars and clubs across Paris. Venue cards show ratings, atmosphere, price range, and map location. Built-in side-by-side comparator.\n\n**Tech stack:** React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Vercel",
-        fr: "Application React pour comparer bars et clubs parisiens. Fiches visuelles avec notes, ambiance, tarifs et carte. Comparateur intégré côte à côte.\n\n**Technologies utilisées :** React, TypeScript, Vite, Tailwind CSS, shadcn/ui, Vercel",
-      },
-      ghLink: "https://github.com/yanimohellebi26/paris",
-    },
+    /* bars-lyon removed — same project as LyonByNight */
+    /* paris nightlife removed */
     {
       id: "ecommerce",
       imgPath: ecommerceImg,
@@ -322,20 +281,7 @@ function Projects() {
       },
       ghLink: "https://github.com/yanimohellebi26/e-commerce",
     },
-    {
-      id: "flowers",
-      imgPath: flowersImg,
-      category: "web",
-      title: {
-        en: "Online Flower Shop",
-        fr: "Boutique en Ligne de Fleurs",
-      },
-      description: {
-        en: "E-commerce site for flower sales with customer and vendor flows backed by SQLite. Collaborative software engineering project with GitLab CI and weekly follow-ups.\n\n**Tech stack:** HTML, CSS, PHP, SQLite, GitLab",
-        fr: "Site e-commerce de vente de fleurs avec gestion utilisateurs et vendeurs sous SQLite. Projet collaboratif avec GitLab CI et suivi hebdomadaire.\n\n**Technologies utilisées :** HTML, CSS, PHP, SQLite, GitLab",
-      },
-      ghLink: "https://github.com/yanimohellebi26/boutique-roses.git",
-    },
+    /* flowers removed — covered by multi-role e-commerce */
     {
       id: "movie-card",
       imgPath: movieCardImg,
@@ -345,10 +291,11 @@ function Projects() {
         fr: "MovieCard — Générateur de Fiches Film",
       },
       description: {
-        en: "Movie card generation app with Supabase backend. Animated Next.js frontend with metadata extraction, search, and beautiful card layouts.\n\n**Tech stack:** Next.js 16, React 19, TypeScript, Supabase, Framer Motion, Lucide Icons",
-        fr: "Application de génération de fiches film avec backend Supabase. Frontend Next.js animé avec extraction de métadonnées et mise en page élégante.\n\n**Technologies utilisées :** Next.js 16, React 19, TypeScript, Supabase, Framer Motion, Lucide Icons",
+        en: "Movie card generation app with Supabase backend. Animated Next.js frontend with automatic metadata extraction, search, and shareable card layouts.\n\n**Tech stack:** Next.js 16, React 19, TypeScript, Supabase, Framer Motion, Lucide Icons",
+        fr: "Application de génération de fiches film avec backend Supabase. Frontend Next.js animé avec extraction automatique de métadonnées et mise en page partageable.\n\n**Technologies utilisées :** Next.js 16, React 19, TypeScript, Supabase, Framer Motion, Lucide Icons",
       },
       ghLink: "https://github.com/yanimohellebi26/MovieCard",
+      demoLink: "https://moviecard-seven.vercel.app/",
     },
     {
       id: "movie-quotes",
