@@ -30,18 +30,20 @@ import question2Img from "../../Assets/Projects/question2-ml.png";
 import recoMaisonImg from "../../Assets/Projects/reco-maison.png";
 import segCubeImg from "../../Assets/Projects/seg-face-cube.png";
 import aportfolioImg from "../../Assets/Projects/aportfolio.png";
+/* ── additional images ── */
+import flowersImg from "../../Assets/Projects/flowers.png";
 import { useLanguage } from "../../context/LanguageContext";
 import "./ProjectsFuturistic.css";
 
 /* ── categories ── */
 const CATEGORIES = [
-  { id: "all",      icon: "🔥", en: "All",          fr: "Tous" },
-  { id: "featured", icon: "⭐", en: "Featured",     fr: "Favoris" },
-  { id: "ai",       icon: "🧠", en: "AI & ML",      fr: "IA & ML" },
-  { id: "web",      icon: "🌐", en: "Web",           fr: "Web" },
-  { id: "game",     icon: "🎮", en: "Game",          fr: "Jeu" },
-  { id: "3d",       icon: "🔮", en: "3D & Vision",   fr: "3D & Vision" },
-  { id: "data",     icon: "📊", en: "Data & Algo",   fr: "Data & Algo" },
+  { id: "all",       icon: "🔥", en: "All",               fr: "Tous" },
+  { id: "featured",  icon: "⭐", en: "Favorites",          fr: "Favoris" },
+  { id: "academic",  icon: "🎓", en: "Academic",          fr: "Académique" },
+  { id: "deployed",  icon: "🚀", en: "Deployed",          fr: "Déployé" },
+  { id: "agentic",   icon: "🤖", en: "Agentic Workflow",  fr: "Agentic Workflow" },
+  { id: "ml",        icon: "🧠", en: "ML & Data",         fr: "Machine Learning & Data" },
+  { id: "else",      icon: "🎮", en: "Games & Creative",  fr: "Jeux & Créatif" },
 ];
 
 function Projects() {
@@ -64,14 +66,15 @@ function Projects() {
   const text = copy[language] || copy.en;
 
   /* ══════════════════════════════════════════════
-     PROJECT DATA — 28 projects, 7 categories
+     PROJECT DATA — 38 projects, 5 categories
      ══════════════════════════════════════════════ */
   const projects = [
-    /* ── AI & ML ────────────────────────────── */
+    /* ── Agentic Workflow ────────────────────── */
     {
       id: "angry-geopol",
       imgPath: angryGeoImg,
-      category: "ai",
+      category: "agentic",
+      featured: true,
       title: {
         en: "12 Angry Agents — Geopolitical Debate Simulator",
         fr: "12 Angry Agents — Simulateur de Débat Géopolitique",
@@ -85,7 +88,7 @@ function Projects() {
     {
       id: "angry-repro",
       imgPath: angryReproImg,
-      category: "ai",
+      category: "agentic",
       title: {
         en: "12 Angry Men — Computational Jury Reproduction",
         fr: "12 Angry Men — Reproduction Computationnelle du Jury",
@@ -99,7 +102,7 @@ function Projects() {
     {
       id: "rag",
       imgPath: ragImg,
-      category: "ai",
+      category: "agentic",
       featured: true,
       title: {
         en: "RAG-Master1 — AI Teaching Assistant",
@@ -114,7 +117,8 @@ function Projects() {
     {
       id: "cine-agent",
       imgPath: cineAgentImg,
-      category: "ai",
+      category: "agentic",
+      featured: true,
       title: {
         en: "CineAgent — AI Alternate Film Endings",
         fr: "CineAgent — Fins Alternatives de Films par IA",
@@ -128,7 +132,7 @@ function Projects() {
     {
       id: "neutraview",
       imgPath: neutraviewImg,
-      category: "ai",
+      category: "ml",
       title: {
         en: "NeutraView — Neutral Cultural Reviews",
         fr: "NeutraView — Analyse Neutre d'Avis Culturels",
@@ -143,7 +147,7 @@ function Projects() {
     {
       id: "spam",
       imgPath: spamImg,
-      category: "ai",
+      category: "ml",
       title: {
         en: "AI-Powered Spam Detector",
         fr: "Détecteur de Spam avec IA",
@@ -157,7 +161,7 @@ function Projects() {
     {
       id: "cheat",
       imgPath: cheatImg,
-      category: "ai",
+      category: "ml",
       title: {
         en: "Video-Based Exam Cheating Detection",
         fr: "Détection de Triche aux Examens (vidéo)",
@@ -172,7 +176,7 @@ function Projects() {
     {
       id: "subsense",
       imgPath: subsenseImg,
-      category: "ai",
+      category: "ml",
       title: {
         en: "SUBSENSE — Instagram Video Analysis",
         fr: "SUBSENSE — Analyse de Vidéos Instagram",
@@ -187,7 +191,7 @@ function Projects() {
     {
       id: "nutrimind",
       imgPath: nutrimindImg,
-      category: "ai",
+      category: "ml",
       title: {
         en: "NUTRI-MIND — Nutrition AI for Student Lifters",
         fr: "NUTRI-MIND — IA Nutritionnelle Musculation Étudiante",
@@ -202,7 +206,7 @@ function Projects() {
     {
       id: "rawview",
       imgPath: rawviewImg,
-      category: "ai",
+      category: "ml",
       title: {
         en: "RAWVIEW — Disconnected Review Interface",
         fr: "RAWVIEW — Interface d'Avis Déconnectés",
@@ -217,8 +221,7 @@ function Projects() {
     {
       id: "book-rec",
       imgPath: livreRecoImg,
-      category: "ai",
-      featured: true,
+      category: "deployed",
       title: {
         en: "BookBot — Smart Book Recommendation",
         fr: "BookBot — Recommandation Intelligente de Livres",
@@ -234,7 +237,7 @@ function Projects() {
     {
       id: "linkedin-chat",
       imgPath: linkedinImg,
-      category: "ai",
+      category: "agentic",
       title: {
         en: "LinkedIn AI Chatbot",
         fr: "Chatbot IA LinkedIn",
@@ -245,12 +248,11 @@ function Projects() {
       },
       ghLink: "https://github.com/yanimohellebi26/linkedin-ai-chatbot",
     },
-    /* ── Web ────────────────────────────── */
+    /* ── Deployed ──────────────────────────── */
     {
       id: "lyon",
       imgPath: barsLyonImg,
-      category: "web",
-      featured: true,
+      category: "deployed",
       title: {
         en: "LyonByNight — Interactive Nightlife PWA",
         fr: "LyonByNight — PWA de Découverte Nocturne",
@@ -267,7 +269,7 @@ function Projects() {
     {
       id: "ecommerce",
       imgPath: ecommerceImg,
-      category: "web",
+      category: "academic",
       title: {
         en: "Multi-Role E-Commerce Platform",
         fr: "Plateforme E-Commerce Multi-Rôles",
@@ -283,8 +285,7 @@ function Projects() {
     {
       id: "movie-card",
       imgPath: movieCardImg,
-      category: "web",
-      featured: true,
+      category: "deployed",
       title: {
         en: "MovieCard — Film Card Generator",
         fr: "MovieCard — Générateur de Fiches Film",
@@ -299,7 +300,7 @@ function Projects() {
     {
       id: "movie-quotes",
       imgPath: movieQuotesImg,
-      category: "web",
+      category: "else",
       title: {
         en: "MovieQuotes — Quote Capture Extension",
         fr: "MovieQuotes — Extension Capture de Citations",
@@ -313,7 +314,7 @@ function Projects() {
     {
       id: "aportfolio",
       imgPath: aportfolioImg,
-      category: "web",
+      category: "deployed",
       title: {
         en: "Aportfolio — Static Portfolio",
         fr: "Aportfolio — Portfolio Statique",
@@ -324,11 +325,12 @@ function Projects() {
       },
       ghLink: "https://github.com/yanimohellebi26/Aportfolio",
     },
-    /* ── Game ────────────────────────────── */
+    /* ── Agentic Workflow (cont.) ──────────── */
     {
       id: "hackathon",
       imgPath: hackathonImg,
-      category: "game",
+      category: "agentic",
+      featured: true,
       title: {
         en: "Amazigh Odyssey — AI RPG with Mistral",
         fr: "Amazigh Odyssey — RPG IA avec Mistral",
@@ -342,7 +344,7 @@ function Projects() {
     {
       id: "mind",
       imgPath: mindImg,
-      category: "game",
+      category: "academic",
       title: {
         en: "The Mind — AI & Network Communication",
         fr: "The Mind — IA et Communication Réseau",
@@ -356,7 +358,7 @@ function Projects() {
     {
       id: "drol",
       imgPath: drollImg,
-      category: "game",
+      category: "academic",
       title: {
         en: "Modernising the DROL Game",
         fr: "Modernisation du Jeu DROL",
@@ -367,11 +369,12 @@ function Projects() {
       },
       ghLink: "https://github.com/yanimohellebi26/DROL-GAME",
     },
-    /* ── 3D & Vision ────────────────────── */
+    /* ── ML & Data ──────────────────────── */
     {
       id: "seg-urban",
       imgPath: segUrbanImg,
-      category: "3d",
+      category: "ml",
+      featured: true,
       title: {
         en: "3D Semantic Segmentation — Urban Scenes",
         fr: "Segmentation Sémantique 3D — Scènes Urbaines",
@@ -385,7 +388,7 @@ function Projects() {
     {
       id: "reco-maison",
       imgPath: recoMaisonImg,
-      category: "3d",
+      category: "ml",
       title: {
         en: "House Style Recognition from Point Clouds",
         fr: "Reconnaissance de Styles de Maisons en 3D",
@@ -399,7 +402,7 @@ function Projects() {
     {
       id: "seg-cube",
       imgPath: segCubeImg,
-      category: "3d",
+      category: "ml",
       title: {
         en: "3D Cube Face Segmentation",
         fr: "Segmentation de Faces de Cube 3D",
@@ -413,7 +416,7 @@ function Projects() {
     {
       id: "poisson-gl",
       imgPath: poissonImg,
-      category: "3d",
+      category: "academic",
       title: {
         en: "3D Fish — OpenGL Rendering",
         fr: "Poisson 3D — Rendu OpenGL",
@@ -427,7 +430,7 @@ function Projects() {
     {
       id: "legendes",
       imgPath: legendesImg,
-      category: "3d",
+      category: "else",
       title: {
         en: "Légendes Amazighes — AR/VR Experience",
         fr: "Légendes Amazighes — Expérience AR/VR",
@@ -438,11 +441,11 @@ function Projects() {
       },
       ghLink: "https://github.com/yanimohellebi26/Legendes_Amazighes",
     },
-    /* ── Data & Algo ────────────────────── */
+    /* ── Academic ─────────────────────────── */
     {
       id: "bucket-sort",
       imgPath: bucketSortImg,
-      category: "data",
+      category: "academic",
       title: {
         en: "Distributed Bucket Sort — MPI",
         fr: "Bucket Sort Distribué — MPI",
@@ -456,7 +459,7 @@ function Projects() {
     {
       id: "graph-color",
       imgPath: graphColorImg,
-      category: "data",
+      category: "academic",
       title: {
         en: "Graph Colouring — Greedy vs DSatur",
         fr: "Coloration de Graphes — Greedy vs DSatur",
@@ -470,7 +473,7 @@ function Projects() {
     {
       id: "question2",
       imgPath: question2Img,
-      category: "data",
+      category: "ml",
       title: {
         en: "ML Package & API — Python Pipeline",
         fr: "Package ML & API — Pipeline Python",
@@ -480,6 +483,107 @@ function Projects() {
         fr: "Parcours ML complet : régression OLS packagée pip, exposée via une API REST Flask, servie avec Gunicorn et conteneurisée Docker pour un déploiement reproductible.\n\n**Technologies utilisées :** Python, Flask, Gunicorn, Docker, scikit-learn, NumPy, Matplotlib, pip Packaging",
       },
       ghLink: "https://github.com/yanimohellebi26/question2_project",
+    },
+    /* ── Additional projects from MD ── */
+    {
+      id: "rag-m1",
+      imgPath: ragImg,
+      category: "agentic",
+      title: {
+        en: "RAG-M1 — Multi-Agent RAG System",
+        fr: "RAG-M1 — Système RAG Multi-Agent",
+      },
+      description: {
+        en: "Multi-agent RAG system with 6 specialised agents on 139 M1 course files. Pipeline: PDF/ZIP/TXT → Qdrant → BGE-M3 reranking. Agents for RAG, Notes, Exercises, Memory, Web search, and Research.\n\n**Tech stack:** Python, LlamaIndex, Qdrant, BGE-M3, FastAPI, PyMuPDF, MCP, Docker",
+        fr: "Système RAG multi-agent avec 6 agents spécialisés sur 139 fichiers de cours M1. Pipeline : PDF/ZIP/TXT → Qdrant → BGE-M3 reranking. Agents pour RAG, Notes, Exercices, Mémoire, Web et Recherche.\n\n**Technologies utilisées :** Python, LlamaIndex, Qdrant, BGE-M3, FastAPI, PyMuPDF, MCP, Docker",
+      },
+      ghLink: "https://github.com/yanimohellebi26/RAG-M1",
+    },
+    {
+      id: "pontifex",
+      imgPath: aportfolioImg,
+      category: "deployed",
+      title: {
+        en: "Pontifex — Solitaire Cipher + RAG Assistant",
+        fr: "Pontifex — Chiffre de Solitaire + Assistant RAG",
+      },
+      description: {
+        en: "Complete Solitaire cipher implementation with a Streamlit UI, a RAG-powered crypto assistant (ChromaDB + Gemini), vulnerability demonstrations, and card visualisations.\n\n**Tech stack:** Python, Streamlit, Google Gemini, ChromaDB, Sentence-Transformers, Plotly, NumPy, SciPy",
+        fr: "Implémentation complète du chiffre de Solitaire avec UI Streamlit, assistant RAG crypto (ChromaDB + Gemini), démonstrations de vulnérabilités et visualisation de cartes.\n\n**Technologies utilisées :** Python, Streamlit, Google Gemini, ChromaDB, Sentence-Transformers, Plotly, NumPy, SciPy",
+      },
+      ghLink: "https://github.com/yanimohellebi26/crypto",
+      demoLink: "https://crypto-master1.streamlit.app/",
+    },
+    {
+      id: "boutique-fleurs",
+      imgPath: flowersImg,
+      category: "academic",
+      title: {
+        en: "Flower Shop — Desktop Java E-Commerce",
+        fr: "Boutique de Fleurs — E-Commerce Desktop Java",
+      },
+      description: {
+        en: "Desktop Java e-commerce application with MVC/DAO/Observer design patterns. 21 domain classes (flowers, bouquets), 9 Swing views, unit tests + UI tests. Collaborative project.\n\n**Tech stack:** Java 21, Swing, SQLite, Maven, JUnit 5, Mockito, AssertJ Swing",
+        fr: "Application e-commerce desktop Java avec patterns MVC/DAO/Observer. 21 classes domaine (fleurs, bouquets), 9 vues Swing, tests unitaires + UI. Projet collaboratif.\n\n**Technologies utilisées :** Java 21, Swing, SQLite, Maven, JUnit 5, Mockito, AssertJ Swing",
+      },
+      ghLink: "https://github.com/yanimohellebi26/boutique-roses",
+    },
+    {
+      id: "oracle-bd",
+      imgPath: aportfolioImg,
+      category: "academic",
+      title: {
+        en: "Oracle Execution Plans — Query Optimisation",
+        fr: "Plans d'Exécution Oracle — Optimisation de Requêtes",
+      },
+      description: {
+        en: "In-depth study of the Oracle optimiser: index vs full table scan thresholds, B-Tree vs Bitmap, multi-criteria AND/OR predicates. 20+ SQL scripts with cold-read protocol.\n\n**Tech stack:** Oracle Database, PL/SQL, SQL*Plus, AUTOTRACE, DBMS_STATS, DBMS_XPLAN, Bash",
+        fr: "Étude approfondie de l'optimiseur Oracle : seuils index vs full table scan, B-Tree vs Bitmap, prédicats AND/OR multi-critères. 20+ scripts SQL avec protocole cold-read.\n\n**Technologies utilisées :** Oracle Database, PL/SQL, SQL*Plus, AUTOTRACE, DBMS_STATS, DBMS_XPLAN, Bash",
+      },
+      ghLink: "https://github.com/yanimohellebi26/BD",
+    },
+    {
+      id: "ais",
+      imgPath: aportfolioImg,
+      category: "academic",
+      featured: true,
+      title: {
+        en: "AIS — Full-Stack Data Platform",
+        fr: "AIS — Plateforme Data Full-Stack",
+      },
+      description: {
+        en: "Full-stack data platform with a Vite+React frontend served by Nginx, a Spring Boot 3 (Java 17) backend, a Python ETL pipeline, and PostgreSQL 16. All services orchestrated with Docker Compose.\n\n**Tech stack:** Java 17, Spring Boot 3, React, Vite, Python, PostgreSQL 16, Docker Compose, Nginx",
+        fr: "Plateforme data full-stack avec frontend Vite+React servi par Nginx, backend Spring Boot 3 (Java 17), pipeline ETL Python et PostgreSQL 16. Tous les services orchestrés via Docker Compose.\n\n**Technologies utilisées :** Java 17, Spring Boot 3, React, Vite, Python, PostgreSQL 16, Docker Compose, Nginx",
+      },
+      ghLink: "https://github.com/yanimohellebi26/ais",
+    },
+    {
+      id: "bowling",
+      imgPath: aportfolioImg,
+      category: "else",
+      title: {
+        en: "Strike du Destin — Cinematic Interactive Experience",
+        fr: "Strike du Destin — Expérience Interactive Cinématique",
+      },
+      description: {
+        en: "Cinematic interactive web experience with AI voice narration (ElevenLabs), multi-act structure, confetti system, and PDF ticket generation via Canvas.\n\n**Tech stack:** HTML5, CSS3, JavaScript, Web Audio API, Canvas, html2canvas, jsPDF, ElevenLabs",
+        fr: "Expérience web interactive cinématique avec narration vocale IA (ElevenLabs), structure multi-actes, système confetti et génération PDF tickets via Canvas.\n\n**Technologies utilisées :** HTML5, CSS3, JavaScript, Web Audio API, Canvas, html2canvas, jsPDF, ElevenLabs",
+      },
+      ghLink: "https://github.com/yanimohellebi26/bowling",
+    },
+    {
+      id: "date-game",
+      imgPath: aportfolioImg,
+      category: "else",
+      title: {
+        en: "Lapine & Bonbons — 2D Cross-Platform Game",
+        fr: "Lapine & Bonbons — Jeu 2D Cross-Platform",
+      },
+      description: {
+        en: "2D cross-platform mini-game built with LibGDX (desktop + HTML5). Character controller with candy collection, 6 thematic modals, emoji particles, and multi-platform builds.\n\n**Tech stack:** Java, LibGDX, Gradle, FreeType, SpriteBatch, GWT",
+        fr: "Mini-jeu 2D cross-platform avec LibGDX (desktop + HTML5). Character controller avec collecte de bonbons, 6 modals thématiques, particules emoji et builds multi-plateformes.\n\n**Technologies utilisées :** Java, LibGDX, Gradle, FreeType, SpriteBatch, GWT",
+      },
+      ghLink: "https://github.com/yanimohellebi26/date",
     },
   ];
 
