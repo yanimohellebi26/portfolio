@@ -52,15 +52,17 @@ function BlogCards({ title, description, content, date, ghLink, imgPath }) {
 
   return (
     <article className="glass-card flex h-full flex-col overflow-hidden">
-      <div className="relative h-48 overflow-hidden">
-        <img
-          src={imgPath}
-          alt={title}
-          loading="lazy"
-          className="h-full w-full object-cover transition duration-500 hover:scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-bg/85 via-brand-bg/10 to-transparent" aria-hidden="true" />
-      </div>
+      {imgPath && (
+        <div className="relative h-48 overflow-hidden">
+          <img
+            src={imgPath}
+            alt={title}
+            loading="lazy"
+            className="h-full w-full object-cover transition duration-500 hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-bg/85 via-brand-bg/10 to-transparent" aria-hidden="true" />
+        </div>
+      )}
       <div className="flex flex-1 flex-col gap-5 p-6">
         <div>
           <h3 className="text-xl font-semibold text-white">{title}</h3>
