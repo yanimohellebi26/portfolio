@@ -1,16 +1,283 @@
 import React from "react";
 import BlogCards from "./BlogCards";
-import Bneutralview from "../../Assets/Blog/Bneutralview.png";
-import Brecommendation from "../../Assets/Blog/Brecommendation.png";
-import Brawview from "../../Assets/Blog/Brawview.png";
-import Bnutrimind from "../../Assets/Blog/Bnutri_mind.png";
-import Bsubsense from "../../Assets/Blog/Bsubsense.png";
-import BlyonImg from "../../Assets/Projects/bars-lyon.png";
-import BmovieCardImg from "../../Assets/Projects/movie-card.png";
-import BragImg from "../../Assets/Projects/rag-master.png";
-import BstageImg from "../../Assets/Projects/cheat-gemini.png";
-import BdailyImg from "../../Assets/Projects/aportfolio.png";
+import BstageLabImg from "../../Assets/Projects/reco-maison.png";
+import BcryptoImg from "../../Assets/Projects/aportfolio.png";
+import BalternanceImg from "../../Assets/Projects/rag-master.png";
 import { useLanguage } from "../../context/LanguageContext";
+
+function Blog() {
+  const { language } = useLanguage();
+
+  const copy = {
+    en: {
+      heading: { lead: "Research &", highlight: "Insights" },
+      subtitle: "My journey into research — from lab internships to R&D engineering.",
+    },
+    fr: {
+      heading: { lead: "Recherche &", highlight: "Réflexions" },
+      subtitle: "Mon parcours en recherche — du stage en laboratoire à l'ingénierie R&D.",
+    },
+  };
+
+  const articles = [
+    {
+      id: "stage-lab",
+      imgPath: BstageLabImg,
+      title: {
+        en: "Research Internship: 3D Deep Learning at the University Lab",
+        fr: "Stage de Recherche : Deep Learning 3D au Laboratoire Universitaire",
+      },
+      description: {
+        en: "Exploring PointNet architectures for architectural shape recognition from 3D point clouds",
+        fr: "Explorer les architectures PointNet pour la reconnaissance de formes architecturales depuis des nuages de points 3D",
+      },
+      content: {
+        en: `Before this internship, I had never worked on a problem where the ground truth had to be *generated*. In most ML courses, you download a dataset, train a model, evaluate. Clean. Controlled. Predictable.
+
+At the lab, the first challenge was not training a neural network — it was **creating the data itself**.
+
+My project focused on classifying architectural styles (standard, complex, Italian) from 3D point clouds using PointNet and PointNet++. But no public dataset of procedurally generated houses with labelled architectural elements existed. So I built one — using Blender's Python API to procedurally generate thousands of synthetic house point clouds, each with known ground truth labels for walls, doors, windows, and roofs.
+
+**That experience changed how I think about research.**
+
+In coursework, the problem is always well-defined. In a lab, you spend weeks just *formulating* the right question. What granularity of labels makes sense? How many points per sample? How do you handle class imbalance between a massive roof surface and a tiny door frame? These decisions shape everything downstream, and there is no textbook answer — only hypotheses to test.
+
+The second revelation was **how much research is iteration, not inspiration**. I ran dozens of training configurations: PointNet vs PointNet++, varying numbers of points (1024, 2048, 4096), different augmentation strategies (random rotation, Gaussian noise, scaling). Each run generated metrics that guided the next experiment. It is methodical, patient work — closer to experimental physics than to hackathon-style coding.
+
+What I brought back from this experience is a deep respect for **reproducibility**. Every experiment was logged, every hyperparameter tracked, every result exportable. That rigour is what separates a student project from a research contribution.
+
+I also learned that **3D deep learning is still an open frontier**. Unlike images where CNNs dominate, point clouds require architectures that handle unordered sets, varying density, and spatial relationships — problems where PointNet's symmetric functions and PointNet++'s hierarchical grouping represent fundamentally different trade-offs.
+
+This internship confirmed something I had suspected: **I want to continue in research.** Not because it is glamorous — it is often frustrating, slow, and humbling — but because it is the space where you confront genuinely unsolved problems.
+
+And that confrontation is what makes you grow.`,
+        fr: `Avant ce stage, je n'avais jamais travaillé sur un problème où la vérité terrain devait être *générée*. Dans la plupart des cours de ML, on télécharge un dataset, on entraîne un modèle, on évalue. Propre. Contrôlé. Prévisible.
+
+Au laboratoire, le premier défi n'était pas d'entraîner un réseau de neurones — c'était **de créer les données elles-mêmes**.
+
+Mon projet portait sur la classification de styles architecturaux (standard, complexe, italien) à partir de nuages de points 3D avec PointNet et PointNet++. Mais aucun dataset public de maisons générées procéduralement avec des labels d'éléments architecturaux n'existait. Je l'ai donc construit — en utilisant l'API Python de Blender pour générer procéduralement des milliers de maisons synthétiques, chacune avec des labels connus pour les murs, portes, fenêtres et toits.
+
+**Cette expérience a changé ma façon de penser la recherche.**
+
+En cours, le problème est toujours bien défini. Dans un labo, on passe des semaines juste à *formuler* la bonne question. Quelle granularité de labels a du sens ? Combien de points par échantillon ? Comment gérer le déséquilibre de classes entre une surface de toit massive et un minuscule cadre de porte ? Ces décisions façonnent tout en aval, et il n'y a pas de réponse dans un manuel — seulement des hypothèses à tester.
+
+La seconde révélation a été **à quel point la recherche est de l'itération, pas de l'inspiration**. J'ai lancé des dizaines de configurations d'entraînement : PointNet vs PointNet++, nombre variable de points (1024, 2048, 4096), différentes stratégies d'augmentation (rotation aléatoire, bruit gaussien, mise à l'échelle). Chaque run génère des métriques qui guident l'expérience suivante. C'est un travail méthodique, patient — plus proche de la physique expérimentale que du code en mode hackathon.
+
+Ce que j'ai ramené de cette expérience, c'est un profond respect pour la **reproductibilité**. Chaque expérience était journalisée, chaque hyperparamètre tracé, chaque résultat exportable. Cette rigueur est ce qui sépare un projet étudiant d'une contribution de recherche.
+
+J'ai aussi appris que **le deep learning 3D est encore une frontière ouverte**. Contrairement aux images où les CNN dominent, les nuages de points exigent des architectures qui gèrent des ensembles non ordonnés, des densités variables et des relations spatiales — des problèmes où les fonctions symétriques de PointNet et le groupement hiérarchique de PointNet++ représentent des compromis fondamentalement différents.
+
+Ce stage m'a confirmé quelque chose que je soupçonnais : **je veux continuer en recherche.** Pas parce que c'est glamour — c'est souvent frustrant, lent et humiliant — mais parce que c'est l'espace où l'on affronte des problèmes réellement non résolus.
+
+Et c'est cette confrontation qui fait grandir.`,
+      },
+      date: "2025-06-15",
+      ghLink: "https://github.com/yanimohellebi26/reconnaissance_maison-nuage-de-points",
+    },
+    {
+      id: "initiation-recherche",
+      imgPath: BcryptoImg,
+      title: {
+        en: "Initiation to Research: Transformers Meet Graph Neural Networks",
+        fr: "Initiation à la Recherche : Quand les Transformers Rencontrent les Réseaux de Graphes",
+      },
+      description: {
+        en: "A synthesis of two foundational 2017 papers revealing the structural bridge between attention and graph convolution",
+        fr: "Synthèse de deux articles fondateurs de 2017 révélant le lien structurel entre attention et convolution de graphes",
+      },
+      content: {
+        en: `The "Initiation to Research" module in Master 1 asks you to do something surprisingly rare in a CS curriculum: **read foundational papers, understand the mathematics from first principles, and synthesise them into a coherent contribution.**
+
+My work focused on two papers that both appeared in 2017 and each revolutionised their respective field:
+- *Attention Is All You Need* (Vaswani et al.) — the Transformer architecture that eliminated recurrence from NLP
+- *Semi-Supervised Classification with Graph Convolutional Networks* (Kipf & Welling) — the GCN that made deep learning on graphs scalable
+
+**The key insight I developed:**
+
+On the surface, these architectures seem unrelated. One processes sequences (text), the other processes graphs (networks). But when you formalise both through the lens of **Message Passing Neural Networks** (Gilmer et al., 2017), a structural bridge appears:
+
+Self-attention can be viewed as a graph convolution operating on a **complete implicit graph with dynamic edges**. In a Transformer, every token attends to every other token — that is a fully-connected graph where edge weights (attention scores) are computed dynamically. In a GCN, convolution operates on a fixed, sparse adjacency matrix.
+
+**The mathematical derivations:**
+
+For the Transformer, I traced the full derivation: why the scaling factor √dk prevents gradient vanishing in the softmax, how multi-head attention creates parallel subspaces, and why positional encoding uses sinusoidal functions for extrapolation.
+
+For the GCN, I worked through the spectral graph theory: the Laplacian eigendecomposition, the Chebyshev polynomial approximation that avoids O(N³) complexity, and the first-order simplification (the "renormalization trick") that makes the final architecture so elegant.
+
+**What this taught me about research:**
+
+The deepest lesson was that **breakthroughs rarely come from isolated genius — they come from seeing connections between existing ideas**. Vaswani removed recurrence; Kipf simplified spectral filtering. But the unifying insight (MPNN framework) required reading *across* sub-fields.
+
+This is what I find most exciting about AI research today: the boundaries between NLP, computer vision, graph learning, and geometric deep learning are dissolving. The same mathematical primitives — attention, message passing, learned representations — appear everywhere, just in different instantiations.
+
+Writing this synthesis taught me to think in formal structures rather than implementation details. It is a skill I now apply to every system I design: what is the *mathematical object* I am computing, and what are the *structural assumptions* behind it?`,
+        fr: `Le module "Initiation à la Recherche" en Master 1 demande quelque chose de rare dans un cursus informatique : **lire des articles fondateurs, comprendre les mathématiques depuis les principes premiers, et les synthétiser en une contribution cohérente.**
+
+Mon travail portait sur deux articles parus en 2017 qui ont chacun révolutionné leur domaine :
+- *Attention Is All You Need* (Vaswani et al.) — l'architecture Transformer qui a éliminé la récurrence en NLP
+- *Semi-Supervised Classification with Graph Convolutional Networks* (Kipf & Welling) — le GCN qui a rendu le deep learning sur graphes scalable
+
+**L'intuition clé que j'ai développée :**
+
+En surface, ces architectures semblent sans rapport. L'une traite des séquences (texte), l'autre des graphes (réseaux). Mais quand on formalise les deux à travers le prisme des **Message Passing Neural Networks** (Gilmer et al., 2017), un pont structurel apparaît :
+
+La self-attention peut être vue comme une convolution de graphe opérant sur un **graphe complet implicite à arêtes dynamiques**. Dans un Transformer, chaque token attend chaque autre token — c'est un graphe entièrement connecté où les poids des arêtes (scores d'attention) sont calculés dynamiquement. Dans un GCN, la convolution opère sur une matrice d'adjacence fixe et sparse.
+
+**Les dérivations mathématiques :**
+
+Pour le Transformer, j'ai retracé la dérivation complète : pourquoi le facteur d'échelle √dk empêche la disparition du gradient dans le softmax, comment le multi-head attention crée des sous-espaces parallèles, et pourquoi l'encodage positionnel utilise des fonctions sinusoïdales pour l'extrapolation.
+
+Pour le GCN, j'ai travaillé la théorie spectrale des graphes : la décomposition en valeurs propres du Laplacien, l'approximation par polynômes de Tchebychev qui évite la complexité O(N³), et la simplification au premier ordre (le "renormalization trick") qui rend l'architecture finale si élégante.
+
+**Ce que cela m'a appris sur la recherche :**
+
+La leçon la plus profonde est que **les percées viennent rarement du génie isolé — elles viennent de la capacité à voir des connexions entre des idées existantes**. Vaswani a supprimé la récurrence ; Kipf a simplifié le filtrage spectral. Mais l'insight unificateur (le cadre MPNN) nécessitait de lire *à travers* les sous-domaines.
+
+C'est ce que je trouve le plus passionnant dans la recherche en IA aujourd'hui : les frontières entre NLP, vision par ordinateur, apprentissage sur graphes et deep learning géométrique se dissolvent. Les mêmes primitives mathématiques — attention, passage de messages, représentations apprises — apparaissent partout, juste sous des instanciations différentes.
+
+Rédiger cette synthèse m'a appris à penser en structures formelles plutôt qu'en détails d'implémentation. C'est une compétence que j'applique désormais à chaque système que je conçois : quel est l'*objet mathématique* que je calcule, et quelles sont les *hypothèses structurelles* derrière ?`,
+      },
+      date: "2026-04-15",
+    },
+    {
+      id: "alternance-rd",
+      imgPath: BalternanceImg,
+      title: {
+        en: "R&D at Siemens: AI GitLab Review — From Prototype to 103 Users",
+        fr: "R&D chez Siemens : AI GitLab Review — Du Prototype à 103 Utilisateurs",
+      },
+      description: {
+        en: "Building a multi-agent code review system with LangGraph and MCP, deployed to 14 dev teams",
+        fr: "Construire un système de revue de code multi-agents avec LangGraph et MCP, déployé auprès de 14 équipes",
+      },
+      content: {
+        en: `When I joined Siemens Digital Industries Software in Lyon as an R&D apprentice in AI, I was handed a problem that every large engineering organisation faces: **code reviews do not scale.**
+
+With hundreds of merge requests per week across fourteen development teams, senior engineers were spending hours catching the same recurring issues — security flaws, unhandled edge cases, inconsistent error patterns. The human reviewers were doing essential work, but a significant portion of it was *mechanical*: pattern-matching that a well-designed system could handle first.
+
+**AI GitLab Review** was my answer.
+
+**The architecture:**
+
+The solution is a **multi-agent system orchestrated by LangGraph**, structured as a state machine:
+
+1. A **classifier agent** analyses each file in the merge request and routes it to the relevant specialised agents based on file type and content.
+2. Four **specialised agents** analyse in parallel:
+   - Security (injection, secrets, auth vulnerabilities)
+   - Logic defects (race conditions, off-by-one, null dereferences)
+   - Error handling (uncaught exceptions, silent failures, missing retries)
+   - Code quality (naming, complexity, dead code, missing documentation)
+3. A **synthesiser** collects all findings, deduplicates by **semantic similarity** (not string matching — two differently worded comments about the same issue are merged), and scores each finding with a **trust score**.
+4. Comments are published directly on GitLab via the **Model Context Protocol (MCP)**, appearing inline on the exact lines concerned.
+
+**The trust scoring system:**
+
+Not all AI findings deserve equal weight. The system maintains a self-review mechanism: before posting, each comment is evaluated for confidence. Low-confidence findings are flagged as suggestions rather than issues, reducing noise. Over time, the trust model learns which patterns in which codebases produce genuine value.
+
+**Deployment and impact:**
+
+The tool is currently deployed to **14 development teams** with **103 active users**. It runs automatically on every merge request, posting comments in the same interface developers already use — zero friction, zero workflow change.
+
+**What I learned:**
+
+The hardest problem was not the LLM integration. It was **calibrating signal-to-noise**. A system that flags everything is worse than no system at all — it trains developers to ignore AI comments. The semantic deduplication, trust scoring, and model tiering (using cheaper models for simple checks, expensive ones for complex logic) were all born from real feedback: *"too many comments"*, *"this one was wrong"*, *"why didn't it catch that?"*
+
+I also learned that **shipping a tool to production is a fundamentally different skill from building a prototype**. Prototypes work in demos. Production tools must handle edge cases, fail gracefully, scale to thousands of MRs, and earn the trust of engineers who are initially skeptical.
+
+**The broader picture — RAG-M1 and MCP:**
+
+This experience directly fed my personal project **RAG-M1**. The insight: if MCP can connect an AI to GitLab's API for code review, it can connect an AI to *anything* — YouTube for lecture explanations, ArXiv for papers, Google Drive for notes, Gmail for summaries.
+
+RAG-M1 started as a revision chatbot and evolved into a **centralised AI workspace** for my entire student life. The same architectural pattern (specialised agents + orchestrator + tool integration via MCP) that works at enterprise scale at Siemens also works for a single student managing ten courses, thirty deadlines, and hundreds of documents.
+
+**My conviction:**
+
+The future of AI tools is not chat interfaces. It is **invisible infrastructure** — systems that participate in your existing workflow without requiring you to change how you work. AI GitLab Review proves this: developers never leave GitLab, never open a new tool, never change their habits. The AI comes to them.
+
+That principle — meet users where they are, not where you wish they were — is what I want to carry into every system I build next.`,
+        fr: `Quand j'ai rejoint Siemens Digital Industries Software à Lyon en tant qu'apprenti R&D en IA, on m'a confié un problème que toute grande organisation d'ingénierie rencontre : **les revues de code ne passent pas à l'échelle.**
+
+Avec des centaines de merge requests par semaine à travers quatorze équipes de développement, les ingénieurs seniors passaient des heures à attraper les mêmes erreurs récurrentes — failles de sécurité, cas limites non gérés, patterns d'erreur incohérents. Les reviewers humains faisaient un travail essentiel, mais une portion significative était *mécanique* : du pattern-matching qu'un système bien conçu pourrait gérer en premier.
+
+**AI GitLab Review** est ma réponse.
+
+**L'architecture :**
+
+La solution est un **système multi-agents orchestré par LangGraph**, structuré comme une machine à états :
+
+1. Un **agent classificateur** analyse chaque fichier de la merge request et le route vers les agents spécialisés pertinents selon le type et le contenu du fichier.
+2. Quatre **agents spécialisés** analysent en parallèle :
+   - Sécurité (injection, secrets, vulnérabilités d'authentification)
+   - Défauts logiques (race conditions, off-by-one, déréférencements null)
+   - Gestion d'erreurs (exceptions non catchées, échecs silencieux, retries manquants)
+   - Qualité de code (nommage, complexité, code mort, documentation manquante)
+3. Un **synthétiseur** collecte tous les résultats, déduplique par **similarité sémantique** (pas par correspondance de chaînes — deux commentaires formulés différemment sur le même problème sont fusionnés), et attribue un **score de confiance** à chaque trouvaille.
+4. Les commentaires sont publiés directement sur GitLab via le **Model Context Protocol (MCP)**, apparaissant en ligne sur les lignes exactes concernées.
+
+**Le système de trust scoring :**
+
+Toutes les trouvailles de l'IA ne méritent pas le même poids. Le système maintient un mécanisme de self-review : avant publication, chaque commentaire est évalué en confiance. Les trouvailles à faible confiance sont marquées comme suggestions plutôt qu'issues, réduisant le bruit. Avec le temps, le modèle de confiance apprend quels patterns dans quelles codebases produisent une valeur réelle.
+
+**Déploiement et impact :**
+
+L'outil est actuellement déployé auprès de **14 équipes de développement** avec **103 utilisateurs actifs**. Il s'exécute automatiquement sur chaque merge request, postant des commentaires dans la même interface que les développeurs utilisent déjà — zéro friction, zéro changement de workflow.
+
+**Ce que j'ai appris :**
+
+Le problème le plus dur n'était pas l'intégration LLM. C'était **calibrer le ratio signal/bruit**. Un système qui signale tout est pire que pas de système du tout — il entraîne les développeurs à ignorer les commentaires IA. La déduplication sémantique, le trust scoring et le model tiering (modèles moins chers pour les vérifications simples, coûteux pour la logique complexe) sont tous nés de retours réels : *"trop de commentaires"*, *"celui-là était faux"*, *"pourquoi il n'a pas attrapé ça ?"*
+
+J'ai aussi appris que **livrer un outil en production est une compétence fondamentalement différente de construire un prototype**. Les prototypes fonctionnent en démo. Les outils de production doivent gérer les cas limites, échouer gracieusement, passer à l'échelle sur des milliers de MR, et gagner la confiance d'ingénieurs initialement sceptiques.
+
+**La vision plus large — RAG-M1 et MCP :**
+
+Cette expérience a directement nourri mon projet personnel **RAG-M1**. L'intuition : si MCP peut connecter une IA à l'API GitLab pour la revue de code, il peut connecter une IA à *n'importe quoi* — YouTube pour des explications de cours, ArXiv pour des papers, Google Drive pour des notes, Gmail pour des résumés.
+
+RAG-M1 a commencé comme un chatbot de révision et a évolué en un **espace de travail IA centralisé** pour toute ma vie étudiante. Le même pattern architectural (agents spécialisés + orchestrateur + intégration d'outils via MCP) qui fonctionne à l'échelle enterprise chez Siemens fonctionne aussi pour un seul étudiant gérant dix matières, trente deadlines et des centaines de documents.
+
+**Ma conviction :**
+
+L'avenir des outils IA n'est pas les interfaces chat. C'est une **infrastructure invisible** — des systèmes qui participent à ton workflow existant sans exiger que tu changes ta façon de travailler. AI GitLab Review le prouve : les développeurs ne quittent jamais GitLab, n'ouvrent jamais un nouvel outil, ne changent jamais leurs habitudes. L'IA vient à eux.
+
+Ce principe — rencontrer les utilisateurs là où ils sont, pas là où on voudrait qu'ils soient — est ce que je veux porter dans chaque système que je construirai ensuite.`,
+      },
+      date: "2026-05-01",
+      ghLink: "https://github.com/yanimohellebi26/RAG-M1",
+    },
+  ];
+
+  const heading = copy[language] || copy.en;
+
+  return (
+    <section className="section-shell" id="blog">
+      <div className="relative z-10 mx-auto max-w-6xl px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl space-y-4 text-center">
+          <h1 className="text-3xl font-semibold text-white sm:text-4xl">
+            {heading.heading.lead} <span className="text-brand-accent">{heading.heading.highlight}</span>
+          </h1>
+          <p className="text-sm text-brand-muted">
+            {heading.subtitle}
+          </p>
+        </div>
+        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {articles.map((article) => (
+            <BlogCards
+              key={article.id}
+              title={article.title[language] || article.title.en}
+              description={article.description[language] || article.description.en}
+              content={article.content[language] || article.content.en}
+              date={article.date}
+              ghLink={article.ghLink}
+              demoLink={article.demoLink}
+              imgPath={article.imgPath}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default Blog;
 
 function Blog() {
   const { language } = useLanguage();
