@@ -1,28 +1,33 @@
 import React from "react";
 import {
   SiVisualstudiocode,
-  SiPostman,
-  SiHeroku,
   SiLinux,
   SiDocker,
   SiGithub,
   SiGitlab,
   SiJupyter,
-  SiAnaconda,
   SiVercel,
+  SiJira,
+  SiConfluence,
+  SiEslint,
+  SiVitest,
 } from "react-icons/si";
+import { SiMicrosoftazure } from "react-icons/si";
 
 function Toolstack() {
   const tools = [
     { id: "vscode", icon: <SiVisualstudiocode />, name: "VS Code" },
-    { id: "postman", icon: <SiPostman />, name: "Postman" },
-    { id: "heroku", icon: <SiHeroku />, name: "Heroku" },
-    { id: "linux", icon: <SiLinux />, name: "Linux" },
-    { id: "docker", icon: <SiDocker />, name: "Docker" },
+    { id: "gitlab", icon: <SiGitlab />, name: "GitLab CI/CD" },
     { id: "github", icon: <SiGithub />, name: "GitHub" },
-    { id: "gitlab", icon: <SiGitlab />, name: "GitLab" },
+    { id: "docker", icon: <SiDocker />, name: "Docker" },
+    { id: "azure", icon: <SiMicrosoftazure />, name: "Azure OpenAI" },
+    { id: "langsmith", icon: <SiVitest />, name: "LangSmith" },
+    { id: "eslint", icon: <SiEslint />, name: "ESLint" },
+    { id: "vitest", icon: <SiVitest />, name: "Vitest" },
+    { id: "jira", icon: <SiJira />, name: "Jira" },
+    { id: "confluence", icon: <SiConfluence />, name: "Confluence" },
+    { id: "linux", icon: <SiLinux />, name: "Linux" },
     { id: "jupyter", icon: <SiJupyter />, name: "Jupyter" },
-    { id: "anaconda", icon: <SiAnaconda />, name: "Anaconda" },
     { id: "vercel", icon: <SiVercel />, name: "Vercel" },
   ];
 

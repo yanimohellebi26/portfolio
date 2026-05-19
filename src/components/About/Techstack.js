@@ -1,7 +1,7 @@
 import React from "react";
 import {
-  SiC,
   SiPython,
+  SiTypescript,
   SiJavascript,
   SiReact,
   SiMongodb,
@@ -10,40 +10,37 @@ import {
   SiPytorch,
   SiTensorflow,
   SiFastapi,
-  SiSvelte,
   SiDocker,
   SiPostgresql,
   SiPandas,
-  SiPostman,
-  SiOcaml,
+  SiNodedotjs,
   SiGraphql,
-  SiJira,
-  SiConfluence,
+  SiStreamlit,
 } from "react-icons/si";
-import { TbBrain, TbChecklist } from "react-icons/tb";
+import { TbBrain, TbRobot, TbLink } from "react-icons/tb";
+import { VscJson } from "react-icons/vsc";
 
 function Techstack() {
   const techs = [
     { id: "python", icon: <SiPython />, name: "Python" },
+    { id: "typescript", icon: <SiTypescript />, name: "TypeScript" },
+    { id: "langchain", icon: <TbLink />, name: "LangChain" },
+    { id: "langgraph", icon: <TbBrain />, name: "LangGraph" },
     { id: "pytorch", icon: <SiPytorch />, name: "PyTorch" },
     { id: "tensorflow", icon: <SiTensorflow />, name: "TensorFlow" },
-    { id: "langchain", icon: <TbBrain />, name: "LangChain" },
-    { id: "fastapi", icon: <SiFastapi />, name: "FastAPI" },
+    { id: "nodejs", icon: <SiNodedotjs />, name: "Node.js" },
     { id: "react", icon: <SiReact />, name: "React" },
+    { id: "fastapi", icon: <SiFastapi />, name: "FastAPI" },
+    { id: "streamlit", icon: <SiStreamlit />, name: "Streamlit" },
     { id: "docker", icon: <SiDocker />, name: "Docker" },
+    { id: "mcp", icon: <TbRobot />, name: "MCP" },
+    { id: "zod", icon: <VscJson />, name: "Zod" },
     { id: "postgresql", icon: <SiPostgresql />, name: "PostgreSQL" },
     { id: "mongodb", icon: <SiMongodb />, name: "MongoDB" },
     { id: "graphql", icon: <SiGraphql />, name: "GraphQL/Cypher" },
     { id: "pandas", icon: <SiPandas />, name: "Pandas" },
-    { id: "postman", icon: <SiPostman />, name: "Postman" },
-    { id: "jira", icon: <SiJira />, name: "Jira" },
-    { id: "confluence", icon: <SiConfluence />, name: "Confluence" },
-    { id: "openproject", icon: <TbChecklist />, name: "OpenProject" },
-    { id: "ocaml", icon: <SiOcaml />, name: "OCaml" },
     { id: "javascript", icon: <SiJavascript />, name: "JavaScript" },
-    { id: "svelte", icon: <SiSvelte />, name: "Svelte" },
     { id: "mysql", icon: <SiMysql />, name: "MySQL" },
-    { id: "c", icon: <SiC />, name: "C" },
     { id: "git", icon: <SiGit />, name: "Git" },
   ];
 

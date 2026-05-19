@@ -14,21 +14,22 @@ function AboutCard() {
           <span className="text-brand-accent"> University of Burgundy</span> in Dijon, France.
         </>),
         (<>
-          Currently working as an <span className="text-brand-accent">AI R&D Engineer Apprentice at Siemens DISW</span> in Lyon,
-          I split my time between cutting-edge AI research and academic excellence.
-          I develop end-to-end AI solutions combining advanced machine learning, NLP, Computer Vision,
-          and intelligent agent architectures to solve complex industrial challenges.
+          At <span className="text-brand-accent">Siemens Digital Industries Software</span> in Lyon,
+          I independently designed and shipped <span className="text-brand-accent">AI GitLab Review</span> — a multi-agent
+          code review system built with LangGraph, TypeScript, and MCP — now used by
+          <span className="text-brand-accent"> 103 engineers across 14 teams</span>.
+          I own the full product lifecycle: architecture, prompt engineering, CI/CD, deployment, and roadmap.
         </>),
         (<>My areas of expertise include:</>),
       ],
       skills: [
-        "Advanced AI/ML with TensorFlow, PyTorch, LangChain, LangGraph",
-        "NLP & Computer Vision for industrial applications",
-        "Full-stack development (FastAPI, React, Docker, REST APIs)",
-        "Database management (SQL, Cypher, Flyway) and DevOps (Postman, OCaml)",
+        "Multi-agent AI systems (LangGraph, LangChain, MCP, structured output with Zod)",
+        "Deep Learning & Computer Vision (PyTorch, PointNet, 3D point clouds)",
+        "Full-stack TypeScript/Node.js & Python (FastAPI, React, Docker)",
+        "Production AI: trust scoring, model tiering, prompt engineering, LangSmith tracing",
       ],
-      quote: "Building intelligent systems that bridge AI research and real-world impact",
-      footer: "Yani Mohellebi - Siemens DISW",
+      quote: "I build AI systems that ship to production — not just prototypes that work in demos",
+      footer: "Yani Mohellebi - Siemens DISW, Lyon",
     },
     fr: {
       paragraphs: [
@@ -38,21 +39,22 @@ function AboutCard() {
           l'<span className="text-brand-accent">Université de Bourgogne</span>, Dijon, France.
         </>),
         (<>
-          Actuellement <span className="text-brand-accent">Ingénieur R&D IA en alternance chez Siemens DISW</span> à Lyon,
-          je partage mon temps entre recherche en IA de pointe et excellence académique.
-          Je développe des solutions d'IA complètes combinant machine learning avancé, NLP, Computer Vision
-          et architectures d'agents intelligents pour résoudre des défis industriels complexes.
+          Chez <span className="text-brand-accent">Siemens Digital Industries Software</span> à Lyon,
+          j'ai conçu et déployé en autonomie complète <span className="text-brand-accent">AI GitLab Review</span> — un système
+          multi-agents de revue de code construit avec LangGraph, TypeScript et MCP — utilisé par
+          <span className="text-brand-accent"> 103 ingénieurs répartis sur 14 équipes</span>.
+          Je gère l'intégralité du cycle produit : architecture, prompt engineering, CI/CD, déploiement et roadmap.
         </>),
         (<>Mes domaines d'expertise incluent :</>),
       ],
       skills: [
-        "IA/ML avancée avec TensorFlow, PyTorch, LangChain, LangGraph",
-        "NLP & Computer Vision pour applications industrielles",
-        "Développement full-stack (FastAPI, React, Docker, REST APIs)",
-        "Gestion de bases de données (SQL, Cypher, Flyway) et DevOps (Postman, OCaml)",
+        "Systèmes IA multi-agents (LangGraph, LangChain, MCP, structured output avec Zod)",
+        "Deep Learning & Computer Vision (PyTorch, PointNet, nuages de points 3D)",
+        "Full-stack TypeScript/Node.js & Python (FastAPI, React, Docker)",
+        "IA en production : trust scoring, model tiering, prompt engineering, tracing LangSmith",
       ],
-      quote: "Construire des systèmes intelligents qui relient recherche en IA et impact réel",
-      footer: "Yani Mohellebi - Siemens DISW",
+      quote: "Je construis des systèmes IA qui vont en production — pas des prototypes qui marchent en démo",
+      footer: "Yani Mohellebi - Siemens DISW, Lyon",
     },
   };
 
