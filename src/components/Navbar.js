@@ -4,6 +4,7 @@ import {
   AiOutlineHome,
   AiOutlineFundProjectionScreen,
   AiOutlineUser,
+  AiOutlineMail,
 } from "react-icons/ai";
 import { CgFileDocument } from "react-icons/cg";
 import { BsPencilSquare } from "react-icons/bs";
@@ -48,7 +49,7 @@ function NavBar() {
     },
     { id: "resume", label: navText.resume, icon: CgFileDocument, to: "/resume" },
     { id: "blog", label: navText.blog, icon: BsPencilSquare, to: "/blog" },
-    { id: "contact", label: navText.contact, icon: AiOutlineUser, to: "/contact" },
+    { id: "contact", label: navText.contact, icon: AiOutlineMail, to: "/contact" },
   ];
 
   useEffect(() => {

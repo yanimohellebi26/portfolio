@@ -9,11 +9,15 @@ const AIBackground = () => {
     if (!canvas) return;
 
     const ctx = canvas.getContext('2d');
+    if (!ctx) return;
     let animationFrameId;
     let particles = [];
     let nodes = [];
     let mouseX = -1000;
     let mouseY = -1000;
+    
+    // Detect mobile for reduced particle count
+    const isMobile = window.innerWidth < 768;
     
     // Système de modes alternés
     let currentMode = 0;
@@ -148,7 +152,8 @@ const AIBackground = () => {
 
     // Initialiser les particules
     const initParticles = () => {
-      const particleCount = Math.min(150, Math.floor((canvas.width * canvas.height) / 15000));
+      const maxParticles = isMobile ? 50 : 150;
+      const particleCount = Math.min(maxParticles, Math.floor((canvas.width * canvas.height) / 15000));
       particles = [];
       for (let i = 0; i < particleCount; i++) {
         particles.push(new DataParticle());
@@ -608,6 +613,16 @@ const AIBackground = () => {
       animationFrameId = requestAnimationFrame(animate);
     };
 
+    // Pause animation when tab is not visible
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        cancelAnimationFrame(animationFrameId);
+      } else {
+        lastModeChange = Date.now(); // Reset to avoid jump
+        animate();
+      }
+    };
+
     // Gestion de la souris
     const handleMouseMove = (e) => {
       mouseX = e.clientX;
@@ -624,6 +639,7 @@ const AIBackground = () => {
     window.addEventListener('resize', resizeCanvas);
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseleave', handleMouseLeave);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
     animate();
 
     // Nettoyage
@@ -631,6 +647,7 @@ const AIBackground = () => {
       window.removeEventListener('resize', resizeCanvas);
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseleave', handleMouseLeave);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);

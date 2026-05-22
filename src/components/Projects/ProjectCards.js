@@ -52,6 +52,7 @@ function ProjectCards({ imgPath, title, description, ghLink, demoLink, collabLin
           <img
             src={imgPath}
             alt={title}
+            loading="lazy"
             className="h-52 w-full object-cover object-center transform transition-all duration-700 group-hover:scale-110 group-hover:rotate-1"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0f0b22] via-[#0f0b22]/50 to-transparent opacity-60" />

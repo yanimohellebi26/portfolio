@@ -485,23 +485,10 @@ function Projects() {
       ghLink: "https://github.com/yanimohellebi26/question2_project",
     },
     /* ── Additional projects from MD ── */
-    {
-      id: "rag-m1",
-      imgPath: ragImg,
-      category: "agentic",
-      title: {
-        en: "RAG-M1 — Multi-Agent RAG System",
-        fr: "RAG-M1 — Système RAG Multi-Agent",
-      },
-      description: {
-        en: "Multi-agent RAG system with 6 specialised agents on 139 M1 course files. Pipeline: PDF/ZIP/TXT → Qdrant → BGE-M3 reranking. Agents for RAG, Notes, Exercises, Memory, Web search, and Research.\n\n**Tech stack:** Python, LlamaIndex, Qdrant, BGE-M3, FastAPI, PyMuPDF, MCP, Docker",
-        fr: "Système RAG multi-agent avec 6 agents spécialisés sur 139 fichiers de cours M1. Pipeline : PDF/ZIP/TXT → Qdrant → BGE-M3 reranking. Agents pour RAG, Notes, Exercices, Mémoire, Web et Recherche.\n\n**Technologies utilisées :** Python, LlamaIndex, Qdrant, BGE-M3, FastAPI, PyMuPDF, MCP, Docker",
-      },
-      ghLink: "https://github.com/yanimohellebi26/RAG-M1",
-    },
+
     {
       id: "pontifex",
-      imgPath: aportfolioImg,
+      imgPath: ragImg,
       category: "deployed",
       title: {
         en: "Pontifex — Solitaire Cipher + RAG Assistant",
@@ -530,7 +517,7 @@ function Projects() {
     },
     {
       id: "oracle-bd",
-      imgPath: aportfolioImg,
+      imgPath: ecommerceImg,
       category: "academic",
       title: {
         en: "Oracle Execution Plans — Query Optimisation",
@@ -544,7 +531,7 @@ function Projects() {
     },
     {
       id: "ais",
-      imgPath: aportfolioImg,
+      imgPath: mindImg,
       category: "academic",
       featured: true,
       title: {
@@ -559,7 +546,7 @@ function Projects() {
     },
     {
       id: "bowling",
-      imgPath: aportfolioImg,
+      imgPath: legendesImg,
       category: "else",
       title: {
         en: "Strike du Destin — Cinematic Interactive Experience",
@@ -573,7 +560,7 @@ function Projects() {
     },
     {
       id: "date-game",
-      imgPath: aportfolioImg,
+      imgPath: drollImg,
       category: "else",
       title: {
         en: "Lapine & Bonbons — 2D Cross-Platform Game",
